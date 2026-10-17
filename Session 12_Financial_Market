@@ -1,0 +1,146 @@
+Comprehensive Revision Notes: Financial Markets and Instruments
+Overview
+In this session, the focus was on understanding practical applications in financial markets with a particular emphasis on company valuations using financial ratios and the dividend discount model. The instructor discussed the requirements for a financial ratio analysis assignment and walked through the valuation of listed companies using practical models and financial data. Key models covered include the Gordon Growth Model and techniques for evaluating share prices through present value calculations.
+
+Financial Ratio Analysis Assignment
+Objective: Conduct a financial ratio analysis of a listed company.
+Requirements:
+Choose any listed company (Indian or international, excluding banks and service-startups).
+Perform analyses on two financial years using company's balance sheet, income statement, and cash flow statement.
+Ratios to compute: Liquidity, Solvency, Working Capital Efficiency, and Profitability.
+Interpret results and provide investment recommendations.
+Submission: Detailed report (3 pages maximum) by October 2nd, 11:50 PM in PDF format following specified naming conventions.
+Dividend Discount Model (DDM)
+Overview
+Purpose: Used to value the price of a company's stock based on the theory that its value equals the sum of all future dividend payments discounted back to their present value.
+Key Formula: 
+P
+0
+=
+D
+1
+K
+e
+−
+g
+P 
+0
+​
+ = 
+K 
+e
+​
+ −g
+D 
+1
+​
+ 
+​
+  Where 
+P
+0
+P 
+0
+​
+  is the current stock price, 
+D
+1
+D 
+1
+​
+  is the next year's expected dividend, 
+K
+e
+K 
+e
+​
+  the required rate of return (cost of equity), and 
+g
+g the growth rate of dividends.
+Examples
+Fixed Dividend:
+
+Calculate present values of dividends over a period using an assumed constant growth rate.
+Sum these present values to find the stock's price.
+Gordon Growth Model (Constant Growth DDM):
+
+Assumes dividends increase at a constant rate indefinitely.
+Important condition: 
+K
+e
+>
+g
+K 
+e
+​
+ >g.
+Used when dividends are expected to grow steadily over an extended period.
+Example Calculation
+- Current dividend: $5 
+- Growth rate: 6%
+- Cost of equity: 12%
+- Next year's dividend $D_1 = D_0 \times (1+g) = 5 \times 1.06 = 5.30$
+- Share price $P_0 = \frac{5.30}{0.12 - 0.06} = 88.33$
+Estimating Growth Rates
+Methods:
+Historical averages of past dividend growth.
+Analyst projections and market polling (e.g., Bloomberg).
+Retention Growth Model: 
+G
+=
+b
+×
+r
+G=b×r
+b: Retention ratio = 1 - Payout ratio
+r: Return on retained earnings
+Example Growth Calculation
+Earnings per share: $20
+
+Payout ratio: 40%
+
+Return on retained earnings: 15%
+
+b
+=
+0.6
+,
+G
+=
+0.6
+×
+0.15
+=
+9
+%
+b=0.6,G=0.6×0.15=9%
+
+Financial Modeling with Excel
+Key Concepts
+Free Cash Flow (FCF):
+Cash remaining after a company pays its operating expenses and capital expenditures.
+FCF to firm vs. FCF to equity.
+Valuation Steps
+Calculate Cash Flows: Start from net profit, adjust for non-cash items, changes in working capital, and capital expenditure.
+
+Determine Cost of Capital:
+
+Use CAPM for cost of equity.
+Weighted Average Cost of Capital (WACC) for overall cost.
+Project Cash Flows: Forecast future cash flows based on growth estimates.
+
+Discount Cash Flows: Use discount rates to find present value of cash flows during growth and terminal phases.
+
+Estimate Terminal Value: Apply Gordon Growth formula past high growth period.
+
+Calculate Enterprise Value: Sum present values of forecast cash flows and terminal value.
+
+Equity Valuation: Subtract net debt for equity value; divide by shares outstanding for per-share price.
+
+Example
+Assumptions:
+Initial FCF: $45,000
+Growth rate reducing annually from 10% to a steady 5% after year 5.
+Result: If discounted value per share is less than current market price, it could indicate overvaluation.
+Conclusion
+The session illustrated the process of valuing companies using key financial metrics, dividend models, and financial modeling. Understanding these concepts helps assess potential investments, evaluate company performance, and make informed financial decisions in market contexts. These tools and models are crucial for financial analysts and stakeholders aiming to derive insights from corporate financial statements and market data.
