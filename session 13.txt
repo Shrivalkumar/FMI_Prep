@@ -1,0 +1,49 @@
+Comprehensive Revision Notes: Financial Modelling and Portfolio Theory
+Overview
+In this class, we explored the intricacies of financial modelling with a particular focus on portfolio theory and its application in valuing and investing in stocks. The session covered how to construct a portfolio of stocks, the concept of diversification, the importance of understanding risk and return, and the differences between active and passive investment strategies. We also delved into the challenges and methodologies involved in assessing stock market efficiency.
+
+Financial Modelling Basics
+Line Items Identification: Understanding the key components like sales, costs, profits, and cash flows is essential for creating a financial model.
+
+Discounting Cash Flows: Cash flows are discounted both for the immediate horizon (1 to 5 years) and the perpetual horizon (beyond 5 years).
+
+Estimation Challenges: Real-life financial modelling requires estimating variables such as cost of equity, cost of debt, and Weighted Average Cost of Capital (WACC).
+
+Portfolio Theory
+Introduction to Portfolio Theory
+Markowitz Portfolio Theory: Introduced by Harry Markowitz, it emphasizes diversification to minimize risk while maximizing returns.
+
+Diversification: Investing across various sectors and stocks to mitigate specific risks.
+
+Why Diversification Matters
+Diversification helps protect against unsystematic risk which affects individual stocks or sectors.
+
+Systematic risks such as high oil prices or economic recessions impact all stocks and cannot be avoided through diversification.
+
+Hedging Risks
+Correlation: The relationship between stocks in a portfolio; negative correlation helps minimize risk.
+Constructing a Portfolio
+Optimal portfolios should have a mix of stocks with varying degrees of risk and correlation.
+
+Risk and Return Tradeoff: Portfolio risk is not a simple average; it's affected by the correlation between asset returns.
+
+Example: Portfolio Composition
+High vs Low Beta Stocks: High beta stocks provide higher returns in a booming market but come with higher risk, whereas low beta stocks offer stability.
+
+Efficient Frontier: The concept of achieving maximum return for a given level of risk, focusing on high return/low risk investment options.
+
+Stock Market Efficiency
+Efficient Market Hypothesis (EMH)
+Forms of EMH:
+
+Weak Form: Prices reflect all past market data.
+Semi-Strong Form: Prices reflect all publicly available information.
+Strong Form: Prices reflect all information, both public and private.
+Market Anomalies: Instances where the market does not behave according to EMH principles, such as bubbles or irrational investor behavior.
+
+Practical Considerations
+Active vs Passive Investing:
+Active Investing involves active decision-making by fund managers and often comes with higher fees.
+Passive Investing usually involves index funds with lower fees and historically tends to outperform active investing over the long term.
+Conclusion
+This class covered a comprehensive overview of financial modelling and portfolio theory, highlighting the importance of understanding risk, return, and the role of diversification in investment. We explored how market efficiencies and inefficiencies affect investment decisions, and the impact of investor psychology on stock performances. Mastering these concepts is crucial for making informed investment choices and for strategizing in both personal finance and professional financial management. Understanding the balance between risk and reward, as well as the role of diversification in constructing portfolios, is vital for achieving financial goals in the stock market.
