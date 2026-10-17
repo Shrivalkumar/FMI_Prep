@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 8 — Valuation &amp; Forecasting (FCF / DCF)</title>
+<meta name="description" content="Learn valuation from scratch: intrinsic vs relative value, Free Cash Flow (FCF, FCFF, FCFE), the DCF model, terminal value with Gordon growth, retention growth and multiples.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 8</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 8</span>
+        <span class="tag src">Sessions 11–12</span>
+      </div>
+      <h1>Valuation &amp; Forecasting (FCF / DCF)</h1>
+      <p class="lead">What is a company actually <em>worth</em>? Not its share price today — its real, underlying value, built from the cash it will generate in the future. This lesson teaches you to turn forecasts into a per-share value, step by step, using Free Cash Flow and the Discounted Cash Flow (DCF) model.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="what">1. What valuation is</h2>
+      <p><b>Valuation is the process of estimating the economic value of an asset, business or company.</b> The core idea is simple and you have already met it in the Time Value of Money lesson:</p>
+      <div class="formula-block"><div class="lbl">The one idea behind all valuation</div><div class="formula">$$\text{Value of an asset} = \text{Present value of the future economic benefits it is expected to produce}$$</div></div>
+      <p>A business is worth the cash it will throw off over its life, brought back to today's rupees. Everything else — formulas, models, spreadsheets — is just machinery for estimating and discounting those future benefits. <span class="tag src">Sessions 11–12</span></p>
+
+      <h3>Two ways to think about value</h3>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Intrinsic valuation</div><p>What are the company's <em>own</em> future cash flows worth today? You build value from the inside out — forecast cash flows, discount them. DCF is the classic intrinsic method.</p></div>
+        <div class="callout key"><div class="ct-head">Relative valuation</div><p>How much is the market paying for <em>similar</em> companies? You value by comparison — "peers trade at 20× earnings, so this one should too." This uses multiples such as P/E.</p></div>
+      </div>
+
+      <div class="callout key"><div class="ct-head">⚖️ Market Price ≠ Intrinsic Value</div>
+        <p><b>Market price</b> is simply the price the asset is trading at right now — what buyers and sellers agree on today. <b>Intrinsic value</b> is an estimate based on the <em>inherent strength</em> of the asset, i.e. its ability to generate future cash flows. The two are often different, and that gap is exactly where investment decisions are made: buy when intrinsic value &gt; market price, be cautious when it is below.</p>
+      </div>
+
+      <h3>What valuation is used for</h3>
+      <ul>
+        <li><b>Investment decisions</b> — is a share cheap or expensive versus what it is really worth?</li>
+        <li><b>Mergers &amp; Acquisitions (M&amp;A)</b> — how much should an acquirer pay for a target?</li>
+        <li><b>IPO pricing</b> — what price should new shares be offered at?</li>
+        <li><b>Sale or purchase of a business</b> — agreeing a fair price between buyer and seller.</li>
+        <li><b>Strategic decisions</b> — which division creates value, which destroys it.</li>
+      </ul>
+
+      <h3>Factors that drive the value of a business</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Factor</th><th>The question it answers</th><th>Effect on value</th></tr></thead>
+        <tbody>
+          <tr><td>Cash flows</td><td>How much cash can the business generate?</td><td>More cash → higher value</td></tr>
+          <tr><td>Growth</td><td>How quickly can those cash flows grow?</td><td>Faster growth → higher value</td></tr>
+          <tr><td>Risk</td><td>How uncertain are the future cash flows?</td><td>More risk → higher discount rate → lower value</td></tr>
+          <tr><td>Investment requirements</td><td>How much must the company reinvest to keep going?</td><td>Heavy reinvestment → less free cash → lower value</td></tr>
+          <tr><td>Capital structure</td><td>How much debt vs equity does it use?</td><td>Changes the discount rate (WACC) and who the cash belongs to</td></tr>
+          <tr><td>Terminal value</td><td>What is the business worth beyond the forecast period?</td><td>Often the <em>largest</em> part of total value</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ A note on currency</div><p>Our worked examples use ₹ (rupees), matching the Indian company data in the slides. The lecture examples occasionally use $ — the <em>method</em> is identical whatever the currency, so don't let the symbol distract you.</p></div>
+
+      <h2 id="fcf">2. Free Cash Flow (FCF)</h2>
+      <p>Accounting <em>profit</em> measures performance; <b>Free Cash Flow focuses on the cash actually available</b> after the company has made the investments it needs to maintain and grow the business. It is the cash that could, in principle, be handed to the people who funded the business.</p>
+      <div class="formula-block"><div class="lbl">The master formula</div><div class="formula">$$\text{FCF} = \text{Operating Cash Flow} - \text{Capital Expenditure (CapEx)}$$</div></div>
+      <p>Why not just use profit? Because of accrual accounting, <b>cash ≠ profit</b>. A company can report a big profit while its cash is tied up in unsold stock or uncollected bills — or while it is pouring money into new machinery. FCF strips the accounting adjustments back out to reveal the real cash.</p>
+
+      <h3>Worked example — ABC Manufacturing Ltd, FY2026</h3>
+      <p>ABC reports the following for the year (figures in ₹ crore):</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Particulars</th><th class="num">₹ crore</th></tr></thead>
+        <tbody>
+          <tr><td>Net Profit after Tax</td><td class="num">1,000</td></tr>
+          <tr><td>Depreciation</td><td class="num">200</td></tr>
+          <tr><td>Increase in Inventory</td><td class="num">100</td></tr>
+          <tr><td>Increase in Trade Receivables</td><td class="num">50</td></tr>
+          <tr><td>Increase in Trade Payables</td><td class="num">40</td></tr>
+          <tr><td>Capital Expenditure — machinery</td><td class="num">300</td></tr>
+        </tbody>
+      </table></div>
+      <p>At first glance it looks like the company earned ₹1,000 crore, so ₹1,000 crore is available to distribute. But net profit is an <em>accounting</em> measure, not cash. We adjust it line by line.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Building FCF from net profit — one adjustment at a time <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Start</span> Net Profit after Tax = ₹1,000 crore.</div>
+          <div class="step"><span class="sh">+ Depreciation ₹200</span> Depreciation was <em>subtracted</em> to get profit, but <b>no cash left the business</b> for it — it is a non-cash expense. Add it back: 1,000 + 200 = ₹1,200 crore.</div>
+          <div class="step"><span class="sh">− Increase in Inventory ₹100</span> The company bought ₹100 crore more stock than it sold. That cash is now <b>sitting on the shelf</b>. Increase in inventory = cash <b>outflow</b>: 1,200 − 100 = ₹1,100 crore.</div>
+          <div class="step"><span class="sh">− Increase in Receivables ₹50</span> Sales were made but ₹50 crore of cash has <b>not yet been collected</b> from customers — it is tied up with them. Increase in receivables = cash <b>outflow</b>: 1,100 − 50 = ₹1,050 crore.</div>
+          <div class="step"><span class="sh">+ Increase in Payables ₹40</span> The company received goods/services but has <b>not yet paid</b> suppliers ₹40 crore — it has effectively kept that cash. Increase in payables = cash <b>inflow</b>: 1,050 + 40 = <b>₹1,090 crore = Operating Cash Flow.</b></div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Particulars</th><th class="num">₹ crore</th><th>Cash-flow logic</th></tr></thead>
+            <tbody>
+              <tr><td>Net Profit</td><td class="num">1,000</td><td>Starting point</td></tr>
+              <tr><td>Add: Depreciation</td><td class="num">+200</td><td>Non-cash expense — add back</td></tr>
+              <tr><td>Less: Increase in Inventory</td><td class="num">−100</td><td>Cash tied up in stock</td></tr>
+              <tr><td>Less: Increase in Receivables</td><td class="num">−50</td><td>Cash not yet collected</td></tr>
+              <tr><td>Add: Increase in Payables</td><td class="num">+40</td><td>Cash retained (not yet paid)</td></tr>
+              <tr><td class="tot">Operating Cash Flow (OCF)</td><td class="num tot">1,090</td><td>Cash from the core business</td></tr>
+              <tr><td>Less: Capital Expenditure</td><td class="num">−300</td><td>Real cash paid for machinery</td></tr>
+              <tr><td class="tot">Free Cash Flow (FCF)</td><td class="num tot">790</td><td>OCF − CapEx</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">− CapEx ₹300</span> The company actually paid ₹300 crore cash for new machinery. Unlike depreciation, <b>CapEx is a real cash payment</b>, so subtract it: 1,090 − 300 = <b>FCF = ₹790 crore.</b></div>
+          <div class="ans">So ABC's "₹1,000 crore profit" converts to just <b>₹790 crore of free cash</b>. Working-capital build-up and the machinery purchase absorbed the rest.</div>
+        </div>
+      </details>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — signs of working-capital changes</div>
+        <ul style="margin:6px 0 0">
+          <li>An <b>increase in receivables or inventory is a cash OUTflow</b> (subtract it) — cash is tied up. A <em>decrease</em> releases cash (add it).</li>
+          <li>An <b>increase in payables is a cash INflow</b> (add it) — you are holding onto cash you owe. A <em>decrease</em> uses cash (subtract it).</li>
+          <li><b>CapEx is a real cash outflow; depreciation is not.</b> Add depreciation back, then subtract CapEx. Don't double-count by forgetting one of them.</li>
+        </ul>
+      </div>
+
+      <div class="try" data-answer="470" data-tol="2%" data-ok="Correct — you built FCF cleanly.">
+        <div class="q">✎ <b>Try it — compute FCF.</b> A firm reports: Net profit ₹600, depreciation ₹150, inventory <em>rose</em> ₹80, receivables <em>fell</em> ₹30, payables <em>rose</em> ₹20, CapEx ₹250 (all ₹ crore). What is Free Cash Flow (₹ crore)?</div>
+        <div class="row"><input type="text" placeholder="₹ crore"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>OCF = 600 + 150 (add depreciation) − 80 (inventory rose → cash out) + 30 (receivables <em>fell</em> → cash in) + 20 (payables rose → cash in) = <b>₹720 crore</b>.</p>
+          <p>FCF = OCF − CapEx = 720 − 250 = <b>₹470 crore</b>. Watch the receivables line: a <em>fall</em> releases cash, so it is added.</p>
+        </div>
+      </div>
+
+      <h2 id="fcff">3. FCFF vs FCFE</h2>
+      <p>Free Cash Flow comes in two flavours, and the difference is simply <b>whose</b> cash it is.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">Free Cash Flow to Firm (FCFF)</h4>
+          <p>The cash generated by the business that is available to <b>ALL providers of capital</b> — both equity shareholders <em>and</em> debt holders.</p>
+          <p>It is measured <b>before</b> payments to debt (i.e. before interest and loan repayments). Think of it as the whole pie of cash the operations produce, before it is split between lenders and owners.</p>
+          <div class="formula-block raw"><div class="lbl">Quick approximation</div>FCFF ≈ CFO − CapEx</div>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Free Cash Flow to Equity (FCFE)</h4>
+          <p>The cash available <b>specifically to equity shareholders</b>, after meeting the cash-flow consequences of debt financing.</p>
+          <p>Start from FCFF, pay the lenders their interest, then add back any new money borrowed:</p>
+          <div class="formula-block raw"><div class="lbl">Quick approximation</div>FCFE ≈ CFO − CapEx − Interest + Net Borrowing</div>
+        </div>
+      </div>
+      <div class="formula-block"><div class="lbl">The link between the two</div><div class="formula">$$\text{FCFE} \approx \text{FCFF} - \text{Interest} + \text{Net Borrowing}$$</div></div>
+      <p>So <b>FCFF is to the firm; FCFE is to equity.</b> If you value using FCFF you discount at WACC (the blended cost of all capital) and arrive at <em>Enterprise Value</em>; if you value using FCFE you discount at the cost of equity (Kₑ) and arrive directly at <em>Equity Value</em>. Capital structure is exactly what sits between the two.</p>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — match the cash flow to the discount rate</div><p><b>FCFF → discount at WACC → Enterprise Value.</b> <b>FCFE → discount at Kₑ (cost of equity) → Equity Value.</b> Discounting FCFF at the cost of equity (or FCFE at WACC) is a classic error — the cash flow and the rate must belong to the same set of investors.</p></div>
+
+      <h2 id="dcf">4. The DCF model</h2>
+      <p>Discounted Cash Flow (DCF) is the intrinsic valuation method. It puts the whole "value = present value of future benefits" idea to work in a repeatable recipe.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>#</th><th>Step</th><th>What you do</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Forecast cash flows</td><td>Project FCF for an <em>explicit</em> high-growth period (say 5 years).</td></tr>
+          <tr><td>2</td><td>Pick a discount rate</td><td>WACC for FCFF; Kₑ for FCFE (see Lesson 7 for WACC and Lesson 6 for Kₑ).</td></tr>
+          <tr><td>3</td><td>Discount the explicit flows</td><td>Bring each year's forecast FCF back to today at the discount rate.</td></tr>
+          <tr><td>4</td><td>Estimate terminal value</td><td>Value everything <em>beyond</em> the forecast with the Gordon growth formula, then discount it back.</td></tr>
+          <tr><td>5</td><td>Sum to Enterprise Value</td><td>Add the PV of explicit flows + PV of terminal value.</td></tr>
+          <tr><td>6</td><td>Get Equity Value</td><td>Subtract net debt → Equity Value; ÷ shares outstanding → value per share.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Terminal value &amp; the Gordon growth link</h3>
+      <p>We cannot forecast forever, so after the explicit period we assume cash flows grow at a steady rate <em>g</em> indefinitely and collapse them into one number — the <b>terminal value</b> — using the growing-perpetuity (Gordon) formula:</p>
+      <div class="formula-block"><div class="lbl">Terminal value at the end of year n</div><div class="formula">$$TV_n = \dfrac{FCF_{n} \times (1+g)}{(\text{WACC} - g)} = \dfrac{FCF_{n+1}}{\text{WACC} - g}$$</div></div>
+      <p>This is the same mathematics as the <b>Dividend Discount Model / Gordon Growth Model</b> for a share, where next year's dividend grows forever:</p>
+      <div class="formula-block"><div class="lbl">Gordon Growth Model (DDM) — Session 12</div><div class="formula">$$P_0 = \dfrac{D_1}{K_e - g}, \qquad D_1 = D_0 \times (1+g)$$</div></div>
+      <p>For example, with a current dividend D₀ = ₹5, growth g = 6% and cost of equity Kₑ = 12%: D₁ = 5 × 1.06 = ₹5.30, so P₀ = 5.30 ÷ (0.12 − 0.06) = <b>₹88.33</b>. Terminal value is just this same idea applied to free cash flow instead of dividends.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> A small DCF terminal-value calculation <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Setup</span> Suppose the final explicit-year free cash flow (year 5) is FCF₅ = ₹790 crore, it then grows steadily at g = 5% forever, and WACC = 10%.</div>
+          <div class="step"><span class="sh">Next year's flow</span> FCF₆ = 790 × (1 + 0.05) = ₹829.5 crore.</div>
+          <div class="step"><span class="sh">Terminal value at end of year 5</span> $TV_5 = \dfrac{829.5}{0.10 - 0.05} = \dfrac{829.5}{0.05} = $ <b>₹16,590 crore.</b></div>
+          <div class="step"><span class="sh">Discount it back to today</span> This ₹16,590 crore sits at the end of year 5, so it must be discounted 5 years: $PV = \dfrac{16{,}590}{(1.10)^5} = \dfrac{16{,}590}{1.6105} \approx$ <b>₹10,301 crore.</b></div>
+          <div class="ans">Add this discounted terminal value to the PV of the five explicit-year flows to get Enterprise Value. Terminal value is usually the <em>biggest</em> single component — which is why the small gap between WACC and g matters so much.</div>
+        </div>
+      </details>
+
+      <div class="callout info"><div class="ct-head">🧮 Calculator — terminal value as a growing perpetuity <span class="tag src">Sessions 11–12</span></div>
+        <p>Terminal value is a <b>growing perpetuity</b>: a cash flow that recurs forever and grows at g, discounted at WACC. Use the calculator below with <b>cash flow = next year's FCF</b> (e.g. 829.5), <b>rate = WACC</b> (e.g. 10%) and <b>growth = g</b> (e.g. 5%). It returns the value <em>at the end of the explicit period</em> — you then discount that back to today.</p>
+        <div data-calc="perpetuity"></div>
+      </div>
+
+      <div class="callout info"><div class="ct-head">🧮 Calculator — Gordon growth / DDM per share <span class="tag src">Session 12</span></div>
+        <p>The same engine values a share. Enter next year's dividend D₁, the cost of equity Kₑ and the dividend growth g to get P₀ = D₁ ÷ (Kₑ − g). Try D₁ = 5.30, Kₑ = 12%, g = 6% to reproduce the ₹88.33 result above. This is exactly the formula a DCF uses for terminal value, just with dividends in place of free cash flow.</p>
+        <div data-calc="dgm"></div>
+      </div>
+
+      <h3>Estimating the growth rate g — the retention method</h3>
+      <p>Where does g come from? You can use historical averages or analyst projections, but a clean fundamental method is the <b>retention growth model</b>:</p>
+      <div class="formula-block"><div class="lbl">Retention (sustainable) growth</div><div class="formula">$$g = b \times r$$</div></div>
+      <p>where <b>b = retention ratio = 1 − payout ratio</b> (the share of earnings kept inside the business) and <b>r = return on retained earnings (ROE)</b>. Intuitively: a company grows by reinvesting profits, so growth = how much it keeps × how well it reinvests.</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Retention growth from EPS, payout and ROE <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> EPS = ₹20, payout ratio = 40%, return on retained earnings (ROE) = 15%.</div>
+          <div class="step"><span class="sh">Retention ratio</span> b = 1 − 0.40 = <b>0.60</b> (the firm keeps 60% of earnings; EPS value just confirms the firm is profitable).</div>
+          <div class="step"><span class="sh">Growth</span> g = b × r = 0.60 × 0.15 = 0.09 = <b>9%</b>.</div>
+          <div class="ans">A firm that keeps 60% of its profit and earns 15% on it grows at 9% a year. This g can feed straight into the Gordon/terminal-value formula.</div>
+        </div>
+      </details>
+
+      <div class="try" data-answer="14" data-tol="2%" data-ok="Correct — g = b × r.">
+        <div class="q">✎ <b>Try it — retention growth.</b> A company has a payout ratio of 30% and earns an ROE of 20% on retained profits. What is its sustainable growth rate g (answer as a %, e.g. 14 for 14%)?</div>
+        <div class="row"><input type="text" placeholder="% per year"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>b = 1 − payout = 1 − 0.30 = 0.70. g = b × r = 0.70 × 0.20 = 0.14 = <b>14%</b>. Keep more, or earn more on what you keep, and growth rises.</p>
+        </div>
+      </div>
+
+      <h3>From Enterprise Value to value per share</h3>
+      <div class="formula-block"><div class="formula">$$\text{Enterprise Value} = \sum \frac{FCF_t}{(1+\text{WACC})^t} + \frac{TV_n}{(1+\text{WACC})^n}$$</div></div>
+      <div class="formula-block"><div class="formula">$$\text{Equity Value} = \text{Enterprise Value} - \text{Net Debt}, \qquad \text{Value per share} = \frac{\text{Equity Value}}{\text{Shares outstanding}}$$</div></div>
+      <p><b>Enterprise Value</b> is the value of the whole firm (to all capital providers). <b>Net debt</b> (debt − cash) belongs to the lenders, so subtracting it leaves <b>Equity Value</b> — what belongs to shareholders. Divide by shares to get the per-share intrinsic value you can compare with the market price.</p>
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — terminal value must be discounted back</div><p>The terminal value is computed <em>as at the end</em> of the explicit period (e.g. end of year 5). It is a future amount, so it must be discounted back to today before adding it to Enterprise Value. Forgetting to discount it hugely overstates the valuation. Also don't confuse Enterprise Value (whole firm) with Equity Value (after subtracting net debt).</p></div>
+
+      <h2 id="multiples">5. Multiples / relative valuation</h2>
+      <p>Instead of forecasting every cash flow, relative valuation asks: <b>what is the market paying for comparable companies?</b> You take a value driver (earnings, EBITDA, sales) and multiply it by a market multiple from peers.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Multiple</th><th>Formula</th><th>Values…</th></tr></thead>
+        <tbody>
+          <tr><td>P/E (Price-to-Earnings)</td><td>Share price ÷ EPS</td><td>Equity — "how many rupees per rupee of earnings"</td></tr>
+          <tr><td>EV / EBITDA</td><td>Enterprise Value ÷ EBITDA</td><td>The whole firm, independent of capital structure</td></tr>
+          <tr><td>EV / Sales</td><td>Enterprise Value ÷ Revenue</td><td>Firms with little or no profit yet</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>P/E</b> is an <em>equity</em> multiple; <b>Enterprise-Value multiples</b> value the firm before the debt/equity split (useful when comparing companies with different leverage). Peers are usually priced on a blend of intrinsic and relative methods.</p>
+      <div class="callout key"><div class="ct-head">🔑 Over- or undervalued?</div><p>Compare your DCF per-share value with the market price. <b>If the discounted (intrinsic) per-share value is <em>less</em> than the market price → the share may be overvalued</b> (the market is paying more than the cash flows justify). If intrinsic value is above the market price, it may be undervalued — a potential buy.</p></div>
+
+      <h2 id="summary">6. Summary</h2>
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Value = present value of future economic benefits.</b> Intrinsic (build from cash flows) vs relative (compare to peers). Market price ≠ intrinsic value.</li>
+          <li><b>FCF = Operating Cash Flow − CapEx.</b> Add back depreciation; adjust working capital (↑ inventory/receivables = cash out, ↑ payables = cash in); subtract CapEx. ABC: 1,000 → OCF 1,090 → FCF ₹790 crore.</li>
+          <li><b>FCFF</b> = cash to all capital providers (before debt) → discount at WACC → Enterprise Value. <b>FCFE</b> ≈ CFO − CapEx − interest + net borrowing → discount at Kₑ → Equity Value.</li>
+          <li><b>DCF:</b> forecast FCF, discount at WACC, add terminal value (Gordon: $FCF_{n+1}/(WACC-g)$, then discount back), sum → Enterprise Value, − net debt → Equity Value, ÷ shares → per share.</li>
+          <li><b>g = b × r</b> (retention × ROE). DDM link: $P_0 = D_1/(K_e - g)$.</li>
+          <li><b>Multiples</b> (P/E, EV/EBITDA) give a quick peer-based value. If intrinsic value &lt; market price → possibly overvalued.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">7. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-07.html"><span>Previous lesson</span><b>‹ Bonds &amp; WACC</b></a>
+        <a class="next" href="lesson-09.html"><span>Next lesson</span><b>Portfolio &amp; Markets ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-08">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-08",
+    title: "Lesson 8 Quiz — Valuation & FCF",
+    questions: [
+      { q:"The core principle of all valuation is that the value of an asset equals:", options:["Its historical cost less depreciation","The present value of its expected future economic benefits","Its current market price","Book value of equity on the balance sheet"], correct:1,
+        explain:"Value = present value of the future economic benefits (cash flows) the asset is expected to produce. Market price and book value are different concepts." },
+      { q:"Free Cash Flow is defined as:", options:["Net profit + depreciation","Operating Cash Flow − Capital Expenditure","Revenue − all expenses","EBIT × (1 − tax rate)"], correct:1,
+        explain:"FCF = Operating Cash Flow − CapEx. It is the cash left after funding the investment needed to maintain and grow the business." },
+      { q:"A company has net profit ₹1,000, depreciation ₹200, inventory rose ₹100, receivables rose ₹50, payables rose ₹40 (₹ crore). Its Operating Cash Flow is:", options:["₹1,200 crore","₹1,090 crore","₹1,000 crore","₹790 crore"], correct:1,
+        explain:"Add back depreciation; subtract the rise in inventory and receivables; add the rise in payables.",
+        calc:"1,000 + 200 − 100 − 50 + 40 = ₹1,090 crore. (Subtracting CapEx ₹300 would then give FCF ₹790 crore.)" },
+      { q:"Under the indirect method, an increase in trade receivables is treated as a:", options:["Cash inflow (added)","Cash outflow (subtracted)","Non-cash item ignored","Financing inflow"], correct:1,
+        explain:"A rise in receivables means sales were made but cash not yet collected — cash is tied up with customers, so it is a cash outflow and is subtracted." },
+      { q:"Which statement about CapEx and depreciation in an FCF build-up is correct?", options:["Both are real cash outflows and both are subtracted","Depreciation is a real cash outflow; CapEx is non-cash","CapEx is a real cash outflow; depreciation is non-cash and added back","Both are non-cash and ignored"], correct:2,
+        explain:"Depreciation is a non-cash expense (add it back); CapEx is an actual cash payment (subtract it)." },
+      { q:"Free Cash Flow to Firm (FCFF) represents cash available to:", options:["Equity shareholders only, after debt is repaid","All providers of capital — equity and debt holders — before debt payments","The government as tax","Suppliers and employees"], correct:1,
+        explain:"FCFF is the cash from operations available to ALL capital providers (equity + debt), measured before payments to debt holders. FCFE is the equity-only, after-debt measure." },
+      { q:"Which approximation for Free Cash Flow to Equity (FCFE) is correct?", options:["CFO − CapEx + Interest − Net Borrowing","CFO + CapEx + Interest","CFO − CapEx − Interest + Net Borrowing","CFO − Depreciation − Tax"], correct:2,
+        explain:"FCFE ≈ CFO − CapEx − Interest + Net Borrowing: start from firm cash flow, pay lenders their interest, add back new borrowing." },
+      { q:"The terminal value at the end of year 5 is FCF6 = ₹829.5 crore, WACC = 10%, g = 5%. Terminal value (end of year 5) is:", options:["₹8,295 crore","₹16,590 crore","₹1,659 crore","₹829.5 crore"], correct:1,
+        explain:"Terminal value uses the Gordon growing-perpetuity formula FCF(n+1) ÷ (WACC − g).",
+        calc:"829.5 ÷ (0.10 − 0.05) = 829.5 ÷ 0.05 = ₹16,590 crore. It must then be discounted back to today." },
+      { q:"A firm pays out 40% of earnings and earns 15% on retained profits. Its sustainable growth rate g = b × r is:", options:["6%","9%","15%","24%"], correct:1,
+        explain:"b = 1 − payout = 0.60; g = b × r.",
+        calc:"b = 1 − 0.40 = 0.60; g = 0.60 × 0.15 = 0.09 = 9%." },
+      { q:"Using the Gordon Growth Model with D0 = ₹5, g = 6%, Ke = 12%, the share price P0 is:", options:["₹83.33","₹88.33","₹44.17","₹5.30"], correct:1,
+        explain:"First grow the dividend: D1 = D0 × (1+g); then P0 = D1 ÷ (Ke − g).",
+        calc:"D1 = 5 × 1.06 = 5.30; P0 = 5.30 ÷ (0.12 − 0.06) = 5.30 ÷ 0.06 = ₹88.33." },
+      { q:"To move from Enterprise Value to the value per share, you:", options:["Add net debt, then multiply by shares","Subtract net debt to get Equity Value, then divide by shares outstanding","Divide by WACC","Subtract the terminal value"], correct:1,
+        explain:"Enterprise Value − net debt = Equity Value; Equity Value ÷ shares outstanding = value per share." },
+      { q:"If a company's DCF-based intrinsic value per share is below its current market price, the share is:", options:["Definitely undervalued — a strong buy","Possibly overvalued — the market is paying more than the cash flows justify","Fairly valued by definition","Risk-free"], correct:1,
+        explain:"When discounted (intrinsic) value per share is less than market price, the market may be overpaying relative to the underlying cash flows — a sign of possible overvaluation." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 9 — Portfolio Theory &amp; Market Efficiency</title>
+<meta name="description" content="Learn Markowitz portfolio theory, diversification and systematic vs unsystematic risk, correlation and the efficient frontier, the three forms of the Efficient Market Hypothesis, and active vs passive investing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 9</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 9</span>
+        <span class="tag src">Session 13 · Financial Modelling &amp; Portfolio Theory</span>
+      </div>
+      <h1>Portfolio Theory &amp; Market Efficiency</h1>
+      <p class="lead">Lessons 6–8 taught you how to value <em>one</em> company. But no sensible investor owns just one stock. This lesson zooms out to the <b>portfolio</b>: how combining many stocks tames risk, why some risk can never be diversified away, and whether anyone can reliably beat the market at all.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="financial-modelling">1. Financial modelling — a quick recap <span class="tag src">Session 13</span></h2>
+      <p>Before portfolio theory, the class revisited where a stock's value comes from — the <b>financial model</b> you built in Lessons 7 and 8. A model is just a structured forecast of a company's future, built line by line and then discounted to today.</p>
+
+      <h3>Line items — the building blocks</h3>
+      <p>A model starts by projecting the key <b>line items</b> that drive value: <b>sales</b> (revenue), <b>costs</b>, the resulting <b>profits</b>, and ultimately the <b>free cash flows</b> the business throws off. Get these right and everything else follows; get them wrong and no amount of clever discounting will save you.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Line item</th><th>What it captures</th><th>Why it matters for value</th></tr></thead>
+        <tbody>
+          <tr><td>Sales / Revenue</td><td>How much the business sells</td><td>The top line that drives everything below it</td></tr>
+          <tr><td>Costs &amp; expenses</td><td>COGS, operating costs, depreciation</td><td>Decide how much revenue survives as profit</td></tr>
+          <tr><td>Profits (EBIT, PAT)</td><td>What's left after costs and tax</td><td>Bridge from operations to cash</td></tr>
+          <tr><td>Free cash flow</td><td>Cash truly available to investors</td><td>The thing we actually discount</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Discounting: near-term vs the perpetual horizon</h3>
+      <p>A business is assumed to live forever, but you cannot forecast forever. So a model splits the future into two parts:</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">Near-term horizon (1–5 years)</h4>
+          <p>Here you forecast each year's cash flow <em>explicitly</em> — year by year — because the next few years are the ones you can reason about with some confidence. Each year is discounted back to today at the WACC.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Perpetual horizon (beyond 5 years)</h4>
+          <p>Everything after the explicit period is rolled up into a single <b>terminal value</b> using a perpetuity formula, then discounted back. This "beyond-year-5" chunk often makes up the <em>majority</em> of the total value.</p>
+        </div>
+      </div>
+      <div class="formula-block"><div class="lbl">The two-part shape of a DCF</div><div class="formula">$$\text{Value} = \underbrace{\sum_{t=1}^{5}\dfrac{FCF_t}{(1+WACC)^t}}_{\text{explicit 1–5 yrs}} \;+\; \underbrace{\dfrac{TV}{(1+WACC)^5}}_{\text{perpetual horizon}}$$</div></div>
+
+      <h3>Estimating K<sub>e</sub>, K<sub>d</sub> and WACC</h3>
+      <p>The session stressed that real-life modelling is as much <em>estimation</em> as arithmetic. The discount rate itself has to be built from assumptions:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Input</th><th>What it is</th><th>How it's estimated (recap)</th></tr></thead>
+        <tbody>
+          <tr><td>K<sub>e</sub> — cost of equity</td><td>Return shareholders demand</td><td>CAPM: $K_e = R_f + \beta(R_m - R_f)$</td></tr>
+          <tr><td>K<sub>d</sub> — cost of debt</td><td>After-tax interest the firm pays</td><td>Yield on its borrowings × (1 − tax)</td></tr>
+          <tr><td>WACC</td><td>Blended cost of all capital</td><td>Weight K<sub>e</sub> and K<sub>d</sub> by equity &amp; debt share</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ Why this recap leads into portfolio theory <span class="tag added">Added for depth</span></div><p>Notice <b>β (beta)</b> sitting inside the cost of equity. Beta measures how much a stock moves with the overall market — and that single idea is the bridge from valuing one company to managing a whole portfolio of them. Everything in the rest of this lesson is really about <em>risk</em>: what it is, which parts you can remove, and which you are paid to bear.</p></div>
+
+      <h2 id="portfolio">2. Markowitz Portfolio Theory <span class="tag src">Session 13</span></h2>
+      <p>Harry Markowitz won a Nobel Prize for a deceptively simple insight: <b>don't look at stocks one at a time — look at how they behave together.</b> His <b>Modern Portfolio Theory (MPT)</b> says an investor should choose a <em>combination</em> of assets that gives the <b>lowest possible risk for a target return</b> (or the highest return for a risk you can stomach).</p>
+
+      <h3>Diversification — the core idea</h3>
+      <p><b>Diversification</b> means spreading your money across many different stocks and sectors instead of betting it all on one. The old proverb says it best: <em>don't put all your eggs in one basket.</em> If one holding collapses, the others cushion the blow.</p>
+      <div class="callout key"><div class="ct-head">The one-line takeaway</div><p>Diversification lets you <b>cut risk without necessarily cutting expected return</b>. That is the closest thing to a free lunch in finance — which is exactly why Markowitz called it one.</p></div>
+
+      <h3>Why diversification matters — two kinds of risk</h3>
+      <p>Here is the most important distinction in the whole lesson. Total risk splits into two parts, and diversification only kills one of them.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th>Unsystematic (specific) risk</th><th>Systematic (market) risk</th></tr></thead>
+        <tbody>
+          <tr><td><b>What it is</b></td><td>Risk unique to one company or sector</td><td>Risk that hits the whole market at once</td></tr>
+          <tr><td><b>Examples</b></td><td>A factory fire, a CEO scandal, a product recall, a sector-specific regulation</td><td>High oil prices, an economic recession, interest-rate shocks, a pandemic</td></tr>
+          <tr><td><b>Can diversification remove it?</b></td><td><b>Yes</b> — spread across stocks and it averages away</td><td><b>No</b> — it affects every stock, so there is nowhere to hide</td></tr>
+          <tr><td><b>Also called</b></td><td>Specific / diversifiable / idiosyncratic risk</td><td>Market / non-diversifiable risk</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake</div><p>"If I hold enough stocks, all my risk disappears." <b>Wrong.</b> No matter how many Indian stocks you own, a full-blown recession or an oil-price spike will drag them <em>all</em> down together. Diversification removes <em>company-specific</em> risk only; the <b>systematic / market risk never goes away</b> — and that is the risk beta measures and that you are paid a premium to bear.</p></div>
+
+      <h3>Correlation and hedging</h3>
+      <p>Why does mixing stocks reduce risk? Because of <b>correlation</b> — how two stocks' returns move relative to each other. Correlation runs from −1 to +1:</p>
+      <ul>
+        <li><b>+1 (perfect positive):</b> the two move in lockstep. Combining them gives you <em>no</em> risk reduction.</li>
+        <li><b>0 (uncorrelated):</b> they move independently. Mixing already lowers risk.</li>
+        <li><b>−1 (perfect negative):</b> when one zigs, the other zags. This gives the <em>maximum</em> risk reduction — one stock's loss is offset by the other's gain.</li>
+      </ul>
+      <div class="callout key"><div class="ct-head">Hedging in one sentence</div><p><b>Negative correlation lowers portfolio risk.</b> Deliberately holding assets that move <em>opposite</em> to each other is called <b>hedging</b> — you accept a slightly lower peak return in exchange for a much smoother, safer ride.</p></div>
+      <p><span class="tag added">Added for depth</span> A classic illustration: an umbrella shop and an ice-cream shop. Rain is bad for ice cream but great for umbrellas; sunshine does the reverse. Own both and your income is steady whatever the weather — the two cancel each other's bad days. In markets, think of an airline (hurt by high oil prices) paired with an oil producer (helped by them).</p>
+
+      <h3>Portfolio risk is NOT a simple average</h3>
+      <p>This surprises people. If Stock A has 20% risk and Stock B has 20% risk, a 50/50 portfolio does <b>not</b> automatically have 20% risk. Because of correlation, the combined risk is usually <em>lower</em> than the average of the parts.</p>
+      <div class="formula-block"><div class="lbl">Two-asset portfolio — expected return (this one IS a weighted average)</div><div class="formula">$$E(R_p) = w_A\,E(R_A) + w_B\,E(R_B)$$</div></div>
+      <div class="formula-block"><div class="lbl">Two-asset portfolio — risk (this one is NOT a simple average — correlation ρ sneaks in)</div><div class="formula">$$\sigma_p = \sqrt{\,w_A^2\sigma_A^2 + w_B^2\sigma_B^2 + 2\,w_A w_B\,\rho_{AB}\,\sigma_A\sigma_B\,}$$</div></div>
+      <div class="callout info"><div class="ct-head">ℹ️ Read the formula, don't memorise it</div><p>The whole secret lives in the last term, <b>2 w<sub>A</sub>w<sub>B</sub> ρ<sub>AB</sub> σ<sub>A</sub>σ<sub>B</sub></b>. When correlation ρ is low or negative, that term shrinks or turns negative and <em>pulls portfolio risk down</em>. Return is a plain weighted average; <b>risk is not</b>. That gap is exactly where diversification's benefit comes from.</p></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Two negatively-correlated stocks lower volatility <span class="chev">›</span></summary>
+        <div class="body">
+          <p><em>Illustrative numbers — chosen to show the mechanism clearly, not real market data.</em> Two stocks, each with expected return 12% and risk (standard deviation) 20%. We hold them 50/50.</p>
+          <div class="step"><span class="sh">Expected return</span> = 0.5 × 12% + 0.5 × 12% = <b>12%</b> — unchanged, whatever the correlation.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Correlation ρ</th><th class="num">Portfolio risk σ<sub>p</sub></th><th>What happened</th></tr></thead>
+            <tbody>
+              <tr><td>+1.0 (move together)</td><td class="num">20.0%</td><td>No benefit — risk = the average</td></tr>
+              <tr><td>+0.5</td><td class="num">17.3%</td><td>Some smoothing</td></tr>
+              <tr><td>0.0 (independent)</td><td class="num">14.1%</td><td>Clear reduction</td></tr>
+              <tr><td>−0.5</td><td class="num">10.0%</td><td>Strong reduction</td></tr>
+              <tr><td>−1.0 (perfect hedge)</td><td class="num tot">0.0%</td><td>Risk fully cancels out!</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Same 12% return in every row — but risk falls from 20% to 0% as correlation drops from +1 to −1. <b>That is diversification in a single table.</b> With ρ = −1 the two stocks perfectly offset each other, wiping out the volatility entirely.</div>
+          <p style="margin-top:8px"><span class="tag added">Added for depth</span> Check one row: at ρ = 0, σ<sub>p</sub> = √(0.5²·0.2² + 0.5²·0.2² + 0) = √(0.01 + 0.01) = √0.02 ≈ 14.1%. The cross term vanished because ρ = 0.</p>
+        </div>
+      </details>
+
+      <h3>High-beta vs low-beta stocks</h3>
+      <p>Within the market risk you cannot diversify away, stocks still differ in <em>how violently</em> they react. That sensitivity is <b>beta (β)</b> — the same β from the CAPM recap above.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th>High-beta stock (β &gt; 1)</th><th>Low-beta stock (β &lt; 1)</th></tr></thead>
+        <tbody>
+          <tr><td><b>Moves vs market</b></td><td>Amplifies it — rises &amp; falls more</td><td>Dampens it — steadier than the market</td></tr>
+          <tr><td><b>In a boom</b></td><td>Big gains</td><td>Modest gains</td></tr>
+          <tr><td><b>In a slump</b></td><td>Big losses</td><td>Smaller losses</td></tr>
+          <tr><td><b>Typical examples</b></td><td>Cyclicals — autos, metals, real estate, many tech names</td><td>Defensives — FMCG (HUL, Nestlé India), utilities, pharma</td></tr>
+          <tr><td><b>Suits</b></td><td>Risk-tolerant investors chasing higher returns</td><td>Investors wanting stability</td></tr>
+        </tbody>
+      </table></div>
+      <p>A thoughtful portfolio blends the two: some high-beta names for growth, some low-beta names for ballast, so the overall ride matches your appetite for risk.</p>
+
+      <h3>The efficient frontier</h3>
+      <p>Now put it all together. If you plot <em>every possible portfolio</em> on a chart of risk (x-axis) against expected return (y-axis), the best ones trace a curve along the top-left edge. That curve is the <b>efficient frontier</b>.</p>
+      <div class="callout key"><div class="ct-head">Definition — the efficient frontier</div><p>The set of portfolios offering the <b>maximum return for each level of risk</b> (equivalently, the <b>minimum risk for each level of return</b>). Any portfolio <em>below</em> the frontier is inefficient — you could get more return for the same risk, or the same return for less risk, so no rational investor would hold it.</p></div>
+      <p><span class="tag added">Added for depth</span> You cannot climb <em>above</em> the frontier — that would mean free extra return with no extra risk, which the market prices away. You pick the single point <em>on</em> the frontier that matches your personal tolerance for risk: cautious investors sit lower-left (low risk, low return), aggressive investors move upper-right (high risk, high return).</p>
+
+      <h2 id="emh">3. The Efficient Market Hypothesis <span class="tag src">Session 13</span></h2>
+      <p>Portfolio theory assumes prices are "fair". The <b>Efficient Market Hypothesis (EMH)</b> makes that explicit: it argues that stock prices already reflect available information, so it is very hard to consistently "beat the market". How much information is baked into prices defines <b>three forms</b> of the hypothesis.</p>
+
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Form</th><th>Prices reflect…</th><th>If true, you CANNOT profit from…</th></tr></thead>
+        <tbody>
+          <tr><td><b>Weak form</b></td><td>All <b>past price and volume</b> data</td><td>Studying historical price charts (technical analysis)</td></tr>
+          <tr><td><b>Semi-strong form</b></td><td>All <b>publicly available</b> information (plus past prices)</td><td>News, earnings reports, analyst research (fundamental analysis)</td></tr>
+          <tr><td><b>Strong form</b></td><td>All information — <b>public AND private</b> (insider)</td><td>Even inside information — nothing gives an edge</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ The forms nest inside each other <span class="tag added">Added for depth</span></div><p>Each form <em>contains</em> the one before it. Strong includes all public info (semi-strong), which includes all past prices (weak). Most evidence supports the <b>weak</b> and <b>semi-strong</b> forms reasonably well; the <b>strong</b> form is widely doubted — which is precisely why insider trading is illegal and can be profitable. If the strong form truly held, insider knowledge would already be in the price and worth nothing.</p></div>
+
+      <h3>Market anomalies — where EMH breaks down</h3>
+      <p>If markets were perfectly efficient, prices would always equal fair value. Reality shows <b>anomalies</b> — moments when the market clearly misbehaves, driven by human psychology rather than cool calculation.</p>
+      <div class="grid cols-2">
+        <div class="callout mistake"><div class="ct-head">Bubbles</div><p>Prices race far above any sensible value as everyone piles in for fear of missing out — then crash. Think the dot-com bubble (2000) or the 2008 housing bubble. Pure EMH struggles to explain these.</p></div>
+        <div class="callout mistake"><div class="ct-head">Irrational behaviour</div><p>Herd mentality, panic selling, overconfidence and greed push prices away from fundamentals. This is the field of <b>behavioural finance</b> — a direct challenge to the "rational investor" assumption behind EMH.</p></div>
+      </div>
+      <p>The honest takeaway from the class: markets are <em>mostly</em> efficient most of the time, which makes beating them hard — but they are <b>not perfectly efficient</b>, and investor psychology leaves visible footprints.</p>
+
+      <div class="try" data-answer="semi-strong" data-tol="text" data-ok="Correct — that's the semi-strong form.">
+        <div class="q">✎ <b>Try it — conceptual check.</b> An analyst reads a company's just-published quarterly results and tries to trade on them for a profit. Which form of EMH, <em>if it held</em>, would make this effort pointless? (Type: weak, semi-strong, or strong.)</div>
+        <div class="row"><input type="text" placeholder="weak / semi-strong / strong"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p><b>Semi-strong.</b> Quarterly results are <em>public</em> information. If the semi-strong form holds, that news is instantly absorbed into the price the moment it is released, so there is no lingering profit left for the analyst to capture. Only <em>private</em> (inside) information could still give an edge — and even that is ruled out under the strong form.</p></div>
+      </div>
+
+      <h2 id="active-passive">4. Active vs passive investing <span class="tag src">Session 13</span></h2>
+      <p>EMH has a very practical consequence. If beating the market is genuinely hard, why pay someone a fat fee to try? That is the heart of the <b>active vs passive</b> debate.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th>Active investing</th><th>Passive investing</th></tr></thead>
+        <tbody>
+          <tr><td><b>Approach</b></td><td>Fund managers pick stocks, time the market, aim to <em>beat</em> an index</td><td>Simply <em>track</em> an index — buy the whole market</td></tr>
+          <tr><td><b>Typical vehicle</b></td><td>Actively managed mutual funds</td><td>Index funds &amp; ETFs (e.g. a Nifty 50 index fund)</td></tr>
+          <tr><td><b>Fees</b></td><td><b>Higher</b> — you pay for the manager's research &amp; trading</td><td><b>Lower</b> — little to decide, so costs are tiny</td></tr>
+          <tr><td><b>Long-run performance</b></td><td>Most fail to beat the index after fees</td><td><b>Often outperforms active over the long run</b>, mainly thanks to lower costs</td></tr>
+          <tr><td><b>Effort</b></td><td>High — constant research and decisions</td><td>Low — set it and hold</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout key"><div class="ct-head">The counter-intuitive result</div><p>You might expect expensive, expert-run active funds to win. Yet <b>over long periods, low-cost passive index funds frequently beat the majority of active funds.</b> The reason is twofold: (1) markets are hard to beat consistently (EMH), and (2) active funds' higher fees are a <em>guaranteed</em> drag that compounds against them year after year. In an efficient-enough market, cost is the one thing you fully control.</p></div>
+      <div class="callout tip"><div class="ct-head">💡 How this ties together</div><p>The <em>more</em> you believe in EMH, the <em>more</em> sense passive investing makes — if prices are already fair, paying to hunt for mispricings is wasted money. The <em>less</em> efficient you think the market is (remember those anomalies), the more room there could be for skilled active managers to add value. Your view on market efficiency literally decides your strategy.</p></div>
+
+      <h2 id="summary">5. Summary &amp; what to remember</h2>
+      <div class="callout recap"><div class="ct-head">🔑 Recap — the whole lesson in eight lines</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Models</b> forecast line items (sales → costs → profit → cash), discount years 1–5 explicitly and the rest as a terminal value, using K<sub>e</sub>, K<sub>d</sub> and WACC.</li>
+          <li><b>Markowitz / MPT:</b> choose combinations of assets for the lowest risk at a given return.</li>
+          <li><b>Diversification</b> removes <b>unsystematic (company-specific) risk</b> but <b>NOT systematic (market) risk</b>.</li>
+          <li><b>Negative correlation</b> lowers portfolio risk — the basis of hedging.</li>
+          <li><b>Portfolio risk is not a simple average</b> of individual risks; correlation is what makes diversification work.</li>
+          <li><b>High-beta</b> stocks amplify the market; <b>low-beta</b> stocks dampen it.</li>
+          <li><b>Efficient frontier</b> = maximum return for each level of risk.</li>
+          <li><b>EMH:</b> weak = past prices, semi-strong = all public info, strong = public + private; anomalies (bubbles, irrationality) show markets aren't perfect. <b>Passive</b> (low-fee index) investing often beats <b>active</b> over the long run.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">6. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-08.html"><span>Previous lesson</span><b>‹ Valuation &amp; FCF</b></a>
+        <a class="next" href="lesson-10.html"><span>Next lesson</span><b>Derivatives Basics ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-09">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-09",
+    title: "Lesson 9 Quiz — Portfolio Theory & Markets",
+    questions: [
+      { q:"Diversification across many stocks and sectors reduces which type of risk?", options:["Systematic (market) risk","Unsystematic (company-specific) risk","Both equally and completely","Interest-rate risk only"], correct:1,
+        explain:"Diversification averages away risk unique to individual companies or sectors (unsystematic risk). It cannot remove systematic/market risk, which hits every stock at once." },
+      { q:"Which of the following is an example of SYSTEMATIC risk?", options:["A company's factory burns down","A CEO is caught in a scandal","A nationwide economic recession","A product recall at one firm"], correct:2,
+        explain:"A recession affects the whole market simultaneously, so it is systematic (non-diversifiable). The others hit single firms and are unsystematic — diversifiable." },
+      { q:"To get the maximum risk reduction when combining two stocks, their returns should be:", options:["Perfectly positively correlated (ρ = +1)","Uncorrelated (ρ = 0)","Perfectly negatively correlated (ρ = −1)","Identical in every way"], correct:2,
+        explain:"Negative correlation means when one stock falls the other tends to rise, offsetting losses. At ρ = −1 the volatilities can cancel out entirely — the strongest hedge." },
+      { q:"Two stocks each have 20% risk. A 50/50 portfolio of them will generally have:", options:["Exactly 20% risk, always","More than 20% risk","20% or less, depending on correlation","Zero risk, always"], correct:2,
+        explain:"Portfolio risk is NOT a simple average. Unless the two are perfectly positively correlated, the combined risk is below 20% — and it falls further the lower the correlation." },
+      { q:"The efficient frontier represents portfolios that offer:", options:["The maximum return for a given level of risk","The minimum return for a given risk","Zero risk at any return","Guaranteed returns with no risk"], correct:0,
+        explain:"The efficient frontier is the set of portfolios giving the highest expected return for each level of risk (equivalently, the lowest risk for each return). Portfolios below it are inefficient." },
+      { q:"A high-beta stock (β > 1) is best described as one that:", options:["Moves less than the overall market","Moves more than the market — bigger gains and bigger losses","Is completely risk-free","Has no correlation with the market"], correct:1,
+        explain:"Beta measures sensitivity to the market. β > 1 amplifies market moves: larger gains in booms and larger losses in slumps. Low-beta (β < 1) stocks are steadier." },
+      { q:"The WEAK form of the Efficient Market Hypothesis says prices already reflect:", options:["All public information","All past price and volume data","All public and private information","Only insider information"], correct:1,
+        explain:"The weak form states prices reflect all past market (price/volume) data, so studying historical charts cannot give a reliable edge." },
+      { q:"Under which form of EMH would even INSIDE (private) information fail to give an investor an advantage?", options:["Weak form","Semi-strong form","Strong form","No form claims this"], correct:2,
+        explain:"The strong form claims prices reflect ALL information, public and private. It is the most doubted form — which is why insider trading can still be profitable (and is illegal)." },
+      { q:"Market bubbles and herd-driven panic selling are best understood as:", options:["Proof that markets are perfectly efficient","Anomalies showing markets are not perfectly efficient","Examples of systematic risk being diversified","The strong form of EMH in action"], correct:1,
+        explain:"Bubbles and irrational behaviour are anomalies where prices detach from fundamentals, challenging EMH and motivating behavioural finance." },
+      { q:"Compared with active investing, passive (index-fund) investing typically features:", options:["Higher fees and usually beats the market","Lower fees and often outperforms active over the long run","Higher fees but guaranteed outperformance","Lower fees but always underperforms"], correct:1,
+        explain:"Passive funds simply track an index, so costs are low. Because markets are hard to beat and active funds carry higher fees, passive investing frequently outperforms active over the long run." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

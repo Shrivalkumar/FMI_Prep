@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Problems — FMI Exam Prep</title>
+<meta name="description" content="A numerical and conceptual problem bank for the Financial Markets & Instruments exam, with full step-by-step solutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .p-item { margin: 12px 0; }
+  .p-item .p-top { display:flex; gap:10px; align-items:baseline; }
+  .p-item .p-num { font-weight:800; color:var(--brand-ink); flex:0 0 auto; }
+  .p-q { font-weight:600; }
+  .sol-body { margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lessons/lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lessons/lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lessons/lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lessons/lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lessons/lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lessons/lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lessons/lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lessons/lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lessons/lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lessons/lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lessons/lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="index.html"><span class="logo">FMI</span><b>Practice</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <span class="eyebrow">Exam drill</span>
+      <h1>Practice Problems</h1>
+      <p class="lead">A bank of numerical and conceptual questions across the whole syllabus. Try each one on paper first, then reveal the full step-by-step solution. Use the filters to drill a single topic.</p>
+
+      <div class="callout info"><div class="ct-head">ℹ️ How to use this</div><p>Interactive numericals let you type an answer and check it (with tolerance). The rest have a <b>Show solution</b> button. Tags: <span class="tag src">From class</span> = values/methods from your notes; <span class="tag extra">Extra practice</span> = original exam-style questions built on the same methods.</p></div>
+
+      <div class="card no-print" style="margin:16px 0">
+        <div class="chips" id="topicChips"></div>
+      </div>
+
+      <div id="practiceRoot"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="js/progress.js" defer></script>
+<script src="js/app.js" defer></script>
+<script defer>
+// type: "try" (interactive, needs ans + tol) or "reveal" (show solution). tag: src | extra
+var PROBLEMS = [
+ // ---- Accounting ----
+ { topic:"Accounting", tag:"src", type:"try", ans:1800000, tol:"1%",
+   q:"A machine costs ₹10,00,000 with residual value ₹1,00,000 and a 5-year life. What is the annual straight-line depreciation (₹)?",
+   sol:"SLM = (Cost − Residual) ÷ Life = (10,00,000 − 1,00,000) ÷ 5 = 9,00,000 ÷ 5 = <b>₹1,80,000</b> per year." },
+ { topic:"Accounting", tag:"src", type:"reveal",
+   q:"From the class income statement: Revenue ₹500L, COGS ₹300L, selling & general ₹80L, depreciation ₹20L, other income ₹10L, interest ₹20L, tax 25%. Find gross profit, EBIT, PBT and PAT.",
+   sol:"<b>Gross profit</b> = 500 − 300 = ₹200L.<br><b>EBIT (operating profit)</b> = 200 − 80 − 20 = ₹100L.<br><b>PBT</b> = 100 + 10 (other income) − 20 (interest) = ₹90L.<br><b>Tax</b> = 25% × 90 = ₹22.5L.<br><b>PAT</b> = 90 − 22.5 = <b>₹67.5L</b> (net margin 13.5%)." },
+ { topic:"Accounting", tag:"extra", type:"try", ans:84, tol:"2%",
+   q:"Net income ₹80L, depreciation ₹10L, inventory rose ₹12L, payables rose ₹6L (no other changes). Operating cash flow (₹L)?",
+   sol:"OCF = 80 + 10 (add back depreciation) − 12 (inventory build-up uses cash) + 6 (rise in payables keeps cash in) = <b>₹84L</b>." },
+
+ // ---- Ratios ----
+ { topic:"Ratios", tag:"src", type:"try", ans:1.87, tol:"2%",
+   q:"Asian Paints FY2025: current assets ₹11,175.61 cr, current liabilities ₹5,973.52 cr. Current ratio (×)?",
+   sol:"Current ratio = 11,175.61 ÷ 5,973.52 = <b>1.87×</b>. Each ₹1 of short-term obligation is backed by ₹1.87 of current assets." },
+ { topic:"Ratios", tag:"src", type:"try", ans:0.89, tol:"3%",
+   q:"Same company: inventory ₹5,848.23 cr. Quick (acid-test) ratio (×)?",
+   sol:"Quick ratio = (11,175.61 − 5,848.23) ÷ 5,973.52 = 5,327.38 ÷ 5,973.52 = <b>0.89×</b>. Stripping out inventory, cover falls below 1." },
+ { topic:"Ratios", tag:"extra", type:"try", ans:14, tol:"1%",
+   q:"PAT ₹14L and 1 lakh shares outstanding. EPS (₹)?",
+   sol:"EPS = PAT ÷ shares = 14,00,000 ÷ 1,00,000 = <b>₹14</b>." },
+ { topic:"Ratios", tag:"extra", type:"reveal",
+   q:"A firm has net margin 5%, asset turnover 2.0×, equity multiplier 1.5×. Using DuPont, what is ROE?",
+   sol:"ROE = Net margin × Asset turnover × Equity multiplier = 0.05 × 2.0 × 1.5 = <b>15%</b>. Two of the three levers (turnover and leverage) drive this ROE, not margin." },
+
+ // ---- Costing & CVP ----
+ { topic:"Costing & CVP", tag:"src", type:"try", ans:3000, tol:"1%",
+   q:"ClassicShoes: price ₹2,000, variable cost ₹1,200, fixed cost ₹24,00,000. Break-even in units (pairs)?",
+   sol:"Contribution = 2,000 − 1,200 = ₹800. Break-even = Fixed ÷ Contribution = 24,00,000 ÷ 800 = <b>3,000 pairs</b>." },
+ { topic:"Costing & CVP", tag:"src", type:"try", ans:40, tol:"1%",
+   q:"Same: what is the P/V ratio (%)?",
+   sol:"P/V = Contribution ÷ Sales = 800 ÷ 2,000 = <b>40%</b>. Break-even value = 24,00,000 ÷ 0.40 = ₹60,00,000." },
+ { topic:"Costing & CVP", tag:"extra", type:"try", ans:11667, tol:"1%",
+   q:"Cloud kitchen: contribution ₹90/meal, fixed ₹6,00,000/month. Meals needed for a ₹4,50,000 monthly profit?",
+   sol:"Units = (Fixed + Target) ÷ Contribution = (6,00,000 + 4,50,000) ÷ 90 = 10,50,000 ÷ 90 = <b>11,667 meals</b>." },
+ { topic:"Costing & CVP", tag:"src", type:"reveal",
+   q:"A ₹2 crore software build is already spent. Deciding whether to launch or abandon, is that ₹2 crore relevant?",
+   sol:"No — it is a <b>sunk cost</b>: already spent and unrecoverable, identical under both options, so ignore it. Compare only the future costs and revenues of launching vs abandoning." },
+
+ // ---- TVM ----
+ { topic:"Time Value of Money", tag:"src", type:"try", ans:1469328, tol:"1%",
+   q:"₹10,00,000 invested for 5 years at 8% p.a. (compound). Future value (₹)?",
+   sol:"FV = PV(1+r)ⁿ = 10,00,000 × 1.08⁵ = 10,00,000 × 1.469328 = <b>₹14,69,328</b>." },
+ { topic:"Time Value of Money", tag:"src", type:"try", ans:3402916, tol:"1%",
+   q:"What lump sum today, at 8%, grows to ₹50,00,000 in 5 years?",
+   sol:"PV = FV ÷ (1+r)ⁿ = 50,00,000 ÷ 1.08⁵ = 50,00,000 ÷ 1.469328 = <b>₹34,02,916</b>." },
+ { topic:"Time Value of Money", tag:"extra", type:"try", ans:5000, tol:"1%",
+   q:"A preference share pays ₹500 every year forever; required return 10%. Value today (₹)?",
+   sol:"Level perpetuity: PV = C ÷ r = 500 ÷ 0.10 = <b>₹5,000</b>." },
+ { topic:"Time Value of Money", tag:"extra", type:"try", ans:8333, tol:"1%",
+   q:"A growing perpetuity: first payment ₹500, growth 4%, required return 10%. Value today (₹)?",
+   sol:"PV = C₁ ÷ (r − g) = 500 ÷ (0.10 − 0.04) = 500 ÷ 0.06 = <b>₹8,333</b>. Growth needs r &gt; g." },
+
+ // ---- Capital Budgeting ----
+ { topic:"Capital Budgeting", tag:"src", type:"try", ans:1011938, tol:"2%",
+   q:"Bharat AutoParts: invest ₹80,00,000; inflow ₹25,00,000/yr for 5 yrs; cost of capital 12% (annuity factor 3.6048). NPV (₹)?",
+   sol:"PV of inflows = 25,00,000 × 3.6048 = ₹90,11,938. NPV = 90,11,938 − 80,00,000 = <b>+₹10,11,938</b>. Positive → accept." },
+ { topic:"Capital Budgeting", tag:"src", type:"try", ans:3.2, tol:"3%",
+   q:"Same project (ignore time value). Payback period (years)?",
+   sol:"Payback = Investment ÷ annual inflow = 80,00,000 ÷ 25,00,000 = <b>3.2 years</b>. (Discounted payback ≈ 4.29 yrs.)" },
+ { topic:"Capital Budgeting", tag:"extra", type:"reveal",
+   q:"Two mutually-exclusive projects: Solar NPV ₹21.95L (IRR 17.2%) vs LED NPV ₹4.26L (IRR 28.5%). Which do you pick and why?",
+   sol:"Pick <b>Solar</b>. For mutually-exclusive projects, let <b>NPV</b> decide — it adds far more rupee value. LED's higher IRR is a small-scale illusion; IRR can mislead when projects differ in scale or timing." },
+
+ // ---- Cost of Equity ----
+ { topic:"Cost of Equity", tag:"src", type:"try", ans:11.98, tol:"2%",
+   q:"CAPM: Rf = 7%, β = 0.83, Rm = 13%. Cost of equity (%)?",
+   sol:"Ke = Rf + β(Rm − Rf) = 7 + 0.83 × (13 − 7) = 7 + 0.83 × 6 = 7 + 4.98 = <b>11.98%</b>." },
+ { topic:"Cost of Equity", tag:"src", type:"try", ans:9.7, tol:"3%",
+   q:"Sustainable growth: retention ratio b = 0.315, ROE r = 0.308. Growth g (%)?",
+   sol:"g = b × r = 0.315 × 0.308 = 0.097 = <b>9.7%</b> (Infosys illustration)." },
+ { topic:"Cost of Equity", tag:"extra", type:"reveal",
+   q:"A company pays no dividend. Can you use the Dividend Growth Model to find its cost of equity? What should you use?",
+   sol:"No — the DGM only works for dividend-paying firms. Use <b>CAPM</b> (Ke = Rf + β(Rm−Rf)), which applies to all listed companies and prices systematic risk via beta." },
+
+ // ---- Bonds & WACC ----
+ { topic:"Bonds & WACC", tag:"src", type:"try", ans:974.56, tol:"1%",
+   q:"Tata Steel bond: face ₹1,000, coupon 8% (₹80/yr), 3 years, required yield 9%. Price (₹)?",
+   sol:"P = 80/1.09 + 80/1.09² + 1,080/1.09³ = 73.39 + 67.34 + 833.83 = <b>₹974.56</b>. Coupon &lt; yield → trades at a discount." },
+ { topic:"Bonds & WACC", tag:"src", type:"try", ans:71299, tol:"1%",
+   q:"NHAI zero-coupon bond: redemption ₹1,00,000, yield 7%, 5 years. Price today (₹)?",
+   sol:"P = F ÷ (1+r)ᵀ = 1,00,000 ÷ 1.07⁵ = 1,00,000 ÷ 1.40255 = <b>₹71,299</b>." },
+ { topic:"Bonds & WACC", tag:"extra", type:"try", ans:5.63, tol:"3%",
+   q:"Pre-tax cost of debt 7.5%, tax rate 25%. After-tax cost of debt (%)?",
+   sol:"rD(1 − Tc) = 7.5% × (1 − 0.25) = 7.5% × 0.75 = <b>5.625% ≈ 5.6%</b>." },
+ { topic:"Bonds & WACC", tag:"src", type:"reveal",
+   q:"Reliance: cost of equity 13.3%, after-tax cost of debt 5.6%, market weights E 85.3% / D 14.7%. WACC?",
+   sol:"WACC = 13.3% × 0.853 + 5.6% × 0.147 = 11.35% + 0.82% = <b>12.2%</b> (market-value WACC)." },
+
+ // ---- Valuation ----
+ { topic:"Valuation", tag:"src", type:"try", ans:790, tol:"1%",
+   q:"ABC Manufacturing: PAT ₹1,000cr, depreciation ₹200cr, inventory +₹100cr, receivables +₹50cr, payables +₹40cr, CapEx ₹300cr. Free cash flow (₹cr)?",
+   sol:"OCF = 1,000 + 200 − 100 − 50 + 40 = ₹1,090cr. FCF = OCF − CapEx = 1,090 − 300 = <b>₹790cr</b>." },
+ { topic:"Valuation", tag:"extra", type:"try", ans:9, tol:"2%",
+   q:"Retention growth: EPS ₹20, payout 40%, return on retained earnings 15%. Growth g (%)?",
+   sol:"b = 1 − 0.40 = 0.60. g = b × r = 0.60 × 0.15 = 0.09 = <b>9%</b>." },
+
+ // ---- Derivatives ----
+ { topic:"Derivatives", tag:"extra", type:"try", ans:50, tol:"1%",
+   q:"You buy a call, strike ₹1,000, premium ₹50. At expiry the spot is ₹1,100. Net payoff per share (₹)?",
+   sol:"Payoff = max(0, S − X) − premium = max(0, 1,100 − 1,000) − 50 = 100 − 50 = <b>₹50</b>." },
+ { topic:"Derivatives", tag:"src", type:"try", ans:6, tol:"1%",
+   q:"A CDS covers ₹100 crore at a spread of 600 bp. Annual premium (₹ crore)?",
+   sol:"Premium = notional × spread = 100 × 6% = <b>₹6 crore/year</b> (600 bp = 6%)." },
+ { topic:"Derivatives", tag:"src", type:"try", ans:10, tol:"2%",
+   q:"Credit spread 6%, loss given default 60% (40% recovered). Market-implied yearly default probability (%)?",
+   sol:"Implied default ≈ spread ÷ loss given default = 6% ÷ 0.60 = <b>10%</b>." },
+ { topic:"Derivatives", tag:"src", type:"try", ans:1350000, tol:"1%",
+   q:"Market-linked note: ₹10 lakh, 70% participation, Nifty up 50% over 5 years. Maturity value (₹)?",
+   sol:"Value = principal × (1 + participation × return) = 10,00,000 × (1 + 0.70 × 0.50) = 10,00,000 × 1.35 = <b>₹13,50,000</b>." },
+ { topic:"Derivatives", tag:"extra", type:"reveal",
+   q:"Why does the equity (junior) tranche of a securitization earn the highest return?",
+   sol:"Because losses run in <b>reverse seniority</b>: the equity tranche absorbs the <b>first</b> losses (subordination). It is the riskiest slice, so it is compensated with the highest return when loans perform." }
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.getElementById("practiceRoot");
+  var chipBox = document.getElementById("topicChips");
+  var topics = ["All"]; PROBLEMS.forEach(function (p) { if (topics.indexOf(p.topic) < 0) topics.push(p.topic); });
+  chipBox.innerHTML = topics.map(function (t, i) { return '<a class="chip ' + (i===0?"active":"") + '" data-topic="' + t + '">' + t + "</a>"; }).join("");
+
+  function esc(s){return s;}
+  function render(filter) {
+    var n = 0;
+    root.innerHTML = PROBLEMS.filter(function (p) { return filter === "All" || p.topic === filter; }).map(function (p) {
+      n++;
+      var tagHtml = p.tag === "src" ? '<span class="tag src">From class</span>' : '<span class="tag extra">Extra practice</span>';
+      var head = '<div class="card p-item"><div class="p-top"><span class="p-num">Q' + n + '</span><div style="flex:1"><div class="p-q">' + p.q + '</div>' +
+        '<div style="margin-top:4px"><span class="muted" style="font-size:12.5px">' + p.topic + '</span> ' + tagHtml + '</div>';
+      if (p.type === "try") {
+        head += '<div class="try" data-answer="' + p.ans + '" data-tol="' + (p.tol||"2%") + '" style="margin-top:12px;border-left-color:var(--brand);background:var(--brand-soft)">' +
+          '<div class="row"><input type="text" placeholder="Your answer"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>' +
+          '<div class="fb"></div><div class="sol" hidden>' + p.sol + '</div></div>';
+      } else {
+        head += '<details class="reveal" style="margin-top:12px"><summary>Show solution</summary><div class="rv-body sol-body">' + p.sol + '</div></details>';
+      }
+      head += '</div></div>';
+      return head;
+    }).join("");
+    if (window.renderMathIn) window.renderMathIn(root);
+    if (window.FMIWireTry) window.FMIWireTry();
+  }
+  render("All");
+
+  chipBox.addEventListener("click", function (e) {
+    var c = e.target.closest(".chip"); if (!c) return;
+    chipBox.querySelectorAll(".chip").forEach(function (x) { x.classList.remove("active"); });
+    c.classList.add("active");
+    render(c.getAttribute("data-topic"));
+  });
+});
+</script>
+</body>
+</html>

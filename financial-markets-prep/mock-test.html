@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mock Test — FMI Exam Prep</title>
+<meta name="description" content="A timed, exam-style mock test of 35 MCQs across the whole Financial Markets & Instruments syllabus, with a topic-wise score breakdown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lessons/lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lessons/lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lessons/lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lessons/lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lessons/lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lessons/lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lessons/lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lessons/lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lessons/lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lessons/lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lessons/lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="index.html"><span class="logo">FMI</span><b>Mock Test</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <span class="eyebrow">Exam simulation</span>
+      <h1>Comprehensive Mock Test</h1>
+
+      <!-- Start screen -->
+      <div id="startScreen">
+        <p class="lead">35 mixed MCQs — conceptual and numerical — covering all eleven topics, in the style of your class material. Attempt it in one sitting for the best diagnostic.</p>
+        <div class="card" style="margin:18px 0">
+          <div class="grid cols-3">
+            <div><b>35</b><div class="muted" style="font-size:13px">Questions</div></div>
+            <div><b>~45 min</b><div class="muted" style="font-size:13px">Suggested</div></div>
+            <div><b>11</b><div class="muted" style="font-size:13px">Topics</div></div>
+          </div>
+          <hr>
+          <label style="display:flex;align-items:center;gap:10px;font-weight:600;cursor:pointer">
+            <input type="checkbox" id="timerToggle" style="width:18px;height:18px"> Use a 45-minute countdown timer (optional)
+          </label>
+          <div class="btn-row" style="margin-bottom:0;margin-top:16px">
+            <button class="btn primary" id="startBtn">Start Test →</button>
+            <span class="muted" id="bestLine" style="align-self:center"></span>
+          </div>
+        </div>
+        <div class="callout info"><div class="ct-head">ℹ️ Tip</div><p>Answer every question — there's no negative marking here. Use the question grid to jump around and revisit the ones you flag. You'll get a topic-wise breakdown and a list of lessons to revisit at the end.</p></div>
+      </div>
+
+      <!-- Test screen -->
+      <div id="testScreen" hidden>
+        <div class="card" style="position:sticky;top:10px;z-index:10;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <b id="qCounter">Question 1 / 35</b>
+          <span class="muted" id="answeredCount" style="font-size:13px"></span>
+          <span style="flex:1"></span>
+          <span class="timer" id="timerDisplay" style="display:none;color:var(--brand-ink)">45:00</span>
+          <button class="btn primary sm" id="submitBtn">Submit Test</button>
+        </div>
+        <div class="quiz" style="margin-top:16px">
+          <div class="qz-bar"><i id="mBar"></i></div>
+          <div class="qz-body">
+            <div class="qz-q" id="mQ"></div>
+            <div class="opts" id="mOpts"></div>
+          </div>
+          <div class="qz-foot">
+            <button class="btn ghost sm" id="mPrev">‹ Previous</button>
+            <span class="spacer"></span>
+            <span class="muted" id="mTopic" style="font-size:12.5px;align-self:center"></span>
+            <span class="spacer"></span>
+            <button class="btn ghost sm" id="mNext">Next ›</button>
+          </div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <b style="font-size:14px">Question navigator</b>
+          <div class="muted" style="font-size:12.5px;margin:4px 0 10px">Filled = answered. Click to jump.</div>
+          <div class="mock-grid" id="navGrid"></div>
+        </div>
+      </div>
+
+      <!-- Results screen -->
+      <div id="resultScreen" hidden></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="js/progress.js" defer></script>
+<script src="js/app.js" defer></script>
+<script defer>
+var Q = [
+ // Accounting (1-3)
+ { t:"Accounting", q:"Assets = Liabilities + Equity. If assets are ₹12L and liabilities ₹4L, equity is:", o:["₹16L","₹8L","₹4L","₹12L"], c:1, e:"Equity = Assets − Liabilities = 12 − 4 = ₹8L." },
+ { t:"Accounting", q:"Depreciation on the income statement:", o:["Reduces profit and reduces cash equally","Reduces profit but is not a cash outflow","Has no effect on profit","Increases cash"], c:1, e:"It is a non-cash expense — it lowers profit but no cash leaves, so it is added back in the cash flow statement." },
+ { t:"Accounting", q:"Machine cost ₹10,00,000, residual ₹1,00,000, life 5 yrs. Straight-line depreciation per year:", o:["₹2,00,000","₹1,80,000","₹1,00,000","₹2,20,000"], c:1, e:"(10,00,000 − 1,00,000) ÷ 5 = ₹1,80,000." },
+ // Ratios (4-6)
+ { t:"Ratios", q:"Current assets ₹60L, inventory ₹20L, current liabilities ₹40L. Quick (acid-test) ratio:", o:["1.5×","1.0×","0.5×","2.0×"], c:1, e:"(60 − 20) ÷ 40 = 40/40 = 1.0×." },
+ { t:"Ratios", q:"Operating cycle equals:", o:["Inventory days + receivable days + payable days","Inventory days + receivable days − payable days","Receivable days − payable days","Inventory days − receivable days"], c:1, e:"Operating cycle = Inventory days + Receivable days − Payable days." },
+ { t:"Ratios", q:"PAT ₹14L, equity ₹100L. ROE is:", o:["7%","14%","1.4%","140%"], c:1, e:"ROE = PAT ÷ Equity = 14 ÷ 100 = 14%." },
+ // Costing & CVP (7-10)
+ { t:"Costing & CVP", q:"Price ₹500, variable cost ₹300, fixed cost ₹10,00,000. Break-even in units:", o:["2,000","5,000","3,333","10,000"], c:1, e:"Contribution = 200. BEP = 10,00,000 ÷ 200 = 5,000 units." },
+ { t:"Costing & CVP", q:"P/V ratio = contribution ÷ sales. With contribution ₹800 and price ₹2,000 it is:", o:["20%","40%","60%","80%"], c:1, e:"800 ÷ 2,000 = 40%." },
+ { t:"Costing & CVP", q:"A ₹2 crore cost already spent is, for a launch-or-abandon decision:", o:["A relevant cost","A sunk cost to ignore","An opportunity cost","A variable cost"], c:1, e:"Already spent and unrecoverable, identical under both options → sunk cost, ignore it." },
+ { t:"Costing & CVP", q:"Only which costs are included in product cost under absorption costing?", o:["All costs","Production costs only","Selling costs only","Variable costs only"], c:1, e:"Only production costs are inventoried; admin/selling/distribution are period costs." },
+ // TVM (11-14)
+ { t:"Time Value of Money", q:"₹10,00,000 at 8% for 5 years grows to (1.08⁵ = 1.4693):", o:["₹13,40,000","₹14,69,328","₹14,00,000","₹15,36,000"], c:1, e:"FV = 10,00,000 × 1.4693 = ₹14,69,328." },
+ { t:"Time Value of Money", q:"A level perpetuity pays ₹600 forever at 8%. Its present value is:", o:["₹4,800","₹7,500","₹6,000","₹75,000"], c:1, e:"PV = C/r = 600 ÷ 0.08 = ₹7,500." },
+ { t:"Time Value of Money", q:"A growing perpetuity needs:", o:["r = g","r < g","r > g","g = 0"], c:2, e:"PV = C₁/(r − g) only makes sense when r > g, else the denominator is zero/negative." },
+ { t:"Time Value of Money", q:"By the Rule of 72, money doubles at 9% in about:", o:["6 years","8 years","9 years","12 years"], c:1, e:"72 ÷ 9 = 8 years." },
+ // Capital Budgeting (15-18)
+ { t:"Capital Budgeting", q:"The NPV accept rule is:", o:["Accept if NPV < 0","Accept if NPV > 0","Accept if NPV = 0","Accept if IRR < cost of capital"], c:1, e:"Positive NPV adds value → accept." },
+ { t:"Capital Budgeting", q:"Invest ₹80L, inflows ₹25L/yr for 5 yrs, annuity factor 3.6048. NPV is about:", o:["+₹10.12L","+₹45L","−₹10L","+₹25L"], c:0, e:"PV inflows = 25 × 3.6048 = ₹90.12L; NPV = 90.12 − 80 = +₹10.12L." },
+ { t:"Capital Budgeting", q:"IRR is best defined as the rate at which:", o:["Payback = 0","NPV = 0","PI = 0","Profit = 0"], c:1, e:"IRR is the discount rate that makes NPV zero; accept if IRR > cost of capital." },
+ { t:"Capital Budgeting", q:"For mutually-exclusive projects of different scale, the better decision rule is:", o:["IRR","Payback","NPV","Accounting rate of return"], c:2, e:"NPV measures rupee value added and should decide; IRR can mislead on scale." },
+ // Cost of Equity (19-22)
+ { t:"Cost of Equity", q:"CAPM: Rf = 7%, β = 0.83, Rm = 13%. Cost of equity is:", o:["11.98%","13.78%","20.00%","6.00%"], c:0, e:"Ke = 7 + 0.83×(13−7) = 7 + 4.98 = 11.98%." },
+ { t:"Cost of Equity", q:"Which risk is diversifiable and NOT priced by CAPM?", o:["Systematic / market risk","Unsystematic / specific risk","Interest-rate risk","Inflation risk"], c:1, e:"Unsystematic (firm-specific) risk can be diversified away, so investors aren't compensated for it." },
+ { t:"Cost of Equity", q:"The Dividend Growth Model can be used for:", o:["Any company","Only dividend-paying companies","Only loss-making companies","Only banks"], c:1, e:"DGM (Ke = D1/P0 + g) needs a dividend; non-payers need CAPM." },
+ { t:"Cost of Equity", q:"Sustainable growth g = b × r. With b = 0.6 and ROE 15%, g is:", o:["9%","6%","15%","25%"], c:0, e:"g = 0.6 × 0.15 = 9%." },
+ // Bonds & WACC (23-26)
+ { t:"Bonds & WACC", q:"If a bond's coupon rate (8%) is below its required yield (9%), the bond trades at:", o:["A premium","Par","A discount","Cannot say"], c:2, e:"Coupon < yield → price below face value → discount." },
+ { t:"Bonds & WACC", q:"A zero-coupon bond redeeming ₹1,00,000 in 5 years at 7% (1.07⁵ = 1.4026) is priced at:", o:["₹93,458","₹71,299","₹1,00,000","₹50,000"], c:1, e:"P = 1,00,000 ÷ 1.4026 = ₹71,299." },
+ { t:"Bonds & WACC", q:"After-tax cost of debt with pre-tax 8% and tax 25% is:", o:["8%","6%","2%","10%"], c:1, e:"8% × (1 − 0.25) = 6%." },
+ { t:"Bonds & WACC", q:"WACC weights should ideally be measured at:", o:["Book value","Market value","Face value","Historical cost"], c:1, e:"Market-value (target-structure) weights best reflect investors' current valuation." },
+ // Valuation (27-29)
+ { t:"Valuation", q:"Free cash flow equals:", o:["Net profit + depreciation","Operating cash flow − CapEx","Revenue − expenses","EBIT × (1 − tax)"], c:1, e:"FCF = Operating cash flow − Capital expenditure." },
+ { t:"Valuation", q:"An increase in trade receivables in an FCF build-up is a:", o:["Cash inflow (add)","Cash outflow (subtract)","Non-cash item ignored","Financing inflow"], c:1, e:"Receivables rising means sales not yet collected — cash is tied up, so subtract." },
+ { t:"Valuation", q:"FCFF is the cash available to:", o:["Equity holders only","All capital providers (debt + equity)","Debt holders only","The government"], c:1, e:"FCFF is before debt payments — to all providers; FCFE is to equity after debt." },
+ // Portfolio & Markets (30-32)
+ { t:"Portfolio & Markets", q:"Diversification mainly reduces:", o:["Systematic risk","Unsystematic risk","All risk to zero","Market risk"], c:1, e:"It removes firm-specific (unsystematic) risk, not market-wide systematic risk." },
+ { t:"Portfolio & Markets", q:"Under the semi-strong form of the EMH, prices reflect:", o:["Only past prices","All public information","All public and private information","No information"], c:1, e:"Semi-strong = all publicly available information; strong adds private information." },
+ { t:"Portfolio & Markets", q:"Combining two stocks with negative correlation does what to portfolio risk?", o:["Increases it","Reduces it","No effect","Doubles it"], c:1, e:"Negative correlation offsets movements, lowering overall portfolio volatility." },
+ // Derivatives (33-35)
+ { t:"Derivatives", q:"For the buyer of a call option, the maximum loss is:", o:["Unlimited","The premium paid","The strike price","Zero"], c:1, e:"A call buyer can lose at most the premium; upside is large." },
+ { t:"Derivatives", q:"In a securitization, the first losses are absorbed by the:", o:["Senior tranche","Mezzanine tranche","Equity tranche","Servicer"], c:2, e:"Subordination: the equity (junior) tranche absorbs losses first, so it earns the most." },
+ { t:"Derivatives", q:"A CDS on ₹100 crore at a 600 bp spread costs per year:", o:["₹2 crore","₹6 crore","₹60 crore","₹600 crore"], c:1, e:"600 bp = 6%; 100 × 6% = ₹6 crore/year." }
+];
+
+(function () {
+  var answers = new Array(Q.length).fill(null);
+  var cur = 0, timerId = null, remaining = 45*60, useTimer = false;
+
+  var startScreen = document.getElementById("startScreen");
+  var testScreen = document.getElementById("testScreen");
+  var resultScreen = document.getElementById("resultScreen");
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var best = window.Progress && window.Progress.getMock();
+    if (best) document.getElementById("bestLine").textContent = "Best so far: " + best.pct + "%";
+    document.getElementById("startBtn").onclick = start;
+    document.getElementById("submitBtn").onclick = function () { if (confirm("Submit the test now?")) finish(); };
+    document.getElementById("mPrev").onclick = function () { if (cur>0){cur--; draw();} };
+    document.getElementById("mNext").onclick = function () { if (cur<Q.length-1){cur++; draw();} };
+  });
+
+  function start() {
+    useTimer = document.getElementById("timerToggle").checked;
+    startScreen.hidden = true; testScreen.hidden = false;
+    buildNav();
+    if (useTimer) {
+      document.getElementById("timerDisplay").style.display = "inline";
+      tick(); timerId = setInterval(tick, 1000);
+    }
+    draw();
+  }
+  function tick() {
+    var m = Math.floor(remaining/60), s = remaining%60;
+    document.getElementById("timerDisplay").textContent = m + ":" + (s<10?"0":"") + s;
+    if (remaining <= 0) { clearInterval(timerId); alert("Time's up! Submitting."); finish(); return; }
+    remaining--;
+  }
+  function buildNav() {
+    var g = document.getElementById("navGrid");
+    g.innerHTML = Q.map(function (_, i) { return '<button data-i="' + i + '">' + (i+1) + "</button>"; }).join("");
+    g.onclick = function (e) { var b = e.target.closest("button"); if (b) { cur = +b.getAttribute("data-i"); draw(); } };
+  }
+  var LETTERS = ["A","B","C","D"];
+  function draw() {
+    var q = Q[cur];
+    document.getElementById("qCounter").textContent = "Question " + (cur+1) + " / " + Q.length;
+    var ans = answers.filter(function(a){return a!=null;}).length;
+    document.getElementById("answeredCount").textContent = ans + " answered";
+    document.getElementById("mBar").style.width = ((cur+1)/Q.length*100) + "%";
+    document.getElementById("mTopic").textContent = q.t;
+    document.getElementById("mQ").textContent = (cur+1) + ". " + q.q;
+    var opts = document.getElementById("mOpts");
+    opts.innerHTML = q.o.map(function (o, i) {
+      var sel = answers[cur] === i;
+      return '<button class="opt' + (sel?" correct":"") + '" data-i="' + i + '"><span class="ltr">' + LETTERS[i] + '</span><span>' + o + "</span></button>";
+    }).join("");
+    opts.querySelectorAll(".opt").forEach(function(b){ b.classList.remove("correct"); if(answers[cur]===+b.getAttribute("data-i")) b.style.borderColor="var(--brand)"; });
+    // highlight selected neutrally (not revealing correctness)
+    opts.querySelectorAll(".opt").forEach(function(b){
+      b.className = "opt"; if (answers[cur]===+b.getAttribute("data-i")) { b.style.background="var(--brand-soft)"; b.style.borderColor="var(--brand)"; }
+      b.onclick = function(){ answers[cur] = +b.getAttribute("data-i"); draw(); updateNav(); };
+    });
+    if (window.renderMathIn) window.renderMathIn(document.getElementById("mOpts").parentElement);
+    updateNav();
+  }
+  function updateNav() {
+    document.querySelectorAll("#navGrid button").forEach(function (b, i) {
+      b.classList.toggle("answered", answers[i] != null);
+      b.classList.toggle("current", i === cur);
+    });
+    var ans = answers.filter(function(a){return a!=null;}).length;
+    document.getElementById("answeredCount").textContent = ans + " answered";
+  }
+  function finish() {
+    if (timerId) clearInterval(timerId);
+    var correct = 0, byTopic = {};
+    Q.forEach(function (q, i) {
+      byTopic[q.t] = byTopic[q.t] || {c:0, n:0};
+      byTopic[q.t].n++;
+      if (answers[i] === q.c) { correct++; byTopic[q.t].c++; }
+    });
+    var pct = Math.round(correct/Q.length*100);
+    var lessonMap = { "Accounting":"lesson-01","Ratios":"lesson-02","Costing & CVP":"lesson-03","Time Value of Money":"lesson-04","Capital Budgeting":"lesson-05","Cost of Equity":"lesson-06","Bonds & WACC":"lesson-07","Valuation":"lesson-08","Portfolio & Markets":"lesson-09","Derivatives":"lesson-10" };
+    var lessonHref = { "Accounting":"lessons/lesson-01.html","Ratios":"lessons/lesson-02.html","Costing & CVP":"lessons/lesson-03.html","Time Value of Money":"lessons/lesson-04.html","Capital Budgeting":"lessons/lesson-05.html","Cost of Equity":"lessons/lesson-06.html","Bonds & WACC":"lessons/lesson-07.html","Valuation":"lessons/lesson-08.html","Portfolio & Markets":"lessons/lesson-09.html","Derivatives":"lessons/lesson-10.html" };
+
+    if (window.Progress) window.Progress.recordMock({ pct:pct, correct:correct, total:Q.length, date:new Date().toISOString() });
+
+    var weak = [];
+    var rows = Object.keys(byTopic).map(function (t) {
+      var b = byTopic[t], p = Math.round(b.c/b.n*100);
+      if (p < 60) weak.push(t);
+      var cls = p >= 70 ? "" : (p >= 40 ? "mid" : "low");
+      return '<div class="tb-row"><div>' + t + '</div><div class="tb-track"><i class="' + cls + '" style="width:' + p + '%"></i></div><div class="num">' + b.c + "/" + b.n + "</div></div>";
+    }).join("");
+
+    var msg = pct>=80 ? "Outstanding — you're exam-ready. Do a final pass of the formula sheet." :
+              pct>=60 ? "Solid. Shore up the weaker topics below and retake." :
+                        "Good start. Work through the recommended lessons, then retake the mock.";
+    var recs = weak.length
+      ? '<div class="callout recap"><div class="ct-head">📚 Revisit these lessons</div><p>' + weak.map(function(t){ return '<a href="' + lessonHref[t] + '">' + t + "</a>"; }).join(" · ") + "</p></div>"
+      : '<div class="callout tip"><div class="ct-head">🎉 No weak topics</div><p>You scored ≥60% in every topic. Excellent coverage!</p></div>';
+
+    testScreen.hidden = true;
+    resultScreen.hidden = false;
+    resultScreen.innerHTML =
+      '<div class="card" style="text-align:center;padding:30px"><div style="font-size:52px;font-weight:800;color:var(--brand-ink)">' + pct + '%</div>' +
+      '<div style="font-size:17px;color:var(--ink-soft)">You scored ' + correct + " / " + Q.length + '. ' + msg + '</div></div>' +
+      '<h2>Topic-wise performance</h2><div class="topic-bar card">' + rows + "</div>" +
+      recs +
+      '<div class="btn-row"><button class="btn primary" id="reviewBtn">Review all answers</button><button class="btn ghost" id="retakeBtn">↻ Retake test</button><a class="btn ghost" href="index.html">Back to dashboard</a></div>' +
+      '<div id="reviewArea"></div>';
+
+    document.getElementById("retakeBtn").onclick = function () { location.reload(); };
+    document.getElementById("reviewBtn").onclick = function () {
+      var area = document.getElementById("reviewArea");
+      area.innerHTML = "<h2>Answer review</h2>" + Q.map(function (q, i) {
+        var yours = answers[i], ok = yours === q.c;
+        var opts = q.o.map(function (o, oi) {
+          var cls = oi === q.c ? "opt correct" : (oi === yours ? "opt wrong" : "opt");
+          return '<button class="' + cls + '" disabled><span class="ltr">' + LETTERS[oi] + '</span><span>' + o + "</span></button>";
+        }).join("");
+        return '<div class="card" style="margin:12px 0"><div class="qz-q">' + (i+1) + ". " + q.q + '</div><div class="opts" style="margin:12px 0">' + opts + "</div>" +
+          '<div class="explain show">' + (ok?'<span class="verdict ok">✓ Correct.</span> ':'<span class="verdict no">✗ Correct answer: ' + LETTERS[q.c] + '.</span> ') + q.e + "</div></div>";
+      }).join("");
+      if (window.renderMathIn) window.renderMathIn(area);
+      area.scrollIntoView({behavior:"smooth"});
+    };
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+})();
+</script>
+</body>
+</html>

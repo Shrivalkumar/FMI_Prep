@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 11 — Derivatives: Special Products &amp; the 2008 Crisis</title>
+<meta name="description" content="Securitization and MBS, tranching and subordination, credit spreads and credit default swaps, CDOs, the 2008 financial crisis, and market-linked notes — taught from scratch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 11</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 11</span>
+        <span class="tag src">Session 16 · Special Products</span>
+      </div>
+      <h1>Derivatives — Special Products &amp; the 2008 Crisis</h1>
+      <p class="lead">Lesson 10 built the toolkit: forwards, futures, options and swaps. This lesson shows what happens when those tools are stacked on top of each other — packaging loans into securities, insuring loans with swaps, and selling "safe" notes to savers. The same products that made credit cheap also caused the worst financial crisis in living memory. The unifying lens is <b>reliability engineering</b>: ask always whether failures are <em>independent</em> or share a <em>common cause</em>.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="securit">1. Securitization &amp; mortgage-backed securities</h2>
+      <p><span class="tag src">Session 16</span> A home loan is a wonderful asset for a bank — it pays interest for 20 years — but a terrible one too: the cash comes back painfully slowly, and the money is locked up the whole time. <b>Securitization</b> solves this by turning many slow, illiquid loans into securities that investors can buy and sell today.</p>
+
+      <h3>The four-step flow</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td><b>1. Banks lend</b></td><td>Banks and housing-finance companies lend to thousands of borrowers.</td></tr>
+          <tr><td><b>2. Loans are pooled</b></td><td>The loans are sold to a separate legal entity — a <b>Special Purpose Vehicle (SPV)</b> — off the bank's books.</td></tr>
+          <tr><td><b>3. Tranches are issued</b></td><td>The SPV cuts securities into <b>senior</b>, <b>mezzanine</b> and <b>equity</b> layers, ordered by who absorbs losses first.</td></tr>
+          <tr><td><b>4. Investors get EMIs</b></td><td>Borrowers' monthly payments pass through to investors; the bank recovers cash to lend again.</td></tr>
+        </tbody>
+      </table></div>
+      <p>Think of it as a one-way conveyor. <b>Loans and their default risk move right</b> — from borrowers to the lender, to the SPV, to investors. <b>Cash moves left, then right again</b> — investors' money funds the SPV's purchase, the lender gets cash to lend again, and borrowers' EMIs flow back through the servicer to investors.</p>
+      <div class="callout info"><div class="ct-head">🏗️ Engineering view — crumple zones <span class="tag src">Session 16</span></div><p>Tranching works like a car's crumple zones. In a crash, the designed-to-deform parts (the equity layer) take the damage first so the passengers (the senior layer) are protected last. The structure decides <em>who</em> gets hurt and in what order.</p></div>
+
+      <h3>Benefits vs risks</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">Benefits</h4>
+          <p><b>Liquidity:</b> a 20-year loan becomes a security that can be sold in a day.<br>
+          <b>Capital recycling:</b> the lender gets cash back and lends again, so the same capital funds many more homes.<br>
+          <b>Diversification:</b> one investor holds a slice of thousands of borrowers, not a single one.<br>
+          <b>Choice:</b> tranches let cautious and risk-seeking investors each buy the risk level they want.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Risks</h4>
+          <p><b>Moral hazard:</b> if the seller keeps nothing, it has less reason to check borrower quality.<br>
+          <b>Opacity:</b> buyers cannot inspect thousands of loans, so they rely on ratings and models.<br>
+          <b>Correlation:</b> diversification fails when one cause hits every loan at once.<br>
+          <b>Complexity:</b> each extra layer makes the real risk harder to see.</p>
+        </div>
+      </div>
+      <div class="callout tip"><div class="ct-head">💬 Discuss</div><p>Why would a lender who sells every loan onward care less about borrower quality? Because the default risk leaves with the loan — this is the broken feedback loop that returns, with a vengeance, in Section 4.</p></div>
+
+      <h3>Tranching &amp; subordination</h3>
+      <p>A tranche is a <em>slice</em> of the pool's cash flows, defined by its place in a queue. Payments flow down in strict order — <b>senior first, then mezzanine, then equity</b> — so the senior layer is safest and earns least, and the equity layer earns the most when all goes well but dries up first when borrowers stop paying. This loss-absorption ordering is called <b>subordination</b>, and it is the main <em>credit enhancement</em> in a securitization.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> The ₹500 crore pool — who gets paid? <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Setup</span> A pool of ₹500 crore of loans at 9% earns <b>₹45 crore</b> of interest a year. Payments fill the tranches like a pipe network — the senior pipe first.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Order</th><th>Tranche</th><th class="num">Size</th><th class="num">Promised return</th><th class="num">Paid a year</th></tr></thead>
+            <tbody>
+              <tr><td>1st</td><td>Senior</td><td class="num">₹400 cr</td><td class="num">7.5%</td><td class="num">₹30.0 cr</td></tr>
+              <tr><td>2nd</td><td>Mezzanine</td><td class="num">₹70 cr</td><td class="num">11%</td><td class="num">₹7.7 cr</td></tr>
+              <tr><td>3rd</td><td>Equity</td><td class="num">₹30 cr</td><td class="num">whatever is left</td><td class="num">₹7.3 cr ≈ 24%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">Working</span> Senior takes 7.5% × 400 = ₹30 cr. Mezzanine takes 11% × 70 = ₹7.7 cr. That leaves 45 − 30 − 7.7 = <b>₹7.3 cr</b> for the equity tranche, which is 7.3 ÷ 30 ≈ <b>24%</b> on its ₹30 cr.</div>
+          <div class="ans">Equity earns ~24% — far above the 7.5% senior rate — precisely because it stands last in the payment queue and first in the loss queue.</div>
+          <p><b>Interpretation.</b> If borrowers pay less, the shortfall hits from the bottom up. Collect only ₹40 cr → senior and mezzanine are paid in full (₹37.7 cr) and equity gets just ₹2.3 cr. Collect ₹32 cr → senior is paid, mezzanine is short ₹5.7 cr, and equity gets nothing. <b>Losses run in reverse of payments:</b> equity absorbs first, then mezzanine, then senior.</p>
+        </div>
+      </details>
+
+      <h3>The loss waterfall</h3>
+      <p>Pool 1,000 loans of about ₹60 lakh each into that same ₹500 crore structure. Here is who loses what as pool losses grow:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Scenario</th><th class="num">Pool loss</th><th>Equity (₹30 cr)</th><th>Mezzanine (₹70 cr)</th><th>Senior (₹400 cr)</th></tr></thead>
+        <tbody>
+          <tr><td>Normal defaults</td><td class="num">₹25 cr</td><td>Loses ₹25 cr</td><td>Safe</td><td>Safe</td></tr>
+          <tr><td>Bad year</td><td class="num">₹60 cr</td><td>Wiped out</td><td>Loses ₹30 cr</td><td>Safe</td></tr>
+          <tr><td>Nationwide crash</td><td class="num">₹150 cr</td><td>Wiped out</td><td>Wiped out</td><td>Loses ₹50 cr (12.5%)</td></tr>
+        </tbody>
+      </table></div>
+      <p>The equity ₹30 cr soaks up the first ₹30 cr of loss; mezzanine the next ₹70 cr (up to ₹100 cr cumulative); only beyond ₹100 cr does the senior tranche bleed. At a ₹150 cr pool loss, senior loses 150 − 100 = <b>₹50 cr</b>, or 12.5% of its ₹400 cr.</p>
+
+      <div class="callout key"><div class="ct-head">Independent defaults vs common-mode failure</div>
+        <p><b>Independent defaults:</b> each of 1,000 loans has, say, a 3% default chance unrelated to the others. Losses cluster near 3% of the pool — about ₹15 cr of ₹500 cr. The ₹30 cr equity tranche absorbs it; senior is untouched.</p>
+        <p><b>Common-mode failure:</b> a nationwide price fall raises <em>every</em> borrower's default chance at once. Losses can reach 30% — ₹150 cr. Equity and mezzanine are wiped out and the senior tranche loses ₹50 cr. The exact same structure, a completely different outcome.</p>
+      </div>
+
+      <h3>MBS in practice — US and India</h3>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">US agency MBS — Ginnie Mae</h4>
+          <p>A bank makes government-insured loans (FHA/VA), pools them, and issues pass-through securities guaranteed by <b>Ginnie Mae</b> (first such pass-through: 1970). The guarantee removes <em>credit risk</em> — investors are paid even if borrowers default.</p>
+          <p>But a new risk appears: <b>prepayment risk.</b> When rates fall, homeowners refinance and hand principal back early, forcing investors to reinvest at lower rates. The cash flow behaves like a tank whose outlet opens wider when conditions change.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">India's PTCs</h4>
+          <p>An NBFC that has lent ₹500 cr to truck owners sells the pool to a trust, which issues <b>Pass-Through Certificates (PTCs)</b> to banks, mutual funds and insurers. The NBFC keeps servicing the loans and passes collections through.</p>
+          <p>The lender's cash returns in months instead of years; investors get exposure to granular retail loans they could never originate themselves. Post-2008, <b>RBI risk-retention rules</b> require the originator to keep a share of the risk — so the seller still has skin in the game.</p>
+        </div>
+      </div>
+
+      <h2 id="cds">2. Credit spreads, CDS &amp; CDOs</h2>
+      <h3>The credit spread</h3>
+      <p><span class="tag src">Session 16</span> A government bond is treated as (near) risk-free; a company must pay more to borrow. The gap between them is the <b>credit spread</b>, quoted in basis points (1 bp = 1/100 of 1%).</p>
+      <div class="formula-block"><div class="lbl">Credit spread</div><div class="formula">$$\text{Credit spread} = \text{company yield} - \text{government yield}$$</div></div>
+      <p>If a company borrows at 9% while the government pays 7%, the spread is 9% − 7% = 2% = <b>200 bp</b>. A wider spread means the market fears default more. The spread is a <em>live market sensor</em> — it updates daily and carries a fear premium, not a slow forecast.</p>
+
+      <div class="formula-block"><div class="lbl">Rule of thumb — the spread prices risk</div><div class="formula">$$\text{spread} \approx \text{default probability} \times \text{loss given default (LGD)}$$</div></div>
+      <p>This is failure rate × consequence — the same logic as risk in safety engineering. Rearranged, it tells you the market-implied default chance:</p>
+      <div class="formula-block"><div class="formula">$$\text{implied default probability} \approx \dfrac{\text{spread}}{\text{LGD}}$$</div></div>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th class="num">Observed spread</th><th class="num">Loss if default (LGD)</th><th class="num">Implied yearly default chance</th></tr></thead>
+        <tbody>
+          <tr><td class="num">2% (200 bp)</td><td class="num">60% (40% recovered)</td><td class="num">2 ÷ 0.6 ≈ 3.3%</td></tr>
+          <tr><td class="num">6% (600 bp)</td><td class="num">60%</td><td class="num">6 ÷ 0.6 = 10%</td></tr>
+          <tr><td class="num">0.5% (50 bp)</td><td class="num">60%</td><td class="num">0.5 ÷ 0.6 ≈ 0.8%</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="try" data-answer="10" data-tol="2%" data-ok="Correct — implied default = spread ÷ LGD.">
+        <div class="q">✎ <b>Try it — implied default.</b> A bond trades at a <b>6% spread</b> and if it defaults investors lose <b>60%</b> (recovering 40%). What yearly default chance does the market imply (%)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 10"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>Implied default = spread ÷ LGD = 6% ÷ 0.60 = <b>10%</b>. The spread is failure rate × consequence, so dividing the spread by the consequence (loss given default) backs out the failure rate the market is pricing.</p></div>
+      </div>
+
+      <h3>Credit Default Swap (CDS) — a warranty on a loan</h3>
+      <p>A <b>CDS</b> is insurance on a borrower. The <b>protection buyer</b> pays a fixed premium every period; the <b>protection seller</b> collects it and pays out if a <em>credit event</em> (failure to pay, bankruptcy, or in many contracts a restructuring) hits the <b>reference entity</b>. The reference entity is the company, country or security being insured — it is not a party to the contract and may not even know the contract exists.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Party</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Protection buyer</td><td>Pays the premium each period. Often a bank/fund worried about a borrower — or a trader betting on its decline.</td></tr>
+          <tr><td>Protection seller</td><td>Collects the premium; pays out on a credit event. Often a large insurer or bank.</td></tr>
+          <tr><td>Reference entity</td><td>The company/country/security insured. Not a party, may not know the CDS exists.</td></tr>
+        </tbody>
+      </table></div>
+      <p>The annual premium is simply the spread (in bp) applied to the notional amount insured:</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> CDS premium at 200 bp, and a payout <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Premium</span> A bank buys protection on ₹100 crore of a company's bonds at 200 bp. Annual cost = 200 bp × ₹100 cr = 2% × 100 = <b>₹2 crore a year.</b></div>
+          <div class="step"><span class="sh">Stress</span> The company weakens and the spread widens 200 bp → 600 bp. The <em>same</em> cover now costs ₹6 crore a year to a new buyer.</div>
+          <div class="step"><span class="sh">Default</span> The company defaults; bondholders recover only 40%, a loss of 60% × ₹100 cr = ₹60 crore.</div>
+          <div class="ans">The seller pays the buyer the loss: <b>₹60 crore</b> (cash settlement = face value − recovery), or takes the defaulted bond and pays face value.</div>
+          <p><b>Interpretation.</b> The buyer paid ₹2 cr/year and collected ₹60 cr — provided the seller can actually pay. That caveat is the whole story of 2008.</p>
+        </div>
+      </details>
+
+      <div class="try" data-answer="6" data-tol="2%" data-ok="Correct — 600 bp on ₹100 cr is ₹6 cr a year.">
+        <div class="q">✎ <b>Try it — CDS annual cost.</b> You insure <b>₹100 crore</b> of bonds and the CDS spread is <b>600 bp</b>. What is the annual premium (₹ crore)?</div>
+        <div class="row"><input type="text" placeholder="₹ crore"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>600 bp = 6%. Premium = 6% × ₹100 crore = <b>₹6 crore a year</b>. Basis points are just hundredths of a percent, so always convert first: 600 ÷ 100 = 6%.</p></div>
+      </div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Three features that surprised people</div>
+        <p><b>Naked CDS:</b> a buyer needs no loss — and no bond — to collect. You can insure a house you do not own, so a CDS is also a pure bet on a company's decline.</p>
+        <p><b>Counterparty risk:</b> the seller's ability to pay is not guaranteed. If the seller fails, the "insurance" is worthless exactly when you need it — the chain breaks.</p>
+        <p><b>Opacity:</b> pre-2008 CDS trading was private and over-the-counter, so no one could see how much risk any single seller had taken on.</p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">AIG, 2008</h4>
+          <p>AIG's financial-products unit sold CDS protection on the "safest" top layers of mortgage CDOs, collecting steady premiums and holding almost no reserves. When house prices fell, it was downgraded and the contracts forced it to post cash collateral it did not have. On 16 September 2008 the US Fed lent it <b>$85 billion</b> for ~80% of the firm; total support exceeded $180 billion. A warranty company insuring one product line against the same flaw, with no reserve fund — a design with no safety factor.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Credit Suisse, 2023</h4>
+          <p>After years of losses and scandals, its CDS spread already sat above peers'. When US regional banks failed in March 2023, its spread jumped within days as shares fell and depositors fled. UBS took it over on <b>19 March 2023</b>. The spread worked as an early-warning sensor, and fear fed on itself — a positive feedback loop. Notably, some bondholders were wiped out in the rescue: even senior-sounding debt is only as safe as the structure around it.</p>
+        </div>
+      </div>
+
+      <h3>CDOs — securities made from securities</h3>
+      <p>The senior layers of an MBS sell easily; the middle <b>BBB-rated</b> tranches are harder to shift. The clever (and fatal) idea: pool many of those BBB middle tranches from <em>different</em> MBS into a new pool — a <b>Collateralised Debt Obligation (CDO)</b> — and tranche it again. Because the CDO's own senior layer is protected by the layers beneath it, a large share of it was rated <b>AAA</b> — even though every single piece inside was only BBB.</p>
+      <div class="callout mistake"><div class="ct-head">⚠️ Why the CDO AAA was a mirage</div>
+        <p><b>Hidden assumption:</b> the BBB pieces would fail <em>independently</em>. If each had a 5% chance and failures were unrelated, losing more than a fifth of them at once is vanishingly unlikely — so the senior CDO layer looks AAA-safe.</p>
+        <p><b>Reality:</b> every piece held loans exposed to the <em>same national housing market</em>, so they failed together (common-mode). The "safe" senior CDO layers lost large amounts. A second round of tranching did not remove the error — it <em>multiplied</em> it.</p>
+      </div>
+
+      <h2 id="crisis">3. The 2008 financial crisis</h2>
+      <p><span class="tag src">Session 16</span> No single villain caused 2008. It was a <b>systems failure</b> — a chain of reasonable-looking links that, together, created a machine with positive feedback and no circuit breaker.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>#</th><th>Link in the chain</th><th>What it did</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Cheap money</td><td>Low rates raised housing demand; prices climbed and everyone expected them to keep climbing.</td></tr>
+          <tr><td>2</td><td>Subprime teaser loans</td><td>Weak borrowers got low "teaser" rates that reset higher after two years, assuming they could refinance.</td></tr>
+          <tr><td>3</td><td>Originate-to-distribute</td><td>Lenders were paid per loan sold, so quality cost them nothing — broken feedback.</td></tr>
+          <tr><td>4</td><td>MBS &amp; CDOs</td><td>Loans repackaged twice; ratings assumed independent failures, so many tranches got AAA.</td></tr>
+          <tr><td>5</td><td>Leverage + thin CDS reserves</td><td>Banks borrowed heavily to hold the paper; insurers sold protection with almost no reserves.</td></tr>
+          <tr><td>6</td><td>Prices fall</td><td>Resets hit, defaults rose <em>together</em>, losses could not be traced. Lehman failed on 15 Sep 2008.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">🔁 The feedback loop <span class="tag src">Session 16</span></div><p>Falling prices cause defaults → defaults force asset sales → forced sales push prices down further. This is <b>positive feedback</b>: a control loop that runs away from its set point instead of settling back to it. The only brake was central-bank liquidity acting as a circuit breaker.</p></div>
+
+      <h3>A timeline</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>When</th><th>Event</th><th>Why it mattered</th></tr></thead>
+        <tbody>
+          <tr><td>2006</td><td>US house prices peak and start to fall</td><td>The shared cause begins</td></tr>
+          <tr><td>Aug 2007</td><td>BNP Paribas freezes three US-mortgage funds</td><td>First sign that nobody can value the securities</td></tr>
+          <tr><td>Sep 2007</td><td>Run on Northern Rock (UK)</td><td>Funding fear reaches depositors</td></tr>
+          <tr><td>Mar 2008</td><td>Bear Stearns rescued with official support</td><td>A major bank nearly fails</td></tr>
+          <tr><td>7 Sep 2008</td><td>Fannie Mae &amp; Freddie Mac taken into US control</td><td>The mortgage backbone is rescued</td></tr>
+          <tr><td>15–16 Sep 2008</td><td>Lehman files for bankruptcy; AIG rescued</td><td>Panic goes global</td></tr>
+          <tr><td>3 Oct 2008</td><td>US passes a $700 billion bank-rescue program</td><td>Governments take the losses</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">One subprime loan, traced — the 2/28</h4>
+          <p>A US family borrows $300,000 on a <b>2/28 adjustable loan</b>: 6% for two years (~$1,800/month), then a reset. At an illustrative 9.5%, the payment jumps to ~$2,490 — up 38%. With prices falling they cannot refinance, so they default.</p>
+          <p>That one loan sat in a pool backing an MBS, whose BBB layer went into a CDO, whose AAA layer AIG insured. One default is tiny. <b>Millions in the same pools broke the chain.</b></p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Lehman &amp; the funding freeze</h4>
+          <p>Lehman held mortgage assets funded mostly by <b>short-term borrowing rolled over every few days</b>. When lenders refused to roll it over, it had to dump assets into falling prices. A rescue collapsed over 13–14 Sep; it filed for bankruptcy on <b>15 Sep 2008</b> — the largest in US history, over $600 billion in assets.</p>
+          <p>The next day a money-market fund holding Lehman paper "broke the buck" (fell below $1/unit). Investors rushed to withdraw from similar funds, so <b>short-term funding froze worldwide</b> and even healthy firms struggled to pay routine bills. The Sensex fell from ~21,000 (Jan 2008) to ~8,000 by October.</p>
+        </div>
+      </div>
+      <p><b>Why Lehman froze funding:</b> its collapse showed that supposedly safe short-term lending (money-market funds, repo) could lose money. Lenders everywhere stopped trusting <em>everyone</em>, so they stopped lending at all — a structure that stays up only while its support is continuously renewed suffers a <em>run</em>, which is itself a failure mode.</p>
+      <div class="callout key"><div class="ct-head">🔧 2008 as a failure analysis</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Model risk</b> — assuming independent failures → AAA on tranches built from correlated loans.</li>
+          <li><b>Hidden coupling</b> — CDOs and CDS tied firms together invisibly.</li>
+          <li><b>No fault isolation</b> — a cascade with no circuit breaker, so US subprime losses spread worldwide.</li>
+          <li><b>Broken feedback</b> — originate-to-distribute removed the lender's cost of bad loans.</li>
+          <li><b>Thin safety factor</b> — banks ran on high leverage and little equity.</li>
+        </ul>
+      </div>
+      <div class="callout info"><div class="ct-head">ℹ️ What changed afterwards <span class="tag src">Session 16</span></div><p><b>Basel III</b> raised bank capital and liquidity requirements; <b>Dodd-Frank</b> reshaped US regulation and pushed derivatives toward clearing; <b>risk-retention</b> rules force securitizers to keep skin in the game; and <b>stress tests</b> now check whether banks survive a severe downturn in advance.</p></div>
+
+      <h2 id="mln">4. Market-linked notes (MLDs)</h2>
+      <p><span class="tag src">Session 16</span> A <b>market-linked note</b> (in India, a market-linked debenture, MLD) is a debt instrument whose return depends on a market variable such as the Nifty 50. It is sold as "upside of the market, safety of a bond" — and it is genuinely two instruments bundled together: a <b>zero-coupon bond</b> (the principal protection) plus <b>options</b> (the upside).</p>
+      <p>Suppose you invest ₹10 lakh for 5 years. The issuer splits it:</p>
+      <div class="grid cols-2">
+        <div class="card"><h4 style="margin-top:0">≈ ₹7.13 lakh → the bond</h4><p>A zero-coupon bond at 7% grows back to ₹10 lakh in 5 years (10 ÷ 1.07⁵ ≈ 7.13). This is the <b>principal protection</b> — it matures to your money back.</p></div>
+        <div class="card"><h4 style="margin-top:0">≈ ₹2.87 lakh → the options</h4><p>The remainder buys call options that pay extra if the Nifty rises and expire worthless if it falls. This is your <b>upside</b>.</p></div>
+      </div>
+      <div class="formula-block"><div class="lbl">MLN payoff</div><div class="formula">$$\text{Maturity value} = \text{principal} \times \big(1 + \text{participation} \times \max(0,\ \text{index return})\big)$$</div></div>
+      <p>The <b>participation rate</b> is the share of the index gain you receive. It is below 100% for a simple reason: the options cost money, and the more you spend on principal protection, the less is left to buy upside.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> ₹10 lakh, 5 years, 70% participation <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> Maturity = principal × (1 + participation × max(0, index return)).</div>
+          <div class="step"><span class="sh">Working — Nifty up 50%</span> = 10,00,000 × (1 + 0.70 × 0.50) = 10,00,000 × (1 + 0.35) = 10,00,000 × 1.35.</div>
+          <div class="ans">Nifty up 50% → note return 35% → <b>₹13.5 lakh</b>. Nifty flat or down → max(0, return) = 0 → <b>₹10 lakh</b> (principal back, if the issuer pays).</div>
+          <p><b>Interpretation.</b> You capture 70% of the rise, not all of it — that is the price of the protection. And notice the sting in the tail: a plain 7% fixed deposit grows ₹10 lakh to ₹10,00,000 × 1.07⁵ ≈ <b>₹14.03 lakh</b>, which beats the note <em>even when the Nifty rises 50%</em>. The note wins only in specific scenarios, and its "protection" assumes the issuer survives.</p>
+        </div>
+      </details>
+
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Nifty after 5 years</th><th class="num">Note return (70% participation)</th><th class="num">Value at maturity</th></tr></thead>
+        <tbody>
+          <tr><td>Up 50%</td><td class="num">35%</td><td class="num">₹13.5 lakh</td></tr>
+          <tr><td>Flat</td><td class="num">0%</td><td class="num">₹10 lakh</td></tr>
+          <tr><td>Down 20%</td><td class="num">0% (principal protected)</td><td class="num">₹10 lakh</td></tr>
+          <tr><td>Issuer defaults</td><td class="num">Protection fails</td><td class="num">Part or all of principal at risk</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="try" data-answer="13.5" data-tol="2%" data-ok="Correct — 70% of a 50% rise is a 35% note return.">
+        <div class="q">✎ <b>Try it — MLN maturity value.</b> Principal <b>₹10 lakh</b>, 5-year note, <b>70% participation</b>. The index rises <b>50%</b>. What is the maturity value (₹ lakh)?</div>
+        <div class="row"><input type="text" placeholder="₹ lakh"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>Value = 10 × (1 + 0.70 × 0.50) = 10 × 1.35 = <b>₹13.5 lakh</b>. You receive 70% of the 50% gain = 35%, so the note pays ₹3.5 lakh above principal.</p></div>
+      </div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Risks — the "protection" has fine print</div>
+        <p><b>Issuer credit risk:</b> protection fails if the issuer fails. <b>Lehman minibonds</b>, sold to retail investors in Hong Kong and Singapore as safe income, ended up worth a fraction of face value when Lehman collapsed.</p>
+        <p><b>Opportunity cost:</b> capped or partial upside can trail a plain fixed deposit (as the 7% FD example shows). <b>Illiquidity:</b> selling before maturity may be hard or at a poor price. <b>Hidden fees:</b> costs sit inside the structure, not on a bill. <b>Complexity:</b> payoff rules can hide how often you actually earn nothing.</p>
+      </div>
+      <div class="callout tip"><div class="ct-head">✅ A buyer's five-question checklist</div>
+        <ul style="margin:6px 0 0">
+          <li>Who is the issuer, and how strong is its credit?</li>
+          <li>Can I draw the payoff for a rise, a flat market, and a fall?</li>
+          <li>What are the cap, participation rate and total fees?</li>
+          <li>Can I exit early, and at what price?</li>
+          <li>Would a simple alternative (an FD) give a similar result?</li>
+        </ul>
+      </div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — the one idea the whole lesson turns on</div>
+        <p><b>Diversification protects against <em>independent</em> failures, not a shared (common-mode) cause.</b> A thousand loans look diversified until one event — a nationwide price fall — hits them all at once.</p>
+        <p><b>A senior tranche is only as safe as the structure around it.</b> AAA is a model output, not a law of nature; when the model's independence assumption breaks, the senior layer bleeds (recall the ₹50 cr senior loss, and Credit Suisse bondholders).</p>
+        <p><b>A note's "protection" fails if the issuer defaults.</b> Principal protection is a <em>promise by the issuer</em>, not a vault — Lehman minibonds proved it.</p>
+      </div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Five takeaways</div>
+        <ul style="margin:6px 0 0">
+          <li>Securitization slices risk, but it only works if the loans fail <em>independently</em>.</li>
+          <li>A credit spread prices default risk (spread ≈ default prob × LGD); a CDS lets you insure or trade it.</li>
+          <li>2008 was a systems failure: correlated defaults, bad incentives, leverage, opacity and flawed models.</li>
+          <li>A market-linked note is a safe bond plus a derivative — so the issuer's credit is everything.</li>
+          <li>Complexity hides risk. If you cannot draw the payoff and the failure modes, do not buy it.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">5. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-10.html"><span>Previous lesson</span><b>‹ Derivatives Basics</b></a>
+        <a class="next" href="../formula-sheet.html"><span>Next up</span><b>Formula Sheet ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-11">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-11",
+    title: "Lesson 11 Quiz — Special Products & 2008",
+    questions: [
+      { q:"In the ₹500 crore pool, why does the equity tranche earn the most (about 24%)?", options:["It is paid first, so it is the safest layer","It is paid last and absorbs the first losses, so it carries the most risk","It is guaranteed by the government","It holds the best-quality loans"], correct:1,
+        explain:"Payments flow senior → mezzanine → equity, and losses run in reverse. The equity tranche stands last in line for cash and first in line for losses, so it earns the highest return as compensation for that risk." },
+      { q:"When a securitization suffers losses, the order in which tranches are hit is:", options:["Senior first, then mezzanine, then equity","Equity first, then mezzanine, then senior","All tranches share losses equally","Mezzanine first, then equity, then senior"], correct:1,
+        explain:"This is subordination — the main credit enhancement. The equity (junior) tranche absorbs the first losses, then mezzanine, and only then does the senior tranche take any loss." },
+      { q:"In the ₹500 crore pool (senior ₹400cr, mezz ₹70cr, equity ₹30cr), how much does the senior tranche lose if the pool loses ₹150 crore?", options:["₹0 — senior is always safe","₹30 crore","₹50 crore","₹150 crore"], correct:2,
+        explain:"Equity absorbs the first ₹30cr and mezzanine the next ₹70cr (₹100cr cumulative). The remaining ₹50cr falls on senior.", calc:"150 − 30 (equity) − 70 (mezzanine) = ₹50 crore, which is 50 ÷ 400 = 12.5% of the senior tranche." },
+      { q:"Tranching protects senior investors as long as defaults are independent. What breaks that protection?", options:["A single borrower defaulting","A common-mode failure such as a nationwide price fall hitting all loans at once","Prepayment by one homeowner","Rising interest rates on one loan"], correct:1,
+        explain:"Diversification protects against independent failures, not a shared cause. When one event raises every borrower's default chance together, losses cluster far higher than the model assumed and reach the senior tranche." },
+      { q:"A company's bond yields 9% while the government yields 7%. The credit spread is:", options:["16% (1600 bp)","2% (200 bp)","1.29% (129 bp)","63% (6300 bp)"], correct:1,
+        explain:"Credit spread = company yield − government yield.", calc:"9% − 7% = 2% = 200 basis points. A wider spread means the market fears default more." },
+      { q:"You insure ₹100 crore of bonds with a CDS at 600 bp. The annual premium is:", options:["₹2 crore","₹6 crore","₹60 crore","₹0.6 crore"], correct:1,
+        explain:"The premium is the spread applied to the notional insured. Convert basis points to a percent first.", calc:"600 bp = 6%; 6% × ₹100 crore = ₹6 crore a year." },
+      { q:"A bond trades at a 6% spread with a 60% loss given default. The market-implied yearly default chance is about:", options:["3.6%","6%","10%","60%"], correct:2,
+        explain:"spread ≈ default probability × loss given default, so default probability ≈ spread ÷ LGD.", calc:"6% ÷ 0.60 = 10%." },
+      { q:"Why did the senior layers of subprime CDOs earn AAA ratings that later failed?", options:["The rating agencies were bribed to ignore the loans","Models assumed the underlying BBB pieces would fail independently, but they shared the same housing market and failed together","The CDOs held only government bonds","AAA ratings are never wrong"], correct:1,
+        explain:"The AAA rested on an independence assumption. In reality every piece was exposed to one national housing market (common-mode), so a second round of tranching multiplied the model error rather than removing it." },
+      { q:"Why did Lehman's failure freeze short-term funding markets worldwide?", options:["It was the only bank in the US","Its assets were seized by foreign governments","It relied on short-term borrowing rolled over constantly; when it failed, a money-market fund 'broke the buck' and lenders everywhere stopped trusting short-term lending","It stopped paying dividends"], correct:2,
+        explain:"Lehman funded long-term mortgage assets with short-term borrowing that had to be renewed every few days. Its collapse — and a money-market fund falling below $1/unit — showed 'safe' short-term lending could lose money, so lenders froze funding to everyone. A run is itself a failure mode." },
+      { q:"Which counterparty risk makes a CDS dangerous even when you hold a valid contract?", options:["The reference entity can cancel the contract","The protection seller may be unable to pay when the credit event arrives","The government taxes the payout at 100%","The premium automatically doubles each year"], correct:1,
+        explain:"A CDS is only as good as the seller's ability to pay. AIG sold protection with almost no reserves; when the correlated event hit, collateral calls turned a paper loss into a cash crisis and the insurance chain nearly broke." },
+      { q:"A market-linked note is best described as:", options:["A pure equity investment","A zero-coupon bond (principal protection) plus options (upside)","A government-guaranteed deposit","A credit default swap on the Nifty"], correct:1,
+        explain:"The issuer splits your money: most buys a zero-coupon bond that grows back to principal, and the rest buys options for upside. That is why participation is below 100% — the options cost money." },
+      { q:"A ₹10 lakh, 5-year note has 70% participation. If the index rises 50%, the maturity value is:", options:["₹15 lakh","₹13.5 lakh","₹10 lakh","₹17 lakh"], correct:1,
+        explain:"Maturity = principal × (1 + participation × max(0, index return)).", calc:"10 × (1 + 0.70 × 0.50) = 10 × 1.35 = ₹13.5 lakh." },
+      { q:"When is a principal-protected note's 'protection' actually unsafe?", options:["When the index rises","When the issuer defaults — the protection is only a promise by the issuer","When participation is above 50%","When you hold it to maturity"], correct:1,
+        explain:"Principal protection depends on the issuer paying. Lehman minibonds, sold as safe, were worth a fraction of face value once Lehman failed. The note's safety is only as strong as the issuer's credit." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

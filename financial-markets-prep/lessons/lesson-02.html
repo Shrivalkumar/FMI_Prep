@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 — Financial Ratio Analysis</title>
+<meta name="description" content="Learn financial ratio analysis from scratch: liquidity, efficiency, solvency, profitability and market ratios, the DuPont decomposition, and a full worked Asian Paints FY2025 example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 2</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 2</span>
+        <span class="tag src">Sessions 3–4 · Speed Run</span>
+      </div>
+      <h1>Financial Ratio Analysis</h1>
+      <p class="lead">A single number on a statement rarely means much on its own. Is ₹3,588 crore of profit good? It depends on the sales, the assets and the capital behind it. <b>Ratios turn raw figures into relationships</b> you can read, compare and judge. This lesson builds all five families of ratios from zero, then applies every one of them to a real company — Asian Paints, FY2025.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="intro">1. Why ratios exist</h2>
+      <p>A <b>financial ratio</b> is one figure from the financial statements divided by another, so that the result describes a <em>relationship</em> rather than a bare amount. Ratios are derived entirely from statements you already met in Lesson 1 — the income statement, balance sheet and cash flow statement.</p>
+      <p>They are useful for one reason above all: <b>comparison</b>. A ratio lets you compare a company:</p>
+      <ul>
+        <li><b>with itself over time</b> — is the current ratio sliding year on year?</li>
+        <li><b>with competitors and the industry</b> — is our net margin below the sector's?</li>
+        <li><b>with budget</b> — did returns land where management planned?</li>
+      </ul>
+      <p>What do we want the ratios to tell us? The sessions list seven objectives: assess <b>profitability</b>, evaluate <b>liquidity</b>, measure operational <b>efficiency</b>, assess <b>solvency and risk</b>, evaluate <b>returns on capital</b>, enable <b>performance comparison</b>, and <b>support decisions</b>. Those objectives map onto five families you will use for the rest of the lesson:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Family</th><th>Question it answers</th><th>Headline ratios</th></tr></thead>
+        <tbody>
+          <tr><td><b>Liquidity</b></td><td>Can we pay short-term bills as they fall due?</td><td>Current, quick, cash</td></tr>
+          <tr><td><b>Efficiency</b> (activity)</td><td>How hard are our assets &amp; working capital working?</td><td>Inventory / receivables / payables turnover &amp; days</td></tr>
+          <tr><td><b>Solvency</b> (leverage)</td><td>Can we meet long-term debt, and how risky is the gearing?</td><td>Debt-to-equity, interest coverage</td></tr>
+          <tr><td><b>Profitability &amp; return</b></td><td>How well do we turn sales &amp; capital into profit?</td><td>Margins, ROCE, ROA, ROE</td></tr>
+          <tr><td><b>Market</b> (investor)</td><td>How does the stock market value us?</td><td>EPS, P/E, yield, market cap, EV</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip</div><p>Learn each ratio as a four-part fact: <b>(1) what it measures, (2) the formula, (3) how to read a high vs low value, (4) a rule-of-thumb</b>. Questions test all four — a conceptual question asks what it means, a numerical one asks you to plug in and compute.</p></div>
+
+      <h2 id="liquidity">2. Liquidity ratios <span class="tag src">Session 3</span></h2>
+      <p><b>Liquidity ratios measure whether a business can meet its short-term obligations</b> — the bills due within about a year — out of its short-term assets and cash-generating ability. The question they answer: <em>"Does the business have enough short-term assets to pay its short-term liabilities?"</em></p>
+      <p><b>Short-term liabilities</b> include trade payables, short-term borrowings, bank overdrafts, accrued expenses, wages and taxes payable, and the current portion of long-term debt. <b>Short-term assets</b> include cash and bank, marketable securities, trade receivables, inventory and other current assets.</p>
+
+      <h3>Current ratio</h3>
+      <p>The broadest liquidity measure: how many rupees of current assets back each rupee of current liabilities.</p>
+      <div class="formula-block"><div class="lbl">Current ratio</div><div class="formula">$$\text{Current ratio} = \dfrac{\text{Current assets}}{\text{Current liabilities}}$$</div></div>
+      <p><b>How to read it:</b> above 1 means current assets more than cover current liabilities. <b>Rule of thumb: 1.5–2 is comfortable.</b> Too low (&lt;1) signals a cash squeeze; much too high can mean idle cash or overstocking. <b>Example:</b> current assets ₹60L ÷ current liabilities ₹40L = <b>1.5×</b> — every ₹1 due is backed by ₹1.50 of short-term assets.</p>
+
+      <h3>Quick ratio (acid-test)</h3>
+      <p>Inventory can be slow to sell and may not convert to cash easily, so the quick ratio <b>strips inventory out</b> and tests the most liquid assets only.</p>
+      <div class="formula-block"><div class="lbl">Quick / acid-test ratio</div><div class="formula">$$\text{Quick ratio} = \dfrac{\text{Current assets} - \text{Inventory}}{\text{Current liabilities}}$$</div></div>
+      <p><b>How to read it:</b> a stricter liquidity test. <b>Rule of thumb: around 1 is healthy.</b> <b>Example:</b> current assets ₹60L, inventory ₹20L, current liabilities ₹40L → (60 − 20) ÷ 40 = <b>1.0×</b>. Note the current ratio was 1.5× but the quick ratio is only 1.0× — ₹20L of the cover was tied up in stock.</p>
+
+      <h3>Cash ratio</h3>
+      <p>The most conservative test: only cash, bank and highly liquid marketable securities — no receivables, no inventory.</p>
+      <div class="formula-block"><div class="lbl">Cash ratio</div><div class="formula">$$\text{Cash ratio} = \dfrac{\text{Cash and cash equivalents}}{\text{Current liabilities}}$$</div></div>
+      <p><b>How to read it:</b> shows the share of short-term bills payable instantly from cash. <b>Example:</b> cash ₹8L ÷ current liabilities ₹40L = <b>0.2×</b> — about 20 paise of every ₹1 due is sitting in cash. A low cash ratio is <em>not</em> automatically alarming for a firm that collects reliably and holds investments elsewhere.</p>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake</div><p>Don't confuse the <b>quick ratio</b> with the <b>cash ratio</b>. Quick assets = current assets <em>minus inventory</em> (it still includes receivables). The cash ratio drops receivables too, keeping only cash and equivalents. A firm can have a decent quick ratio and a tiny cash ratio at the same time.</p></div>
+
+      <div class="try" data-answer="1.5" data-tol="2%" data-ok="Correct — that's a comfortable current ratio.">
+        <div class="q">✎ <b>Try it — current ratio.</b> A firm has current assets of ₹90L (of which inventory is ₹36L) and current liabilities of ₹60L. What is its <b>current ratio</b> (as a number, e.g. 1.5)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 1.5"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Current ratio = Current assets ÷ Current liabilities = <b>90 ÷ 60 = 1.5×</b>. (Inventory is a distractor — it only matters for the quick ratio, which here would be (90 − 36) ÷ 60 = 0.9×.)</p>
+        </div>
+      </div>
+
+      <h2 id="efficiency">3. Efficiency (activity) ratios <span class="tag src">Session 3</span></h2>
+      <p><b>Efficiency ratios</b> — also called activity or asset-management ratios — measure how effectively a business uses its assets and working capital to generate sales. The question: <em>"How efficiently is the company using its resources to generate revenue?"</em> A business ties money up in inventory, receivables and fixed assets; these ratios ask whether that money is working hard.</p>
+
+      <h3>Inventory turnover &amp; inventory days</h3>
+      <p><b>Inventory turnover</b> counts how many times a year the firm sells and replaces its stock. We use cost of goods sold (not sales) because inventory is carried at cost.</p>
+      <div class="formula-block"><div class="formula">$$\text{Inventory turnover} = \dfrac{\text{Cost of goods sold}}{\text{Average inventory}} \qquad \text{Inventory days} = \dfrac{365}{\text{Inventory turnover}}$$</div></div>
+      <p>where average inventory = (opening + closing) ÷ 2. <b>Inventory days</b> (Days Inventory Outstanding) is the same idea read as "days stock sits before being sold". <b>How to read it:</b> higher turnover / fewer days = stock moves faster = less cash locked up. <b>Example:</b> COGS ₹140L ÷ average stock ₹20L = 7× → 365 ÷ 7 = <b>52 days</b>.</p>
+
+      <h3>Receivables turnover &amp; collection days</h3>
+      <p><b>Receivables turnover</b> measures how many times a year the firm collects its debtors; the matching day-count is the <b>average collection period</b> (Days Sales Outstanding / debtor days) — how long customers take to pay.</p>
+      <div class="formula-block"><div class="formula">$$\text{Receivables turnover} = \dfrac{\text{Net credit sales}}{\text{Average receivables}} \qquad \text{Collection days} = \dfrac{365}{\text{Receivables turnover}}$$</div></div>
+      <p><b>How to read it:</b> fewer collection days = faster cash in = better. <b>Example:</b> sales ₹200L ÷ average debtors ₹25L = 8× → 365 ÷ 8 ≈ <b>46 days</b>.</p>
+
+      <h3>Payables turnover &amp; payment days</h3>
+      <p><b>Payables turnover</b> measures how quickly the firm pays suppliers; the <b>average payment period</b> (Days Payable Outstanding) is the day-count.</p>
+      <div class="formula-block"><div class="formula">$$\text{Payables turnover} = \dfrac{\text{Credit purchases (or COGS)}}{\text{Average payables}} \qquad \text{Payable days} = \dfrac{365}{\text{Payables turnover}}$$</div></div>
+      <div class="callout info"><div class="ct-head">ℹ️ When purchases aren't given</div><p>If credit purchases aren't disclosed, <b>COGS is used instead</b> in the payables (and sometimes inventory) turnover. Exam questions usually tell you which figure to use.</p></div>
+      <p><b>How to read it:</b> more payable days means you hold onto cash longer — useful, but stretching suppliers too far risks the relationship. <b>Example:</b> COGS ₹140L ÷ average creditors ₹28L = 5× → 365 ÷ 5 = <b>73 days</b>.</p>
+
+      <h3>Working-capital (operating) cycle</h3>
+      <p>The <b>operating cycle</b> ties the three together. It is the time between paying for inputs and finally collecting cash from customers — the money tied up in day-to-day operations.</p>
+      <div class="formula-block"><div class="lbl">Operating / working-capital cycle</div><div class="formula">$$\text{Operating cycle} = \text{Inventory days} + \text{Receivable days} - \text{Payable days}$$</div></div>
+      <p><b>How to read it:</b> a <em>shorter</em> cycle means less cash is trapped. <b>Example:</b> 45 + 30 − 35 = <b>40 days</b> of cash tied up. You shorten it by selling stock faster, collecting sooner, or (within terms) paying suppliers later.</p>
+
+      <h2 id="solvency">4. Solvency (leverage) ratios <span class="tag src">Session 3</span></h2>
+      <p>Where liquidity ratios look at the short term, <b>solvency ratios look at long-term financial stability and capital structure</b>. The question: <em>"Does the company carry a sustainable level of debt, and can it meet its long-term interest and principal obligations?"</em></p>
+
+      <h3>Debt-to-equity (D/E)</h3>
+      <p>Compares borrowed funds with owners' funds — how much the firm leans on debt.</p>
+      <div class="formula-block"><div class="lbl">Debt-to-equity ratio</div><div class="formula">$$\text{D/E} = \dfrac{\text{Debt}}{\text{Equity}}$$</div></div>
+      <p>where Debt = total interest-bearing debt (or total liabilities, depending on the definition used) and Equity = share capital + reserves &amp; surplus (retained earnings). <b>How to read it:</b> higher D/E = more leverage = more financial risk (and bigger fixed interest bills). <b>Rule of thumb:</b> below 1 is conservative; above 2 is aggressive. <b>Example:</b> debt ₹50L ÷ equity ₹100L = <b>0.5×</b>.</p>
+
+      <h3>Interest coverage</h3>
+      <p>Asks how comfortably operating profit covers the interest bill.</p>
+      <div class="formula-block"><div class="lbl">Interest coverage ratio</div><div class="formula">$$\text{Interest coverage} = \dfrac{\text{EBIT}}{\text{Interest expense}}$$</div></div>
+      <p>where EBIT = earnings before interest and tax (operating profit). <b>How to read it:</b> the higher the better — it measures the cushion before the firm struggles to pay interest. <b>Rule of thumb: below 2× is a warning sign.</b> <b>Example:</b> EBIT ₹24L ÷ interest ₹6L = <b>4×</b> — profit covers interest four times over.</p>
+      <div class="callout key"><div class="ct-head">Pair them up</div><p>Read D/E and interest coverage <em>together</em>. High D/E <b>and</b> low coverage is the danger zone (lots of debt, thin ability to service it). Low D/E <b>and</b> high coverage is a lightly geared, low-risk balance sheet — exactly what you'll see for Asian Paints later.</p></div>
+
+      <h2 id="profitability">5. Profitability &amp; return ratios <span class="tag src">Session 4</span></h2>
+      <p><b>Profitability &amp; return ratios</b> measure how well a company turns sales, assets and capital into profit. Crucially, they never judge profit <em>alone</em> — a firm can have high sales but thin margins, or high profit but poor returns on capital, or high returns only because of heavy leverage. They split into two groups: <b>margin ratios</b> (profit relative to revenue) and <b>return ratios</b> (profit relative to capital, assets or equity).</p>
+
+      <h3>Margin ratios</h3>
+      <div class="formula-block"><div class="formula">$$\text{Gross margin} = \dfrac{\text{Sales} - \text{COGS}}{\text{Sales}} \qquad \text{Operating margin} = \dfrac{\text{EBIT}}{\text{Sales}} \qquad \text{Net margin} = \dfrac{\text{PAT}}{\text{Sales}}$$</div></div>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Margin</th><th>Measures profit after…</th><th>Reads as</th></tr></thead>
+        <tbody>
+          <tr><td><b>Gross</b></td><td>…only direct costs (COGS)</td><td>Profitability of core production/buying</td></tr>
+          <tr><td><b>Operating (EBIT)</b></td><td>…operating expenses &amp; depreciation, before interest &amp; tax</td><td>Profitability of the main business</td></tr>
+          <tr><td><b>Net (PAT)</b></td><td>…<em>all</em> expenses incl. finance cost &amp; tax</td><td>What finally reaches shareholders</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>Example:</b> sales ₹200L, COGS ₹140L, EBIT ₹24L, PAT ₹14L → gross margin (200 − 140) ÷ 200 = <b>30%</b>; operating margin 24 ÷ 200 = <b>12%</b>; net margin 14 ÷ 200 = <b>7%</b>.</p>
+
+      <h3>Return ratios</h3>
+      <p>Margins tell you profit per rupee of <em>sales</em>; return ratios tell you profit per rupee of <em>capital</em>.</p>
+      <div class="formula-block"><div class="formula">$$\text{ROCE} = \dfrac{\text{EBIT}}{\text{Capital employed}} \qquad \text{ROA} = \dfrac{\text{Net profit}}{\text{Total assets}} \qquad \text{ROE} = \dfrac{\text{Net profit}}{\text{Shareholders' equity}}$$</div></div>
+      <ul>
+        <li><b>ROCE</b> (Return on Capital Employed) — operating profit earned on all long-term capital. <b>Capital employed = Equity + Debt</b> (equivalently, Total assets − Current liabilities).</li>
+        <li><b>ROA</b> (Return on Assets) — how efficiently the whole asset base generates profit.</li>
+        <li><b>ROE</b> (Return on Equity) — profit generated on the owners' money. <b>Shareholders' equity = Share capital + Retained earnings.</b></li>
+      </ul>
+      <p><b>Example:</b> EBIT ₹24L, capital employed ₹150L → ROCE = 24 ÷ 150 = <b>16%</b>; PAT ₹14L, equity ₹100L → ROE = 14 ÷ 100 = <b>14%</b>; and asset turnover = Sales ÷ Total assets = 200 ÷ 190 = <b>1.05×</b>.</p>
+      <div class="callout info"><div class="ct-head">ℹ️ ROI — the broad cousin</div><p><b>Return on Investment (ROI)</b> is a broader, less standardised idea: gain ÷ cost of a particular investment. Example: ₹1,00,000 growing to ₹1,25,000 is an ROI of <b>25%</b>. Unlike ROE/ROCE it has no single accounting formula.</p></div>
+
+      <h3>DuPont decomposition of ROE</h3>
+      <p>ROE is powerful but it hides <em>how</em> the return is earned. The <b>DuPont analysis</b> breaks it into three levers you can read separately:</p>
+      <div class="formula-block"><div class="lbl">DuPont three-step</div><div class="formula">$$\text{ROE} = \underbrace{\dfrac{\text{Net profit}}{\text{Sales}}}_{\text{Net margin}} \times \underbrace{\dfrac{\text{Sales}}{\text{Total assets}}}_{\text{Asset turnover}} \times \underbrace{\dfrac{\text{Total assets}}{\text{Equity}}}_{\text{Equity multiplier}}$$</div></div>
+      <p>The sales and asset terms cancel, leaving Net profit ÷ Equity = ROE — but now you can see which lever drives it: <b>margin</b> (how profitable each sale is), <b>asset turnover</b> (how hard assets work), or the <b>equity multiplier</b> (how much leverage). Two firms can reach the same ROE very differently:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Illustration</th><th class="num">Net margin</th><th class="num">Asset turnover</th><th class="num">Equity multiplier</th><th class="num">ROE</th></tr></thead>
+        <tbody>
+          <tr><td>Jewellery retailer</td><td class="num">20%</td><td class="num">0.5×</td><td class="num">1.5×</td><td class="num tot">15%</td></tr>
+          <tr><td>Grocery chain</td><td class="num">3%</td><td class="num">4.0×</td><td class="num">1.25×</td><td class="num tot">15%</td></tr>
+        </tbody>
+      </table></div>
+      <p>Same 15% ROE — but the jeweller wins on <em>margin</em> and the grocer on <em>turnover</em>. Always check which lever is doing the work before comparing firms.</p>
+
+      <h2 id="market">6. Market (investor) ratios <span class="tag src">Session 4</span></h2>
+      <p><b>Market ratios</b> judge the company from the perspective of equity shareholders and the stock market. They answer: <em>"How does the market value the company's earnings, assets and growth?"</em> They pull in market data — share price, market cap, EPS, DPS, book value — that the accounting statements alone don't contain.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Ratio</th><th>Formula</th><th>Tells you</th></tr></thead>
+        <tbody>
+          <tr><td><b>EPS</b> (earnings per share)</td><td>Net profit ÷ no. of shares</td><td>Profit earned per share</td></tr>
+          <tr><td><b>P/E</b> (price-earnings)</td><td>Market price ÷ EPS</td><td>Price paid per ₹1 of earnings</td></tr>
+          <tr><td><b>DPS</b> (dividend per share)</td><td>Total dividend ÷ no. of shares</td><td>Cash dividend per share</td></tr>
+          <tr><td><b>Payout ratio</b></td><td>DPS ÷ EPS (or dividend ÷ profit)</td><td>Share of earnings paid out</td></tr>
+          <tr><td><b>Dividend yield</b></td><td>DPS ÷ market price</td><td>Income return on the share price</td></tr>
+          <tr><td><b>Market cap</b></td><td>Price × shares outstanding</td><td>Total equity value</td></tr>
+          <tr><td><b>Enterprise value (EV)</b></td><td>Market cap + Debt − Cash</td><td>Value of the whole business (M&amp;A)</td></tr>
+          <tr><td><b>Price-to-book (P/B)</b></td><td>Price ÷ book value per share</td><td>Price vs accounting net worth</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>How to read them:</b> a <b>high P/E</b> means investors pay a lot for each ₹1 of earnings — usually pricing in growth. <b>Dividend yield</b> is the cash income a share pays relative to its price. <b>EV</b> captures both equity and debt value minus cash, which is why it's the metric used in takeovers. <b>P/B</b> above 1 means the market values the firm above its book net worth (brand, earning power, growth).</p>
+      <p><b>Example:</b> PAT ₹14L with 1 lakh shares → EPS = ₹14. At a price of ₹210, P/E = 210 ÷ 14 = <b>15×</b>. With DPS ₹4 → payout = 4 ÷ 14 ≈ <b>29%</b> and yield = 4 ÷ 210 ≈ <b>1.9%</b>. Market cap = ₹210 × 1,00,000 = <b>₹2.1 crore</b>.</p>
+
+      <div class="try" data-answer="18.9" data-tol="2%" data-ok="Correct — that's the ROE.">
+        <div class="q">✎ <b>Try it — ROE.</b> A company earns net profit of ₹3,588 crore on shareholders' equity of ₹18,988 crore. What is its <b>Return on Equity</b>, as a percentage (e.g. 12.5)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 18.9"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>ROE = Net profit ÷ Shareholders' equity = 3,588 ÷ 18,988 = 0.189 = <b>18.9%</b>. Each ₹100 of owners' money earned about ₹18.90. (These are Asian Paints' FY2025 figures — see the worked example below.)</p>
+        </div>
+      </div>
+
+      <h2 id="asian-paints">7. Worked example — Asian Paints Ltd, FY2025 <span class="tag src">Speed Run · Session 1</span></h2>
+      <p>Now we run <em>every</em> family of ratio on one real company: Asian Paints Ltd (standalone, year ended 31 March 2025). Here are the figures we'll use throughout.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Income statement (₹ cr)</th><th class="num">FY2025</th><th>Balance sheet (₹ cr)</th><th class="num">31 Mar 2025</th></tr></thead>
+        <tbody>
+          <tr><td>Net sales</td><td class="num">29,552.65</td><td>Inventories</td><td class="num">5,848.23</td></tr>
+          <tr><td>Cost of sales</td><td class="num">17,340.54</td><td>Sundry debtors</td><td class="num">3,197.55</td></tr>
+          <tr><td>Other income</td><td class="num">770.31</td><td>Cash and bank</td><td class="num">204.50</td></tr>
+          <tr><td>Depreciation</td><td class="num">901.85</td><td>Total current assets</td><td class="num">11,175.61</td></tr>
+          <tr><td>Interest</td><td class="num">143.77</td><td>Current liabilities &amp; provisions</td><td class="num">5,973.52</td></tr>
+          <tr><td>Profit before tax</td><td class="num">4,901.60</td><td>Debt</td><td class="num">1,198.82</td></tr>
+          <tr><td>Net profit</td><td class="num">3,588.07</td><td>Shareholders' funds</td><td class="num">18,987.75</td></tr>
+          <tr><td>EPS / DPS (₹)</td><td class="num">37.41 / 24.80</td><td>Total assets</td><td class="num">20,464.73</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ Two derived numbers we'll reuse</div><p><b>EBIT = PBT + Interest = 4,901.60 + 143.77 = ₹5,045.37 cr</b> (this operating profit includes ₹770.31 cr of other income). <b>Capital employed = Equity + Debt = 18,987.75 + 1,198.82 = ₹20,186.57 cr.</b> Source: market-data aggregators for FY2025 — always check against the annual report.</p></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Liquidity ratios <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Current ratio</span> = 11,175.61 ÷ 5,973.52</div>
+          <div class="ans">= 1.87× — each ₹1 of short-term obligation is backed by ₹1.87 of current assets.</div>
+          <div class="step"><span class="sh">Quick ratio</span> = (11,175.61 − 5,848.23) ÷ 5,973.52 = 5,327.38 ÷ 5,973.52</div>
+          <div class="ans">= 0.89× — strip out inventory and cover falls to 89 paise per ₹1.</div>
+          <div class="step"><span class="sh">Cash ratio</span> = 204.50 ÷ 5,973.52</div>
+          <div class="ans">= 0.03× — cash alone covers only about 3 paise per ₹1 due.</div>
+          <p><b>Interpretation:</b> the current ratio was 1.92× a year earlier, so liquidity is stable. Low cash isn't alarming here — Asian Paints collects reliably from dealers and holds investments elsewhere.</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Efficiency ratios &amp; the operating cycle <span class="chev">›</span></summary>
+        <div class="body">
+          <p>These use <em>average</em> balances: average inventory ₹5,501.91 cr, average debtors ₹3,448.70 cr, average creditors ₹3,387.19 cr.</p>
+          <div class="step"><span class="sh">Inventory turnover</span> = 17,340.54 ÷ 5,501.91 = 3.15× → <span class="sh">Inventory days</span> = 365 ÷ 3.15 ≈ <b>116 days</b></div>
+          <div class="step"><span class="sh">Receivables turnover</span> = 29,552.65 ÷ 3,448.70 = 8.57× → <span class="sh">Collection days</span> = 365 ÷ 8.57 ≈ <b>43 days</b></div>
+          <div class="step"><span class="sh">Payables turnover</span> = 17,340.54 ÷ 3,387.19 = 5.12× → <span class="sh">Payable days</span> = 365 ÷ 5.12 ≈ <b>71 days</b></div>
+          <div class="step"><span class="sh">Operating cycle</span> = 116 + 43 − 71</div>
+          <div class="ans">≈ 87 days of cash tied up in working capital.</div>
+          <p><b>Interpretation:</b> stock sits ~116 days and customers pay in ~43 days, while suppliers are paid in ~71 days — so the business funds about 87 days of the cycle itself. Faster stock turns or quicker collection would free cash.</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Solvency ratios <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Debt-to-equity</span> = 1,198.82 ÷ 18,987.75</div>
+          <div class="ans">= 0.06× — only about 6 paise of debt per ₹1 of equity.</div>
+          <div class="step"><span class="sh">Interest coverage</span> = EBIT ÷ interest = 5,045.37 ÷ 143.77</div>
+          <div class="ans">= 35.1× — operating profit covers interest about 35 times over.</div>
+          <p><b>Interpretation:</b> a very lightly geared balance sheet (D/E was 0.07× a year earlier), so financial risk is low. Contrast a company with D/E above 2 and coverage under 2 — the opposite, danger-zone profile.</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Profitability, returns &amp; DuPont <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Gross margin</span> = (29,552.65 − 17,340.54) ÷ 29,552.65 = 12,212.11 ÷ 29,552.65 = <b>41.3%</b></div>
+          <div class="step"><span class="sh">Operating margin</span> = 5,045.37 ÷ 29,552.65 = <b>17.1%</b></div>
+          <div class="step"><span class="sh">Net margin</span> = 3,588.07 ÷ 29,552.65 = <b>12.1%</b></div>
+          <div class="step"><span class="sh">ROCE</span> = 5,045.37 ÷ 20,186.57 = <b>25.0%</b></div>
+          <div class="step"><span class="sh">ROA</span> = 3,588.07 ÷ 20,464.73 = <b>17.5%</b></div>
+          <div class="step"><span class="sh">ROE</span> = 3,588.07 ÷ 18,987.75 = <b>18.9%</b></div>
+          <p><b>DuPont check:</b></p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Net margin</th><th>×</th><th>Asset turnover</th><th>×</th><th>Equity multiplier</th><th>=</th><th>ROE</th></tr></thead>
+            <tbody>
+              <tr><td>3,588 ÷ 29,553</td><td>×</td><td>29,553 ÷ 20,465</td><td>×</td><td>20,465 ÷ 18,988</td><td>=</td><td class="tot">product</td></tr>
+              <tr><td class="tot">12.1%</td><td>×</td><td class="tot">1.44×</td><td>×</td><td class="tot">1.08×</td><td>=</td><td class="tot">18.9%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">0.121 × 1.44 × 1.08 ≈ 0.189 = 18.9% ✓</div>
+          <p><b>Interpretation:</b> of every ₹100 of sales, ~₹41 survives direct costs and ~₹12 reaches shareholders. ROE (18.9%) is close to ROA (17.5%) because there's almost no debt — the equity multiplier is just 1.08×, so leverage isn't inflating returns. Asian Paints earns its ROE from <b>margin and turnover, not gearing</b>. (Margins slipped vs FY2024's ~42.4% gross / ~17.0% net as costs rose while sales dipped.)</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Market ratios &amp; value (price assumed ₹2,400; 95.92 cr shares) <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">EPS</span> = 3,588.07 cr ÷ 95.92 cr shares = <b>₹37.41</b></div>
+          <div class="step"><span class="sh">P/E</span> = 2,400 ÷ 37.41 = <b>64.2×</b></div>
+          <div class="step"><span class="sh">Payout</span> = DPS ÷ EPS = 24.80 ÷ 37.41 = <b>66%</b></div>
+          <div class="step"><span class="sh">Dividend yield</span> = 24.80 ÷ 2,400 = <b>1.03%</b></div>
+          <div class="step"><span class="sh">Market cap</span> = 2,400 × 95.92 cr = <b>₹2,30,208 cr</b></div>
+          <div class="step"><span class="sh">Enterprise value</span> = 2,30,208 + 1,198.82 − 204.50 = <b>₹2,31,202 cr</b></div>
+          <div class="step"><span class="sh">Book value / share</span> = 18,987.75 cr ÷ 95.92 cr = ₹197.95 → <span class="sh">P/B</span> = 2,400 ÷ 197.95 = <b>12.1×</b></div>
+          <p><b>Interpretation:</b> at ₹2,400, investors pay ~₹64 for each ₹1 of earnings — a premium multiple pricing in growth and brand. Two-thirds of earnings is paid out, for a cash yield near 1%. EV is only just above market cap because debt and cash are both small. A P/B of 12× shows the market values Asian Paints' brand and earning power far above its accounting net worth.</p>
+        </div>
+      </details>
+
+      <h2 id="summary">8. Summary &amp; recap</h2>
+      <p>Putting Asian Paints' whole scorecard in one place shows how the families combine into a verdict:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Family</th><th>Key ratio</th><th class="num">Asian Paints FY2025</th><th>Message</th></tr></thead>
+        <tbody>
+          <tr><td>Liquidity</td><td>Current ratio</td><td class="num">1.87×</td><td>Comfortable cover</td></tr>
+          <tr><td>Efficiency</td><td>Operating cycle</td><td class="num">87 days</td><td>Stock-heavy; suppliers fund part of it</td></tr>
+          <tr><td>Solvency</td><td>D/E · interest cover</td><td class="num">0.06× · 35×</td><td>Very low financial risk</td></tr>
+          <tr><td>Profitability</td><td>Gross · net margin</td><td class="num">41% · 12%</td><td>Strong, but slipped from FY2024</td></tr>
+          <tr><td>Returns</td><td>ROCE · ROE</td><td class="num">25% · 19%</td><td>High returns without debt</td></tr>
+          <tr><td>Market</td><td>P/E · yield</td><td class="num">64× · 1.0%</td><td>Premium valuation</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Liquidity</b>: current (CA÷CL, aim 1.5–2), quick (ex-inventory, aim ~1), cash (cash only).</li>
+          <li><b>Efficiency</b>: turnover = activity ÷ balance; days = 365 ÷ turnover; operating cycle = inventory + receivable − payable days.</li>
+          <li><b>Solvency</b>: D/E = debt ÷ equity (higher = riskier); interest coverage = EBIT ÷ interest (below 2× is a warning).</li>
+          <li><b>Profitability</b>: gross / operating / net margins; ROCE (EBIT ÷ capital employed), ROA, ROE; <b>DuPont: ROE = net margin × asset turnover × equity multiplier</b>.</li>
+          <li><b>Market</b>: EPS, P/E, DPS, payout, yield, market cap, EV = market cap + debt − cash, P/B.</li>
+          <li><b>Golden rule</b>: never judge a company on one ratio — compare over time, with peers and with budget.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">9. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-01.html"><span>Previous lesson</span><b>‹ Accounting &amp; Statements</b></a>
+        <a class="next" href="lesson-03.html"><span>Next lesson</span><b>Costing &amp; CVP ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-02">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-02",
+    title: "Lesson 2 Quiz — Financial Ratio Analysis",
+    questions: [
+      { q:"Which family of ratios answers 'Can the business pay its short-term obligations as they fall due?'", options:["Solvency ratios","Liquidity ratios","Profitability ratios","Market ratios"], correct:1,
+        explain:"Liquidity ratios (current, quick, cash) test whether short-term assets can cover short-term liabilities. Solvency ratios deal with long-term obligations." },
+      { q:"A firm has current assets ₹80L and current liabilities ₹50L. Its current ratio is:", options:["0.63×","1.30×","1.60×","2.00×"], correct:2,
+        explain:"Current ratio = Current assets ÷ Current liabilities.", calc:"80 ÷ 50 = 1.60×." },
+      { q:"Current assets are ₹80L including ₹30L of inventory; current liabilities are ₹50L. The quick (acid-test) ratio is:", options:["1.60×","1.00×","0.60×","0.38×"], correct:1,
+        explain:"The quick ratio removes inventory from current assets, then divides by current liabilities.", calc:"(80 − 30) ÷ 50 = 50 ÷ 50 = 1.00×. (1.60× is the current ratio — a classic distractor.)" },
+      { q:"Cost of goods sold is ₹140L and average inventory is ₹20L. Inventory days (365-day year) are approximately:", options:["26 days","52 days","73 days","140 days"], correct:1,
+        explain:"First find inventory turnover, then convert to days.", calc:"Turnover = 140 ÷ 20 = 7×; days = 365 ÷ 7 ≈ 52 days." },
+      { q:"Inventory days are 45, receivable days 30 and payable days 35. The operating (working-capital) cycle is:", options:["110 days","40 days","20 days","50 days"], correct:1,
+        explain:"Operating cycle = Inventory days + Receivable days − Payable days.", calc:"45 + 30 − 35 = 40 days." },
+      { q:"A company has interest-bearing debt of ₹50L and shareholders' equity of ₹100L. Its debt-to-equity ratio is:", options:["2.0×","1.5×","0.5×","0.33×"], correct:2,
+        explain:"D/E = Debt ÷ Equity. A value below 1 indicates conservative gearing.", calc:"50 ÷ 100 = 0.5×." },
+      { q:"EBIT is ₹24L and interest expense is ₹6L. The interest coverage ratio is:", options:["0.25×","2×","4×","6×"], correct:2,
+        explain:"Interest coverage = EBIT ÷ Interest. Higher is safer; below 2× is a warning sign.", calc:"24 ÷ 6 = 4×." },
+      { q:"Net profit is ₹14L on shareholders' equity of ₹100L. Return on Equity (ROE) is:", options:["7%","14%","1.4×","24%"], correct:1,
+        explain:"ROE = Net profit ÷ Shareholders' equity, expressed as a percentage.", calc:"14 ÷ 100 = 0.14 = 14%." },
+      { q:"A share trades at ₹210 and the company's EPS is ₹14. Its price-earnings (P/E) ratio is:", options:["6.7×","15×","29×","196×"], correct:1,
+        explain:"P/E = Market price per share ÷ EPS. It shows the price paid per ₹1 of earnings.", calc:"210 ÷ 14 = 15×." },
+      { q:"In the DuPont decomposition, ROE is expressed as:", options:["Gross margin × current ratio × D/E","Net margin × asset turnover × equity multiplier","ROA × interest coverage","Net margin × P/E × dividend yield"], correct:1,
+        explain:"DuPont: ROE = Net margin (profit÷sales) × Asset turnover (sales÷assets) × Equity multiplier (assets÷equity). The sales and asset terms cancel, leaving profit÷equity, and the three factors reveal whether returns come from margin, efficiency or leverage." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

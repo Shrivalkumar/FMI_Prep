@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FMI Exam Prep — Dashboard</title>
+<meta name="description" content="Interactive learning site for the Financial Markets & Instruments exam: lessons, worked examples, calculators, quizzes and a mock test.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <a class="brand" href="index.html">
+      <span class="logo">FMI</span>
+      <span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span>
+    </a>
+    <div class="nav-group">
+      <h4>Overview</h4>
+      <a class="nav-link" href="index.html"><span class="ix">⌂</span> Dashboard</a>
+    </div>
+    <div class="nav-group">
+      <h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lessons/lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lessons/lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lessons/lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lessons/lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lessons/lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lessons/lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lessons/lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lessons/lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lessons/lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lessons/lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lessons/lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group">
+      <h4>Exam Prep</h4>
+      <a class="nav-link" href="formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group">
+      <h4>Theme</h4>
+      <a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a>
+    </div>
+  </aside>
+
+  <div class="content">
+    <!-- mobile top bar -->
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="index.html"><span class="logo">FMI</span><b>FMI Exam Prep</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Master Financial Markets &amp; Instruments</h1>
+        <p>Eleven taught lessons built straight from your class slides and notes — with worked examples, live calculators, end-of-lesson quizzes, a full formula sheet and a timed mock test. Everything here teaches from first principles so you can solve the numericals, not just recognise them.</p>
+        <div class="stats">
+          <div class="stat"><b id="statLessons">11</b><span>Lessons</span></div>
+          <div class="stat"><b id="statDone">0</b><span>Completed</span></div>
+          <div class="stat"><b id="statPct">0%</b><span>Progress</span></div>
+          <div class="stat"><b id="statMock">—</b><span>Best mock</span></div>
+        </div>
+        <div style="margin-top:16px" class="mini-bar" aria-hidden="true"><i id="heroBar" style="width:0;background:#ffffff"></i></div>
+      </section>
+
+      <!-- Search -->
+      <section class="card" style="margin-bottom:22px">
+        <div class="search-box">
+          <span class="si">🔎</span>
+          <input id="search" type="search" placeholder="Search concepts, formulas or definitions… (e.g. “WACC”, “break-even”, “CAPM”)" autocomplete="off">
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </section>
+
+      <!-- Quick links -->
+      <div class="grid cols-3" style="margin-bottom:26px">
+        <a class="lesson-card" href="formula-sheet.html">
+          <div class="lc-top"><span class="lc-num">ƒ</span><span class="lc-badge">Reference</span></div>
+          <h3>Formula Sheet</h3>
+          <p>Every formula from the syllabus, chapter-wise, searchable and printer-friendly.</p>
+        </a>
+        <a class="lesson-card" href="practice.html">
+          <div class="lc-top"><span class="lc-num">✎</span><span class="lc-badge">Drill</span></div>
+          <h3>Practice Problems</h3>
+          <p>Numerical problem bank + conceptual questions, with full step-by-step solutions.</p>
+        </a>
+        <a class="lesson-card" href="mock-test.html">
+          <div class="lc-top"><span class="lc-num">★</span><span class="lc-badge">Exam sim</span></div>
+          <h3>Mock Test</h3>
+          <p>35 mixed MCQs, optional timer, topic-wise score and revision advice.</p>
+        </a>
+      </div>
+
+      <h2 style="margin-top:8px">Your syllabus</h2>
+      <p class="muted" style="margin-top:0">Each lesson maps to specific class sessions. Work top to bottom — later lessons build on earlier ones.</p>
+      <div class="grid cols-2" id="lessonGrid"></div>
+
+      <div class="callout info" style="margin-top:26px">
+        <div class="ct-head">ℹ️ How your progress is saved</div>
+        <p>Lesson completion and best quiz / mock scores are stored in your browser (localStorage) on this device. Clearing site data resets them. <a href="javascript:void(0)" id="resetBtn">Reset my progress</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lesson metadata for the grid -->
+<script>
+  window.FMI_LESSONS = [
+    { id:"lesson-01", n:1,  t:"Accounting Foundations & the 3 Statements", d:"The accounting equation, core concepts, depreciation, and how the income statement, balance sheet and cash flow link.", src:"Sessions 1–2 · Speed Run" },
+    { id:"lesson-02", n:2,  t:"Financial Ratio Analysis", d:"Liquidity, efficiency, solvency, profitability, return and market ratios + DuPont, worked on Asian Paints.", src:"Sessions 3–4" },
+    { id:"lesson-03", n:3,  t:"Cost Concepts, Costing & CVP", d:"Cost classification, overhead absorption, marginal vs absorption costing, contribution and break-even analysis.", src:"Sessions 5–8" },
+    { id:"lesson-04", n:4,  t:"Time Value of Money", d:"Compounding, discounting, annuities, perpetuities, growing perpetuity and terminal value.", src:"Session 7 · Speed Run" },
+    { id:"lesson-05", n:5,  t:"Capital Budgeting", d:"NPV, IRR, payback, discounted payback and the profitability index under capital rationing.", src:"Session 8 · Speed Run" },
+    { id:"lesson-06", n:6,  t:"Cost of Capital — Cost of Equity", d:"Systematic vs unsystematic risk, CAPM, beta, alpha and the Dividend Growth Model.", src:"Session 9" },
+    { id:"lesson-07", n:7,  t:"Bonds, Stock Valuation & WACC", d:"Bond pricing, YTM, the dividend discount models and WACC with book vs market weights.", src:"Session 10" },
+    { id:"lesson-08", n:8,  t:"Valuation & Forecasting (FCF / DCF)", d:"Free cash flow, FCFF vs FCFE, DCF, terminal value, multiples and enterprise vs equity value.", src:"Sessions 11–12" },
+    { id:"lesson-09", n:9,  t:"Portfolio Theory & Market Efficiency", d:"Markowitz diversification, correlation, the efficient frontier, EMH and active vs passive investing.", src:"Session 13" },
+    { id:"lesson-10", n:10, t:"Derivatives — Foundations", d:"Options, futures, forwards, swaps, hedging vs speculation, payoffs and a Black-Scholes primer.", src:"Sessions 14–15" },
+    { id:"lesson-11", n:11, t:"Derivatives — Special Products & the 2008 Crisis", d:"Securitization, MBS, tranching, credit spreads, CDS, CDOs, the 2008 crisis and market-linked notes.", src:"Session 16" }
+  ];
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="js/progress.js" defer></script>
+<script src="js/calculators.js" defer></script>
+<script src="js/quiz.js" defer></script>
+<script src="js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  var P = window.Progress;
+  // Hero stats
+  var done = P.completedCount(), pct = P.overallPercent();
+  document.getElementById("statDone").textContent = done;
+  document.getElementById("statPct").textContent = pct + "%";
+  document.getElementById("heroBar").style.width = pct + "%";
+  var mock = P.getMock();
+  document.getElementById("statMock").textContent = mock ? mock.pct + "%" : "—";
+
+  // Lesson grid
+  var grid = document.getElementById("lessonGrid");
+  grid.innerHTML = window.FMI_LESSONS.map(function (l) {
+    var isDone = P.isDone(l.id);
+    var best = P.bestQuiz(l.id);
+    return '<a class="lesson-card ' + (isDone ? "done" : "") + '" href="lessons/' + l.id + '.html">' +
+      '<div class="lc-top"><span class="lc-num">' + l.n + '</span>' +
+      '<span class="lc-badge">' + (isDone ? "✓ Done" : (best != null ? "Quiz " + best + "%" : "Start")) + "</span></div>" +
+      "<h3>" + l.t + "</h3><p>" + l.d + "</p>" +
+      '<div class="lc-src">📄 ' + l.src + "</div></a>";
+  }).join("");
+
+  // Search
+  var inp = document.getElementById("search"), out = document.getElementById("searchResults");
+  function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c];});}
+  inp.addEventListener("input", function () {
+    var q = inp.value.trim();
+    if (!q) { out.innerHTML = ""; return; }
+    var results = window.FMISearch(q);
+    if (!results.length) { out.innerHTML = '<div class="muted" style="padding:6px 2px">No matches. Try “ratio”, “bond”, “NPV”, “risk”…</div>'; return; }
+    var re = new RegExp("(" + q.split(/\s+/).map(function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");}).join("|") + ")", "ig");
+    out.innerHTML = results.map(function (r) {
+      return '<a href="' + r.u + '"><div class="sr-t">' + esc(r.t).replace(re,"<mark>$1</mark>") + '</div><div class="sr-m">' + r.u + "</div></a>";
+    }).join("");
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    if (confirm("Reset all saved progress, quiz and mock scores on this device?")) { P.reset(); location.reload(); }
+  });
+});
+</script>
+</body>
+</html>
