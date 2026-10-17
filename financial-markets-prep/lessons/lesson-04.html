@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 — Time Value of Money</title>
+<meta name="description" content="Learn the time value of money from scratch: why money has time value, compounding and discounting, single and uneven cash flows, annuities, perpetuities, terminal value and the Rule of 72.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 4</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 4</span>
+        <span class="tag src">Session 7 · Speed Run</span>
+      </div>
+      <h1>Time Value of Money</h1>
+      <p class="lead">A rupee today is worth more than a rupee tomorrow. That one sentence sits underneath loans, EMIs, SIPs, bonds, share prices and every investment decision in finance. This lesson builds the whole idea from zero — compounding forward, discounting back, and the standard formulas for streams of cash.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="why">1. Why money has time value</h2>
+      <p>Imagine someone offers you <b>₹10,000 today</b> or <b>₹11,000 in one year</b>. Which is better? It depends on what you can do with money in the meantime. If a safe bank deposit pays 10% a year, then ₹10,000 today grows to exactly ₹11,000 in a year — you'd be <em>indifferent</em>. But if the phone you want rises 20% from ₹10,000 to ₹12,000, even investing your ₹10,000 leaves you short. That is the time value of money at work.</p>
+      <p>Four forces make money today more valuable than the same amount later:</p>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Present consumption</div><p>People simply prefer to enjoy goods and services <em>now</em> rather than wait. To make you postpone, you must be paid extra.</p></div>
+        <div class="callout key"><div class="ct-head">Investing</div><p>Money in hand can be put to work — a deposit, a business, shares — so it <em>grows</em>. Idle future money earns nothing until it arrives.</p></div>
+        <div class="callout key"><div class="ct-head">Inflation</div><p>Prices rise over time, so each future rupee buys <em>less</em>. ₹100 next year will not stretch as far as ₹100 today.</p></div>
+        <div class="callout key"><div class="ct-head">Opportunity cost</div><p>Every rupee locked up until later is a rupee you could have used elsewhere. The best alternative you give up is the cost of waiting.</p></div>
+      </div>
+
+      <h3>Simple vs compound interest</h3>
+      <p>Interest is the price of time. There are two ways it can grow:</p>
+      <ul>
+        <li><b>Simple interest</b> is earned only on the <em>original</em> amount (the principal). The rupee amount of interest is the same every year.</li>
+        <li><b>Compound interest</b> is earned on the principal <em>and</em> on interest already added — "interest on interest". This is what nearly all of finance assumes.</li>
+      </ul>
+      <p>Watch ₹100 grow at 10% a year both ways:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Year</th><th class="num">Simple interest value</th><th class="num">Compound value</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="num">₹110.00</td><td class="num">₹110.00</td></tr>
+          <tr><td>2</td><td class="num">₹120.00</td><td class="num">₹121.00</td></tr>
+          <tr><td>3</td><td class="num">₹130.00</td><td class="num">₹133.10</td></tr>
+          <tr><td>5</td><td class="num">₹150.00</td><td class="num">₹161.05</td></tr>
+        </tbody>
+      </table></div>
+      <p>Over 5 years, ₹100 at 10% earns <b>₹50 simple</b> but <b>₹61.05 compound</b>. The gap widens every year because compound interest keeps piling interest on top of earlier interest. The longer the horizon and the higher the rate, the more dramatic the difference.</p>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — the symbols <span class="tag src">Session 7 · Speed Run</span></div><p><b>PV</b> = value today · <b>FV</b> = value at a future date · <b>CF</b> = a cash flow at a point in time · <b>r</b> = the interest, discount or required rate <em>per period</em> · <b>n</b> = number of periods · <b>A</b> (or PMT) = an equal periodic payment · <b>g</b> = constant growth rate of cash flows. Get these straight and every formula below reads itself.</p></div>
+
+      <h2 id="pvfv">2. Compounding &amp; discounting a single cash flow</h2>
+      <p>The whole of TVM rests on one relationship read in two directions. <b>Compounding</b> moves a value <em>forward</em> in time; <b>discounting</b> moves it <em>backward</em>.</p>
+      <div class="formula-block"><div class="lbl">Compounding — PV to FV (forward)</div><div class="formula">$$\text{FV} = \text{PV}\,(1+r)^{n}$$</div></div>
+      <div class="formula-block"><div class="lbl">Discounting — FV to PV (backward)</div><div class="formula">$$\text{PV} = \dfrac{\text{FV}}{(1+r)^{n}}$$</div></div>
+      <dl class="vars">
+        <dt>PV</dt><dd>present value — the amount today</dd>
+        <dt>FV</dt><dd>future value — the amount after <em>n</em> periods</dd>
+        <dt>r</dt><dd>interest / discount rate per period (as a decimal)</dd>
+        <dt>n</dt><dd>number of periods</dd>
+      </dl>
+      <p>The factor $(1+r)^{n}$ is the <b>compounding factor</b>; its reciprocal $1/(1+r)^{n}$ is the <b>discount factor</b>. They are mirror images: compounding ₹10,000 at 10% for 3 years gives ₹13,310, and discounting that ₹13,310 back at 10% for 3 years returns exactly ₹10,000.</p>
+      <div class="formula-block raw"><div class="lbl">Reading the timeline both ways</div>Year 0: ₹10,000 &nbsp;—×1.10→&nbsp; Year 1: ₹11,000 &nbsp;—×1.10→&nbsp; Year 2: ₹12,100 &nbsp;—×1.10→&nbsp; Year 3: ₹13,310 &nbsp; (÷1.10 each step going back)</div>
+
+      <p>Experiment with the calculator below — change the amount, rate and years and watch the future and present values move together.</p>
+      <div data-calc="pvfv"></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Patel Industries' replacement fund (8%) <span class="chev">›</span></summary>
+        <div class="body">
+          <p>Patel Industries will need <b>₹50,00,000 in 5 years</b> to replace a plant. It can earn <b>8%</b> a year. Three questions, one relationship.</p>
+          <div class="step"><span class="sh">Formula</span> FV = PV(1+r)ⁿ for compounding; PV = FV ÷ (1+r)ⁿ for discounting.</div>
+          <div class="step"><span class="sh">Given</span> r = 8% = 0.08, n = 5, so (1.08)⁵ = 1.469328.</div>
+          <div class="step"><span class="sh">Compounding</span> ₹10,00,000 invested today → 10,00,000 × 1.469328 = <b>₹14,69,328</b>.</div>
+          <div class="step"><span class="sh">Discounting</span> lump sum needed today for ₹50L → 50,00,000 ÷ 1.469328 = <b>₹34,02,916</b>.</div>
+          <div class="ans">The firm can fully fund the ₹50,00,000 plant with just <b>₹34,02,916</b> set aside today at 8%.</div>
+          <p><b>Interpretation:</b> compounding and discounting are the same relationship read in opposite directions. (We'll see in the annuity section that equal yearly deposits of about ₹8,52,282 reach the same ₹50L goal.)</p>
+        </div>
+      </details>
+
+      <h3>A higher rate means a lower present value</h3>
+      <p>Discounting divides by $(1+r)^{n}$, so a bigger <em>r</em> makes the denominator bigger and the present value <em>smaller</em>. Future money is worth less when you could earn more by waiting.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Future amount</th><th class="num">Rate</th><th>Working</th><th class="num">Present value</th></tr></thead>
+        <tbody>
+          <tr><td>₹50,000 due in 5 years</td><td class="num">8%</td><td>50,000 ÷ 1.08⁵</td><td class="num">₹34,029</td></tr>
+          <tr><td>₹9,000 due in 5 years</td><td class="num">16.5%</td><td>9,000 ÷ 1.165⁵</td><td class="num">₹4,193.85</td></tr>
+        </tbody>
+      </table></div>
+      <p>At 16.5% the ₹9,000 is worth <em>less than half</em> its face value today. Going the other way, a credit card at just 2% <em>a month</em> turns ₹100 into ₹100 × 1.02¹² = <b>₹126.82</b> in a year — an effective annual rate of 26.82%, far above the "24%" headline.</p>
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — rate and period must match</div><p>A "12% per year" rate is <b>not</b> 12% per month. For monthly compounding use the monthly rate (12% ÷ 12 = 1% a month) and count periods in months (n = years × 12). Mixing an annual rate with monthly periods — or rounding factors like 1.08⁵ to two decimals too early — throws answers off by hundreds or thousands of rupees. Keep at least four or five decimals in intermediate factors and round only the final rupee figure.</p></div>
+
+      <p>Try the compounding calculator to see interest-on-interest build up year by year:</p>
+      <div data-calc="compound"></div>
+
+      <div class="try" data-answer="282316" data-tol="2%" data-ok="Correct — you compounded the lump sum forward.">
+        <div class="q">✎ <b>Try it — future value of a lump sum.</b> You invest <b>₹2,00,000</b> today at <b>9%</b> a year for <b>4 years</b>. What is the future value (₹)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 282316"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>FV = PV(1+r)ⁿ = 2,00,000 × (1.09)⁴. Now (1.09)⁴ = 1.411582, so FV = 2,00,000 × 1.411582 = <b>₹2,82,316</b>. The ₹82,316 of growth is pure compound interest.</p>
+        </div>
+      </div>
+
+      <h2 id="uneven">3. Uneven cash flows</h2>
+      <p>Real projects rarely pay the same amount each year. The method is simple: <b>discount each cash flow by its own year, then add them up.</b></p>
+      <div class="formula-block"><div class="lbl">Present value of a stream</div><div class="formula">$$\text{PV} = \sum_{t=1}^{n}\dfrac{CF_{t}}{(1+r)^{t}}$$</div></div>
+      <dl class="vars">
+        <dt>CF<sub>t</sub></dt><dd>the cash flow received at the end of period <em>t</em></dd>
+        <dt>r</dt><dd>discount rate per period</dd>
+        <dt>t</dt><dd>the period number (1, 2, 3, …)</dd>
+      </dl>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> A machine's cash flows at 10% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Year (t)</th><th class="num">Cash flow</th><th>Discount factor 1 ÷ 1.10ᵗ</th><th class="num">Present value</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="num">₹5,000</td><td>÷ 1.1000</td><td class="num">₹4,545</td></tr>
+              <tr><td>2</td><td class="num">₹6,000</td><td>÷ 1.2100</td><td class="num">₹4,959</td></tr>
+              <tr><td>3</td><td class="num">₹7,000</td><td>÷ 1.3310</td><td class="num">₹5,260</td></tr>
+              <tr><td>4</td><td class="num">₹8,000</td><td>÷ 1.4641</td><td class="num">₹5,464</td></tr>
+              <tr><td class="tot">Total PV</td><td class="num"></td><td></td><td class="num tot">₹20,228</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">The stream of ₹5,000 → ₹8,000 over four years is worth <b>₹20,228</b> today at 10%.</div>
+          <p><b>Interpretation:</b> later rupees count for less — the ₹8,000 in year 4 is worth only ₹5,464 now, while the ₹5,000 in year 1 keeps ₹4,545 of its value. Pay less than ₹20,228 for this machine and it adds value.</p>
+        </div>
+      </details>
+      <div class="callout info"><div class="ct-head">ℹ️ Same idea, a café outlet <span class="tag src">Session 7 · Speed Run</span></div><p>A new café outlet at 12% is expected to return ₹3,00,000, ₹4,00,000 and ₹5,00,000 in years 1–3. Discounting each: ₹2,67,857 + ₹3,18,878 + ₹3,55,890 = <b>₹9,42,625</b>. Any price below ₹9,42,625 makes the outlet worthwhile. This "discount each flow, then sum" method is exactly how NPV works in the next lesson.</p></div>
+
+      <h2 id="annuity">4. Annuities — equal cash flows for a fixed period</h2>
+      <p>An <b>annuity</b> is a stream of <em>equal</em> payments for a fixed number of periods — EMIs, bond coupons, SIP instalments, lease rentals. Because every payment is the same, we don't have to discount them one by one; there's a shortcut formula.</p>
+      <div class="formula-block"><div class="lbl">Present value of an ordinary annuity</div><div class="formula">$$\text{PV} = A\cdot\dfrac{1-(1+r)^{-n}}{r}$$</div></div>
+      <div class="formula-block"><div class="lbl">Future value of an ordinary annuity</div><div class="formula">$$\text{FV} = A\cdot\dfrac{(1+r)^{n}-1}{r}$$</div></div>
+      <dl class="vars">
+        <dt>A</dt><dd>the equal payment made each period (also written PMT)</dd>
+        <dt>r</dt><dd>interest rate per period</dd>
+        <dt>n</dt><dd>number of payments</dd>
+      </dl>
+      <p>The fraction in each formula is the <b>annuity factor</b>. The PV formula is used to price loans, EMIs and leases; the FV formula values savings plans and SIPs.</p>
+
+      <h3>Ordinary annuity vs annuity due</h3>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Ordinary annuity</div><p>Payments at the <em>end</em> of each period — EMIs, bond coupons. This is the default for the formulas above.</p></div>
+        <div class="callout key"><div class="ct-head">Annuity due</div><p>Payments at the <em>start</em> of each period — house rent, insurance premiums. Each payment sits one period closer, so it is worth <b>(1+r) times more</b>: multiply the ordinary answer by (1+r).</p></div>
+      </div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> SIP, lease, and an annuity due <span class="chev">›</span></summary>
+        <div class="body">
+          <p><b>(a) A ₹10,000-a-year plan for 5 years at 10% (ordinary).</b></p>
+          <div class="step"><span class="sh">PV</span> = 10,000 × [1 − 1.10⁻⁵] ÷ 0.10 = 10,000 × 3.7908 = <b>₹37,908</b>.</div>
+          <div class="step"><span class="sh">FV (SIP)</span> = 10,000 × [1.10⁵ − 1] ÷ 0.10 = 10,000 × 6.1051 = <b>₹61,051</b>.</div>
+          <p><b>(b) A lease of ₹2,00,000 a year for 4 years at 9%, paid at year-end.</b></p>
+          <div class="step"><span class="sh">PV</span> = 2,00,000 × [1 − 1.09⁻⁴] ÷ 0.09 = 2,00,000 × 3.2397 = <b>₹6,47,944</b>.</div>
+          <div class="step"><span class="sh">If paid at the start (annuity due)</span> = 6,47,944 × 1.09 = <b>₹7,06,259</b>.</div>
+          <div class="ans">Paying lease rentals in advance costs ₹58,315 more in present-value terms — the price of paying a year sooner.</div>
+          <p><b>EMI link:</b> rearranging the PV formula gives the EMI on a loan: A = PV × r ÷ [1 − (1+r)⁻ⁿ]. Patel's ₹50L goal (section 2) can also be met by equal <em>year-end</em> deposits: A = 50,00,000 × 0.08 ÷ (1.08⁵ − 1) = <b>₹8,52,282 a year</b>.</p>
+        </div>
+      </details>
+
+      <p>Use the annuity calculator to flip between PV and FV and between ordinary and due:</p>
+      <div data-calc="annuity"></div>
+
+      <div class="try" data-answer="65329" data-tol="2%" data-ok="Spot on — you used the ordinary-annuity PV factor.">
+        <div class="q">✎ <b>Try it — present value of an annuity.</b> A lease pays <b>₹15,000 a year for 6 years</b>, discounted at <b>10%</b>, with payments at year-end. What is its present value (₹)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 65329"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>PV = A × [1 − (1+r)⁻ⁿ] ÷ r. The factor at 10% for 6 years is [1 − 1.10⁻⁶] ÷ 0.10 = [1 − 0.564474] ÷ 0.10 = 4.35526. So PV = 15,000 × 4.35526 = <b>₹65,329</b>. (If the rent were paid in advance, multiply by 1.10 → ₹71,862.)</p>
+        </div>
+      </div>
+
+      <h2 id="perpetuity">5. Perpetuity — cash flows forever</h2>
+      <p>A <b>perpetuity</b> is an annuity with no end date — equal payments continuing forever. Preference shares, some endowments and consols (never-maturing bonds) behave this way. When <em>n</em> goes to infinity, the annuity formula collapses to something beautifully simple:</p>
+      <div class="formula-block"><div class="lbl">Level perpetuity</div><div class="formula">$$\text{PV} = \dfrac{C}{r}$$</div></div>
+      <div class="formula-block"><div class="lbl">Growing perpetuity (needs r &gt; g)</div><div class="formula">$$\text{PV} = \dfrac{C_{1}}{r-g}$$</div></div>
+      <dl class="vars">
+        <dt>C</dt><dd>the constant cash flow each period (level perpetuity)</dd>
+        <dt>C<sub>1</sub></dt><dd>the <em>next</em> (year-1) cash flow (growing perpetuity)</dd>
+        <dt>r</dt><dd>required rate of return</dd>
+        <dt>g</dt><dd>constant growth rate of the cash flow; must be less than r</dd>
+      </dl>
+      <div class="callout key"><div class="ct-head">Why r &gt; g is essential</div><p>If growth <em>g</em> met or beat the discount rate <em>r</em>, the denominator (r − g) would be zero or negative and the present value would blow up to infinity (or turn negative — a nonsense answer). A perpetuity can only be valued when payments are discounted faster than they grow.</p></div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Preference shares &amp; endowments <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Type</th><th>Example</th><th>Working</th><th class="num">PV</th></tr></thead>
+            <tbody>
+              <tr><td>Level</td><td>Preference share pays ₹500 a year, r = 10%</td><td>500 ÷ 0.10</td><td class="num">₹5,000</td></tr>
+              <tr><td>Level</td><td>Endowment pays ₹6,00,000 a year, r = 8%</td><td>6,00,000 ÷ 0.08</td><td class="num">₹75,00,000</td></tr>
+              <tr><td>Growing</td><td>First payment ₹500, g = 4%, r = 10%</td><td>500 ÷ (0.10 − 0.04)</td><td class="num">₹8,333</td></tr>
+              <tr><td>Growing</td><td>First payment ₹6,00,000, g = 5%, r = 10%</td><td>6,00,000 ÷ (0.10 − 0.05)</td><td class="num">₹1,20,00,000</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Growth adds enormous value: the same ₹6,00,000 is worth ₹75 lakh as a level perpetuity but <b>₹1.2 crore</b> when it grows at 5%.</div>
+          <p><b>Interpretation:</b> a level perpetuity just divides the cash flow by the rate. Adding even a small growth rate shrinks the denominator and multiplies the value — which is why the "r − g" term is the heart of the growing-perpetuity (and terminal-value) idea.</p>
+        </div>
+      </details>
+
+      <p>Experiment with both perpetuity types below — notice how the value explodes as g approaches r:</p>
+      <div data-calc="perpetuity"></div>
+
+      <h2 id="terminal">6. Terminal value</h2>
+      <p>No one forecasts cash flows forever. Instead we project them for a few years, then capture <em>everything beyond</em> the forecast with a single <b>terminal value</b> — a growing perpetuity sitting at the end of the forecast. You compute it in two steps: value the perpetuity at year <em>n</em>, then discount that lump sum back to today.</p>
+      <div class="formula-block"><div class="lbl">Step 1 — terminal value at year n</div><div class="formula">$$TV_{n} = \dfrac{CF_{n}\,(1+g)}{r-g}$$</div></div>
+      <div class="formula-block"><div class="lbl">Step 2 — discount it back to today</div><div class="formula">$$\text{PV of }TV = \dfrac{TV_{n}}{(1+r)^{n}}$$</div></div>
+      <dl class="vars">
+        <dt>CF<sub>n</sub></dt><dd>the cash flow in the final forecast year</dd>
+        <dt>g</dt><dd>the perpetual growth rate after year <em>n</em></dd>
+        <dt>r</dt><dd>discount rate; <em>n</em> is the final forecast year</dd>
+      </dl>
+      <p>Note that $CF_{n}(1+g)$ is just next year's cash flow — the first payment of the perpetuity — so step 1 is the growing-perpetuity formula with $C_{1}=CF_{n}(1+g)$.</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Terminal value, two cases <span class="chev">›</span></summary>
+        <div class="body">
+          <p><b>Case 1 — year-5 cash flow ₹2,00,000, g = 3%, r = 12%.</b></p>
+          <div class="step"><span class="sh">Step 1</span> TV₅ = 2,00,000 × 1.03 ÷ (0.12 − 0.03) = 2,06,000 ÷ 0.09 = <b>₹22,88,889</b>.</div>
+          <div class="step"><span class="sh">Step 2</span> PV = 22,88,889 ÷ 1.12⁵ = 22,88,889 ÷ 1.762342 = <b>₹12,98,590</b>.</div>
+          <p><b>Case 2 — year-5 cash flow ₹50,00,000, g = 4%, r = 11%.</b></p>
+          <div class="step"><span class="sh">Step 1</span> TV₅ = 50,00,000 × 1.04 ÷ (0.11 − 0.04) = 52,00,000 ÷ 0.07 = <b>₹7,42,85,714</b>.</div>
+          <div class="step"><span class="sh">Step 2</span> PV = 7,42,85,714 ÷ 1.11⁵ = 7,42,85,714 ÷ 1.685058 = <b>₹4,40,84,956</b>.</div>
+          <div class="ans">The terminal value is a <em>huge</em> share of a project's total worth — here ₹13L and ₹4.4 crore respectively, in today's money.</div>
+          <p><b>Interpretation:</b> because the terminal value dominates a valuation, small changes in <em>g</em> or <em>r</em> swing the answer a lot. And never forget step 2 — the perpetuity is worth that much <em>at year n</em>, not today, so it must be discounted back.</p>
+        </div>
+      </details>
+
+      <h2 id="rule72">7. The Rule of 72</h2>
+      <p>A handy mental shortcut: to find roughly how many years money takes to <b>double</b> at a given compound rate, divide 72 by the rate (in percent).</p>
+      <div class="formula-block"><div class="lbl">Rule of 72</div><div class="formula">$$\text{Years to double} \approx \dfrac{72}{r\,(\%)}$$</div></div>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th class="num">Rate</th><th>Working</th><th class="num">≈ Years to double</th></tr></thead>
+        <tbody>
+          <tr><td class="num">6%</td><td>72 ÷ 6</td><td class="num">12 years</td></tr>
+          <tr><td class="num">8%</td><td>72 ÷ 8</td><td class="num">9 years</td></tr>
+          <tr><td class="num">12%</td><td>72 ÷ 12</td><td class="num">6 years</td></tr>
+        </tbody>
+      </table></div>
+      <p>At 8%, money roughly doubles in about <b>9 years</b>. It's an approximation (it works best for rates between about 4% and 15%), but it's quick, needs no calculator, and is a favourite exam question.</p>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Four quick questions at 8% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Question (r = 8%)</th><th class="num">Answer</th></tr></thead>
+            <tbody>
+              <tr><td>₹1,00,000 invested for 5 years — FV</td><td class="num">₹1,46,933</td></tr>
+              <tr><td>Value today of ₹1,00,000 due in 5 years — PV</td><td class="num">₹68,058</td></tr>
+              <tr><td>PV of ₹10,000 a year for 5 years (annuity)</td><td class="num">₹39,927</td></tr>
+              <tr><td>FV of a ₹10,000 yearly SIP after 5 years</td><td class="num">₹58,666</td></tr>
+            </tbody>
+          </table></div>
+          <p><b>Perpetuity &amp; a choice:</b> ₹10,000 forever at 8% is worth ₹10,000 ÷ 0.08 = ₹1,25,000 today. And ₹1,00,000 now vs ₹1,20,000 in 3 years? PV of ₹1.2L = 1,20,000 ÷ 1.08³ = ₹95,260 — less than ₹1,00,000, so take the money now.</p>
+        </div>
+      </details>
+
+      <h2 id="summary">8. Summary</h2>
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>Money has time value because of present-consumption preference, investing, inflation and opportunity cost. Compound interest beats simple because interest earns interest.</li>
+          <li>Compound forward: FV = PV(1+r)ⁿ. Discount back: PV = FV ÷ (1+r)ⁿ. They are the same relationship reversed. A <em>higher r means a lower PV.</em></li>
+          <li>Uneven stream: PV = Σ CF<sub>t</sub> ÷ (1+r)ᵗ — discount each flow by its own year and add.</li>
+          <li>Annuity (equal flows): PV = A·[1 − (1+r)⁻ⁿ] ÷ r; FV = A·[(1+r)ⁿ − 1] ÷ r. An annuity due is worth (1+r)× an ordinary one.</li>
+          <li>Perpetuity: level PV = C ÷ r; growing PV = C₁ ÷ (r − g), valid only when r &gt; g.</li>
+          <li>Terminal value: TV<sub>n</sub> = CF<sub>n</sub>(1+g) ÷ (r − g), then discount back by (1+r)ⁿ. It usually dominates a valuation.</li>
+          <li>Rule of 72: years to double ≈ 72 ÷ rate%. Always match the rate to the period and round only at the end.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">9. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-03.html"><span>Previous lesson</span><b>‹ Costing &amp; CVP</b></a>
+        <a class="next" href="lesson-05.html"><span>Next lesson</span><b>Capital Budgeting ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-04">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-04",
+    title: "Lesson 4 Quiz — Time Value of Money",
+    questions: [
+      { q:"Why is a rupee today worth more than a rupee a year from now?", options:["Because banks charge a fee to hold future money","Because of present-consumption preference, investing, inflation and opportunity cost","Only because of inflation","Future rupees are legally worth less"], correct:1,
+        explain:"All four forces push in the same direction: people prefer to consume now, money today can be invested to grow, inflation erodes future purchasing power, and holding money till later gives up its best alternative use." },
+      { q:"₹50,000 is invested today at 8% compounded annually for 3 years. The future value is about:", options:["₹62,000","₹62,986","₹61,500","₹64,000"], correct:1,
+        explain:"Use FV = PV(1+r)ⁿ with the full compounding factor, not a rounded one.", calc:"(1.08)³ = 1.259712; FV = 50,000 × 1.259712 = ₹62,986." },
+      { q:"The present value of ₹1,00,000 receivable in 5 years, discounted at 10%, is about:", options:["₹50,000","₹62,092","₹68,301","₹90,909"], correct:1,
+        explain:"Discounting divides by (1+r)ⁿ; a higher rate gives a lower PV.", calc:"(1.10)⁵ = 1.61051; PV = 1,00,000 ÷ 1.61051 = ₹62,092." },
+      { q:"The present value of an ordinary annuity of ₹10,000 a year for 5 years at 10% is:", options:["₹50,000","₹37,908","₹45,000","₹61,051"], correct:1,
+        explain:"Use PV = A·[1 − (1+r)⁻ⁿ] ÷ r.", calc:"Factor = [1 − 1.10⁻⁵] ÷ 0.10 = [1 − 0.620921] ÷ 0.10 = 3.79079; PV = 10,000 × 3.79079 = ₹37,908." },
+      { q:"You invest ₹10,000 at the end of each year for 5 years at 10% (a SIP). The future value is:", options:["₹50,000","₹55,000","₹61,051","₹67,156"], correct:2,
+        explain:"Use the FV of an ordinary annuity: FV = A·[(1+r)ⁿ − 1] ÷ r.", calc:"Factor = [1.10⁵ − 1] ÷ 0.10 = [1.61051 − 1] ÷ 0.10 = 6.1051; FV = 10,000 × 6.1051 = ₹61,051." },
+      { q:"A preference share pays ₹500 a year forever. At a 10% required return, its value is:", options:["₹5,000","₹500","₹50,000","₹5,500"], correct:0,
+        explain:"A level perpetuity is just the cash flow divided by the rate: PV = C ÷ r.", calc:"500 ÷ 0.10 = ₹5,000." },
+      { q:"A growing perpetuity pays ₹600 next year and grows 5% a year forever; the required return is 10%. Its value today is:", options:["₹6,000","₹12,000","₹4,000","₹60,000"], correct:1,
+        explain:"Use PV = C₁ ÷ (r − g), which is valid only because r > g.", calc:"600 ÷ (0.10 − 0.05) = 600 ÷ 0.05 = ₹12,000." },
+      { q:"Using the Rule of 72, money invested at 6% a year roughly doubles in about:", options:["6 years","9 years","12 years","18 years"], correct:2,
+        explain:"The Rule of 72 estimates the doubling time as 72 divided by the rate in percent.", calc:"72 ÷ 6 = 12 years." },
+      { q:"Over a long horizon at the same positive rate, compound interest versus simple interest:", options:["Earns exactly the same total","Earns less because of inflation","Earns more because interest itself earns interest","Earns more only in the first year"], correct:2,
+        explain:"Simple interest is earned only on the original principal, while compound interest is earned on principal plus accumulated interest — so the compound total pulls ahead and the gap widens each year (₹100 at 10% for 5 years: ₹150 simple vs ₹161.05 compound)." },
+      { q:"A project's year-3 cash flow is ₹1,00,000, expected to grow 4% a year forever; the discount rate is 12%. The terminal value AT year 3 is:", options:["₹13,00,000","₹8,33,333","₹12,50,000","₹1,04,000"], correct:0,
+        explain:"Terminal value is next year's cash flow over (r − g): TVₙ = CFₙ(1+g) ÷ (r − g). (You would still discount this back to today by 1.12³ to get its present value.)", calc:"1,00,000 × 1.04 ÷ (0.12 − 0.04) = 1,04,000 ÷ 0.08 = ₹13,00,000." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

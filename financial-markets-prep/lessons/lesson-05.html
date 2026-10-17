@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 — Capital Budgeting</title>
+<meta name="description" content="Learn capital budgeting from scratch: the appraisal process, NPV, IRR, the NPV-vs-IRR conflict, payback and discounted payback, and the profitability index under capital rationing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 5</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 5</span>
+        <span class="tag src">Session 8 · Speed Run</span>
+      </div>
+      <h1>Capital Budgeting</h1>
+      <p class="lead">Should the firm spend ₹80 lakh on a robotic production line? Build a new solar plant or just retrofit the lights? <b>Capital budgeting</b> is the toolkit for answering exactly these "big, long-term spend" questions. It takes everything you learned about the time value of money and turns it into a clear accept-or-reject decision.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="process">1. What capital budgeting is &amp; the appraisal process</h2>
+      <p><b>Capital budgeting</b> (also called investment appraisal) is how a business decides which <em>long-term</em> projects to invest in — a new factory, a machine, a product line, an acquisition. These decisions share three features that make them special:</p>
+      <ul>
+        <li><b>Large</b> — they tie up a lot of money.</li>
+        <li><b>Long-lived</b> — the cash comes back over several years.</li>
+        <li><b>Hard to reverse</b> — once the machine is bought, you can't easily undo it.</li>
+      </ul>
+      <p>Because the money goes out <em>now</em> but comes back <em>over future years</em>, we cannot just add up the rupees. A ₹25 lakh inflow in year 5 is worth far less than ₹25 lakh today. So every good technique <b>discounts</b> future cash flows back to today. The process runs in five steps:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Step</th><th>What happens</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>1. Identify</td><td>Spot an investment opportunity</td><td>A chance to automate a production line</td></tr>
+          <tr><td>2. Estimate cash flows</td><td>Forecast the initial outlay and the yearly inflows</td><td>Invest ₹80L now; ₹25L a year for 5 years</td></tr>
+          <tr><td>3. Appraise</td><td>Apply NPV, IRR, payback, PI</td><td>Discount the inflows at the cost of capital</td></tr>
+          <tr><td>4. Accept / reject</td><td>Apply the decision rule</td><td>NPV &gt; 0 and IRR &gt; cost of capital → accept</td></tr>
+          <tr><td>5. Monitor</td><td>Track the project after it starts</td><td>Check actual cash flows vs the forecast</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ The cost of capital <span class="tag src">Session 8 · Speed Run</span></div><p>The <b>cost of capital</b> (also "required return" or "hurdle rate") is the minimum annual return the project must earn to be worthwhile — it reflects what the firm pays for its funds and the risk of the project. We use it as the <b>discount rate</b> <code>r</code> throughout this lesson. In the Bharat AutoParts example it is 12%.</p></div>
+      <p>We will meet four appraisal tools. <b>NPV</b> and <b>IRR</b> discount cash flows (they respect the time value of money); <b>payback</b> is a quick rule of thumb; the <b>profitability index</b> ranks projects when money is scarce.</p>
+
+      <h2 id="npv">2. Net Present Value (NPV)</h2>
+      <p>NPV is the single most important tool in capital budgeting. The idea is simple: bring <em>every</em> future cash inflow back to today's value, add them up, and subtract what you paid to start the project.</p>
+      <div class="formula-block"><div class="lbl">Net Present Value</div><div class="formula">$$\text{NPV} = \sum_{t=1}^{n} \dfrac{CF_t}{(1+r)^t} \; - \; \text{Initial investment}$$</div></div>
+      <p>Here <code>CF<sub>t</sub></code> is the cash flow in year <code>t</code>, <code>r</code> is the cost of capital, and <code>n</code> is the project's life. NPV measures the <b>extra value in today's rupees</b> the project creates beyond the required return.</p>
+      <div class="callout key"><div class="ct-head">The NPV decision rule</div><p><b>NPV &gt; 0 → accept</b> (the project adds value). <b>NPV = 0 → indifferent</b> (it exactly meets the required return). <b>NPV &lt; 0 → reject</b> (it destroys value). For <em>independent</em> projects, NPVs simply add up.</p></div>
+
+      <h3>The annuity shortcut</h3>
+      <p>When the yearly inflow is the <em>same</em> every year (an annuity), you don't need to discount each year separately. Multiply the yearly cash flow by the <b>annuity factor</b>:</p>
+      <div class="formula-block"><div class="lbl">Annuity (present-value) factor for r and n years</div><div class="formula">$$AF = \dfrac{1-(1+r)^{-n}}{r}$$</div></div>
+      <p>Then <code>PV of inflows = yearly cash flow × AF</code>. This is exactly what we use for Bharat AutoParts.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Bharat AutoParts robotic line <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> NPV = (yearly cash flow × annuity factor) − initial investment.</div>
+          <div class="step"><span class="sh">Given</span> Invest ₹80,00,000 today; cash inflow ₹25,00,000 a year for 5 years; cost of capital 12%.</div>
+          <div class="step"><span class="sh">Working — annuity factor</span> $AF = \dfrac{1-1.12^{-5}}{0.12} = 3.6048$.</div>
+          <div class="step"><span class="sh">Working — PV of inflows</span> ₹25,00,000 × 3.6048 = ₹90,11,938 ≈ ₹90.12L.</div>
+          <div class="step"><span class="sh">Working — NPV</span> ₹90,11,938 − ₹80,00,000 = +₹10,11,938.</div>
+          <div class="ans">NPV = +₹10.12 lakh. It is positive, so <b>accept</b> the robotic line.</div>
+          <div class="step"><span class="sh">Interpretation</span> After earning the full 12% the firm demands, the project still throws off about ₹10.12 lakh of <em>extra</em> value in today's rupees. That surplus is what makes it worth doing.</div>
+        </div>
+      </details>
+
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — never forget the minus sign</div><p>The PV of inflows (₹90.12L) is <em>not</em> the NPV. You must subtract the initial investment (₹80L). Forgetting to subtract the outlay is the most common NPV mistake in exams.</p></div>
+
+      <div class="try" data-answer="6.86" data-tol="2%" data-ok="Correct — you applied the annuity factor and subtracted the outlay.">
+        <div class="q">✎ <b>Try it — compute an NPV.</b> A packaging machine costs <b>₹50 lakh</b> and returns <b>₹15 lakh a year for 5 years</b>. The cost of capital is <b>10%</b> (annuity factor for 10%, 5 years = <b>3.7908</b>). What is the NPV, in ₹ lakh?</div>
+        <div class="row"><input type="text" placeholder="₹ lakh"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>PV of inflows = 15 × 3.7908 = ₹56.86L. NPV = 56.86 − 50 = <b>+₹6.86L</b>. Positive, so accept the machine. (If you got ₹56.86L, you forgot to subtract the ₹50L outlay.)</p>
+        </div>
+      </div>
+
+      <div class="callout info"><div class="ct-head">ℹ️ Try the real numbers in the calculator</div><p>The NPV/IRR calculator below is live. Enter the <b>Bharat AutoParts</b> figures — initial investment ₹80,00,000, then ₹25,00,000 in each of years 1–5, with a discount rate of 12% — and confirm you get NPV ≈ +₹10.12 lakh and IRR ≈ 17%.</p></div>
+
+      <div data-calc="npv"></div>
+
+      <h2 id="irr">3. Internal Rate of Return (IRR)</h2>
+      <p>The <b>IRR</b> is the discount rate at which a project's NPV becomes exactly <b>zero</b>. In other words, it is the project's own built-in annual rate of return.</p>
+      <div class="formula-block"><div class="lbl">IRR is the rate r that solves…</div><div class="formula">$$\sum_{t=1}^{n} \dfrac{CF_t}{(1+r)^t} - \text{Initial investment} = 0$$</div></div>
+      <div class="callout key"><div class="ct-head">The IRR decision rule</div><p><b>Accept if IRR &gt; cost of capital</b> (the project earns more than the firm demands). <b>Reject if IRR &lt; cost of capital.</b> At IRR = cost of capital, NPV = 0.</p></div>
+      <p>There is no neat formula to solve for IRR directly. You find it by <b>trial and error</b>: try a rate, compute NPV, and adjust. When NPV is positive, try a higher rate; when NPV is negative, try a lower one. Then <b>interpolate</b> between the two closest rates. (A spreadsheet's <code>IRR()</code> function does this for you.)</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Bharat AutoParts — finding the IRR by interpolation <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> Invest ₹80L; ₹25L a year for 5 years. We already know NPV at 12% is +₹10.12L (positive), so the IRR must be higher than 12%.</div>
+          <div class="step"><span class="sh">Working — trial rates</span> Recompute the PV of the ₹25L annuity at higher rates:</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Discount rate</th><th class="num">PV of inflows</th><th class="num">NPV (− ₹80L)</th></tr></thead>
+            <tbody>
+              <tr><td>12%</td><td class="num">₹90,11,938</td><td class="num">+₹10,11,938</td></tr>
+              <tr><td>17%</td><td class="num">₹80,02,000</td><td class="num">≈ +₹2,000</td></tr>
+              <tr><td>18%</td><td class="num">₹78,17,930</td><td class="num">−₹1,82,070</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">Working — interpolate</span> NPV crosses zero between 17% and 18%. $IRR \approx 17\% + \dfrac{2{,}000}{2{,}000 + 1{,}82{,}070}\times 1\% \approx 17.01\%$.</div>
+          <div class="ans">IRR ≈ 17%. Since 17% &gt; the 12% cost of capital, <b>accept</b> — the same verdict as NPV.</div>
+          <div class="step"><span class="sh">Interpretation</span> The robotic line earns about 17% a year on the money invested, comfortably above the 12% the firm needs. Interpolation just draws a straight line between the +₹2,000 and −₹1.82L points to estimate where NPV would be exactly zero.</div>
+        </div>
+      </details>
+
+      <h3 id="conflict">4. When NPV &amp; IRR disagree</h3>
+      <p>For a single project, NPV and IRR usually give the same accept/reject answer. But for <b>mutually exclusive</b> projects — where you can pick only <em>one</em> — they can rank the projects differently. Look at a firm choosing between a big solar plant and a small LED retrofit (cost of capital 10%):</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Solar plant vs LED retrofit (mutually exclusive) <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> Only one project can be chosen; cost of capital 10%.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Measure</th><th class="num">Solar plant</th><th class="num">LED retrofit</th></tr></thead>
+            <tbody>
+              <tr><td>Investment</td><td class="num">₹1,00,00,000</td><td class="num">₹10,00,000</td></tr>
+              <tr><td>Cash flow</td><td class="num">₹28L for 6 yrs</td><td class="num">₹4.5L for 4 yrs</td></tr>
+              <tr><td>Annuity factor @ 10%</td><td class="num">4.3553 (6 yr)</td><td class="num">3.1699 (4 yr)</td></tr>
+              <tr><td>PV of inflows</td><td class="num">₹1,21,94,730</td><td class="num">₹14,26,439</td></tr>
+              <tr><td><b>NPV</b></td><td class="num tot">+₹21,94,730</td><td class="num tot">+₹4,26,439</td></tr>
+              <tr><td><b>IRR</b></td><td class="num tot">17.2%</td><td class="num tot">28.5%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">NPV picks the <b>Solar plant</b> (+₹21.95L vs +₹4.26L). IRR picks the <b>LED retrofit</b> (28.5% vs 17.2%). They disagree.</div>
+          <div class="step"><span class="sh">Interpretation</span> LED has the higher <em>percentage</em> return, but on a tiny ₹10L base. Solar earns a slightly lower percentage but on a ₹1 crore base, so it creates about five times more actual rupee wealth. <b>For mutually exclusive projects, let NPV decide</b> — choose Solar. NPV measures rupees of value added; IRR only measures a rate.</div>
+        </div>
+      </details>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — using IRR to rank different-sized projects</div><p>The classic error is picking the project with the higher IRR regardless of scale. A 50% return on ₹1 lakh (₹50k) is worth far less than a 20% return on ₹1 crore (₹20L). When projects differ in <b>size</b>, when they return cash at different <b>times</b> (the reinvestment assumption), or when a project has <b>multiple IRRs</b> (from sign changes in its cash flows), IRR can mislead. The three causes of NPV–IRR conflict are: <b>scale, reinvestment assumption, and multiple IRRs</b>. When in doubt, follow NPV.</p></div>
+
+      <h2 id="payback">5. Payback &amp; discounted payback</h2>
+      <p>The <b>payback period</b> is the simplest tool of all: how many years until the project's cash inflows add back up to the money you put in?</p>
+      <div class="formula-block raw"><div class="lbl">Simple payback (equal cash flows)</div>Payback period = Initial investment ÷ Annual cash flow</div>
+      <p>For Bharat AutoParts: ₹80L ÷ ₹25L = <b>3.2 years</b>. The trouble is that plain payback treats a rupee in year 4 the same as a rupee today — it ignores the time value of money. The <b>discounted payback period</b> fixes half of that by discounting each year's cash flow first, then asking when the <em>discounted</em> cumulative total reaches the investment.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Bharat AutoParts — payback vs discounted payback <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> Invest ₹80L; ₹25L a year for 5 years; discount rate 12%.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Year</th><th class="num">Cash flow</th><th class="num">Cumulative</th><th class="num">Discounted @12%</th><th class="num">Cum. discounted</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="num">₹25L</td><td class="num">₹25L</td><td class="num">₹22.32L</td><td class="num">₹22.32L</td></tr>
+              <tr><td>2</td><td class="num">₹25L</td><td class="num">₹50L</td><td class="num">₹19.93L</td><td class="num">₹42.25L</td></tr>
+              <tr><td>3</td><td class="num">₹25L</td><td class="num">₹75L</td><td class="num">₹17.79L</td><td class="num">₹60.05L</td></tr>
+              <tr><td>4</td><td class="num">₹25L</td><td class="num">₹100L</td><td class="num">₹15.89L</td><td class="num">₹75.93L</td></tr>
+              <tr><td>5</td><td class="num">₹25L</td><td class="num">₹125L</td><td class="num">₹14.19L</td><td class="num">₹90.12L</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">Working — simple payback</span> After year 3 the firm has recovered ₹75L; it still needs ₹5L of the ₹80L. In year 4 it earns ₹25L. Payback = 3 + (5 ÷ 25) = <b>3.2 years</b>.</div>
+          <div class="step"><span class="sh">Working — discounted payback</span> After year 4 the discounted total is ₹75.93L; it still needs ₹4.07L of the ₹80L. Year 5 brings ₹14.19L discounted. Discounted payback = 4 + (4.07 ÷ 14.19) = <b>4.29 years</b>.</div>
+          <div class="ans">Simple payback = 3.2 years; discounted payback = 4.29 years.</div>
+          <div class="step"><span class="sh">Interpretation</span> Discounting always makes payback <em>longer</em> (early rupees shrink less than late ones), which is more honest. But even discounted payback still <b>ignores all cash flows after recovery</b> — the ₹14.19L in year 5 past the break-even point does not count. That is why payback is a supporting measure, never the final word.</div>
+        </div>
+      </details>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Limitations of payback</div><p>Simple payback <b>ignores the time value of money</b> and <b>ignores all cash flows after the payback point</b>, so it can favour a short, low-value project over a longer, high-value one. Use it for a quick liquidity check, but let NPV make the decision.</p></div>
+
+      <div class="try" data-answer="3.6" data-tol="2%" data-ok="Correct — payback = investment ÷ annual cash flow.">
+        <div class="q">✎ <b>Try it — compute a payback period.</b> A delivery van fleet costs <b>₹90 lakh</b> and brings in a steady <b>₹25 lakh a year</b>. What is the simple payback period, in years?</div>
+        <div class="row"><input type="text" placeholder="years"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Payback = ₹90L ÷ ₹25L = <b>3.6 years</b>. (Discounted payback would be longer, because later rupees are worth less.)</p>
+        </div>
+      </div>
+
+      <h2 id="pi">6. Profitability index &amp; capital rationing</h2>
+      <p>What if you have several good (positive-NPV) projects but <em>not enough budget</em> to do them all? That is <b>capital rationing</b>. You want the biggest total NPV per rupee invested — and the <b>profitability index (PI)</b> measures exactly that.</p>
+      <div class="formula-block"><div class="lbl">Profitability Index</div><div class="formula">$$\text{PI} = \dfrac{\text{PV of inflows}}{\text{Initial investment}}$$</div></div>
+      <div class="callout key"><div class="ct-head">Reading the PI</div><p><b>PI &gt; 1</b> means NPV is positive (accept). <b>PI = 1</b> means NPV is zero. <b>PI &lt; 1</b> means NPV is negative (reject). Under a budget limit, <b>rank projects by PI and fund down the list</b> until the money runs out. For Bharat AutoParts: PI = 90.12 ÷ 80 = <b>1.13</b> (above 1, so NPV is positive).</p></div>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Capital rationing — ranking four projects <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> Budget = ₹1 crore (₹100L). Four independent projects (figures in ₹ lakh), ranked by PI:</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Project</th><th class="num">Investment</th><th class="num">PV of inflows</th><th class="num">NPV</th><th class="num">PI</th><th class="num">Rank</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td class="num">40</td><td class="num">52</td><td class="num">12</td><td class="num">1.30</td><td class="num">1</td></tr>
+              <tr><td>B</td><td class="num">50</td><td class="num">60</td><td class="num">10</td><td class="num">1.20</td><td class="num">2</td></tr>
+              <tr><td>D</td><td class="num">60</td><td class="num">69</td><td class="num">9</td><td class="num">1.15</td><td class="num">3</td></tr>
+              <tr><td>C</td><td class="num">30</td><td class="num">33</td><td class="num">3</td><td class="num">1.10</td><td class="num">4</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">Working</span> Fund down the PI ranking within the ₹100L budget. A + B uses ₹40L + ₹50L = ₹90L and delivers NPV ₹12L + ₹10L = <b>₹22L</b>. The alternative A + D uses the full ₹100L but delivers NPV ₹12L + ₹9L = ₹21L.</div>
+          <div class="ans">Choose <b>A + B</b>: ₹90L invested for total NPV ₹22L — the highest NPV the budget can buy, even though ₹10L is left unspent.</div>
+          <div class="step"><span class="sh">Interpretation</span> Ranking by PI squeezes the most value out of each scarce rupee. Picking the biggest single NPV (D) or just filling the budget (A + D) would leave money on the table. PI beats raw NPV precisely when capital is limited.</div>
+        </div>
+      </details>
+
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — which tool when?</div><p><b>NPV first</b> (the value-maximising rule, and the tie-breaker for mutually exclusive projects). <b>IRR and PI</b> to support it — PI especially under capital rationing. <b>Payback</b> only as a quick liquidity/risk check. For Bharat AutoParts all four agree: NPV +₹10.12L, IRR ≈17%, payback 3.2 yrs, PI 1.13 → accept.</p></div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>NPV = Σ CF<sub>t</sub> ÷ (1+r)<sup>t</sup> − investment; accept if NPV &gt; 0. Always subtract the outlay.</li>
+          <li>For a level annuity, PV of inflows = cash flow × annuity factor (Bharat: 25 × 3.6048 = ₹90.12L → NPV +₹10.12L).</li>
+          <li>IRR is the rate where NPV = 0; accept if IRR &gt; cost of capital. Found by trial/interpolation (Bharat ≈ 17%).</li>
+          <li>For mutually exclusive projects, NPV and IRR can conflict (scale, reinvestment, multiple IRRs) — let NPV decide.</li>
+          <li>Payback = investment ÷ annual cash flow; discounted payback is longer and fairer, but both ignore cash after recovery.</li>
+          <li>PI = PV of inflows ÷ investment; rank by PI under capital rationing. PI &gt; 1 ⇔ NPV &gt; 0.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">7. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-04.html"><span>Previous lesson</span><b>‹ Time Value of Money</b></a>
+        <a class="next" href="lesson-06.html"><span>Next lesson</span><b>Cost of Equity ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-05">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-05",
+    title: "Lesson 5 Quiz — Capital Budgeting",
+    questions: [
+      { q:"Under the NPV rule, a project should be accepted when its NPV is:", options:["Less than zero","Equal to zero","Greater than zero","Equal to the initial investment"], correct:2,
+        explain:"A positive NPV means the project adds value in today's rupees, beyond the required return. NPV = 0 is indifferent; NPV < 0 destroys value and is rejected." },
+      { q:"A robotic line costs ₹80L and returns ₹25L a year for 5 years at a 12% cost of capital (annuity factor 3.6048). The NPV is approximately:", options:["+₹90.12L","+₹10.12L","−₹10.12L","+₹45.00L"], correct:1,
+        explain:"PV of inflows = 25 × 3.6048 = ₹90.12L. NPV = PV of inflows − investment. ₹90.12L is only the PV of inflows; you must subtract the ₹80L outlay.",
+        calc:"25 × 3.6048 = ₹90.12L; 90.12 − 80 = +₹10.12L." },
+      { q:"The internal rate of return (IRR) is best defined as:", options:["The cost of capital used to discount cash flows","The discount rate at which NPV equals zero","The ratio of PV of inflows to investment","The number of years to recover the investment"], correct:1,
+        explain:"IRR is the discount rate that makes a project's NPV exactly zero — its own built-in rate of return. The ratio of PV to investment is the profitability index; years to recover is payback." },
+      { q:"A project has an IRR of 17% and the firm's cost of capital is 12%. The IRR rule says:", options:["Reject — IRR is too volatile","Accept — IRR exceeds the cost of capital","Indifferent — they are close enough","Reject — IRR must exceed 20%"], correct:1,
+        explain:"Accept when IRR > cost of capital. 17% > 12%, so the project earns more than the firm requires — accept. This matches the positive NPV." },
+      { q:"For the ₹80L robotic line earning ₹25L a year, the simple payback period is:", options:["2.0 years","3.2 years","4.29 years","5.0 years"], correct:1,
+        explain:"Simple payback = investment ÷ annual cash flow. The discounted payback (4.29 years) is longer because later rupees are discounted.",
+        calc:"₹80L ÷ ₹25L = 3.2 years." },
+      { q:"Which is a genuine limitation of the simple payback period?", options:["It overstates the time value of money","It ignores the time value of money and cash flows after recovery","It cannot be computed for equal cash flows","It always exceeds the discounted payback"], correct:1,
+        explain:"Simple payback treats all rupees as equal (ignoring time value) and counts nothing after the investment is recovered, so it can favour a short, low-value project over a longer, high-value one." },
+      { q:"A project has PV of inflows ₹90.12L on an investment of ₹80L. Its profitability index (PI) is about:", options:["0.89","1.00","1.13","1.80"], correct:2,
+        explain:"PI = PV of inflows ÷ investment. A PI above 1 means a positive NPV.",
+        calc:"90.12 ÷ 80 = 1.13." },
+      { q:"Budget ₹100L. Projects by PI: A (invest 40, NPV 12), B (invest 50, NPV 10), D (invest 60, NPV 9), C (invest 30, NPV 3). Which combination maximises total NPV within the budget?", options:["A + D (NPV 21)","A + B (NPV 22)","B + D (over budget)","D + C (NPV 12)"], correct:1,
+        explain:"Rank by PI and fund down the list. A + B uses ₹90L for NPV ₹22L; A + D uses the full ₹100L but only gives ₹21L. A + B wins even with ₹10L left unspent.",
+        calc:"A+B: 40+50 = ₹90L ≤ 100; NPV 12+10 = ₹22L. A+D: 40+60 = ₹100L; NPV 12+9 = ₹21L." },
+      { q:"Two mutually exclusive projects: Solar (NPV +₹21.95L, IRR 17.2%) and LED (NPV +₹4.26L, IRR 28.5%). Which should the firm choose and why?", options:["LED — it has the higher IRR","Solar — it has the higher NPV","Both — they are independent","Neither — IRR and NPV disagree, so reject"], correct:1,
+        explain:"For mutually exclusive projects, let NPV decide because it measures rupees of value added. Solar adds about five times more value despite LED's higher percentage return." },
+      { q:"The usual causes of a conflict between NPV and IRR rankings for mutually exclusive projects are:", options:["Inflation, tax and depreciation","Differences in scale, the reinvestment assumption, and multiple IRRs","Errors in the annuity factor","The length of the payback period"], correct:1,
+        explain:"NPV and IRR can disagree because of project scale, the differing reinvestment-rate assumptions built into each measure, and the possibility of multiple IRRs when cash flows change sign." },
+      { q:"At an 18% cost of capital, the ₹80L robotic line's PV of inflows is about ₹78.18L. The project's NPV at 18% is:", options:["+₹1.82L, so accept","−₹1.82L, so reject","Exactly zero","+₹10.12L, so accept"], correct:1,
+        explain:"NPV = PV of inflows − investment = 78.18 − 80 = −₹1.82L. Because 18% is above the ~17% IRR, NPV turns negative and the project would be rejected at that higher hurdle rate.",
+        calc:"₹78.18L − ₹80L = −₹1.82L." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

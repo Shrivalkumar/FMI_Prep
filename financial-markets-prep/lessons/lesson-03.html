@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 — Cost Concepts, Costing & CVP</title>
+<meta name="description" content="Learn management accounting from scratch: cost concepts and classification, overhead absorption, marginal vs absorption costing, contribution, and CVP — break-even, P/V ratio, margin of safety and target profit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 3</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 3</span>
+        <span class="tag src">Sessions 5–8 · Speed Run</span>
+      </div>
+      <h1>Cost Concepts, Costing &amp; CVP</h1>
+      <p class="lead">Financial accounting looks backwards and reports to outsiders. Management accounting looks <em>forward</em> and helps managers inside the business plan, control and decide. This lesson builds that toolkit from zero — how we define and classify costs, how overheads get into a product's cost, the difference between marginal and absorption costing, and the one framework that ties it all together: Cost–Volume–Profit (CVP).</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="management">1. Management vs financial accounting</h2>
+      <p>You already met <b>financial accounting</b> in Lesson 1 — the income statement, balance sheet and cash flow statement prepared for investors, lenders and regulators under GAAP. <b>Management accounting</b> uses much of the same raw data, but points it in a completely different direction: at the people <em>running</em> the firm.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Basis</th><th>Financial accounting</th><th>Management accounting</th></tr></thead>
+        <tbody>
+          <tr><td>Users</td><td>Investors, lenders, regulators (external)</td><td>Managers inside the firm (internal)</td></tr>
+          <tr><td>Rules</td><td>GAAP &amp; accounting standards; audited</td><td>No fixed rules — built for the decision</td></tr>
+          <tr><td>Time view</td><td>Past results</td><td>Future-oriented plans &amp; options</td></tr>
+          <tr><td>Detail</td><td>The whole company</td><td>Products, departments, projects, customers</td></tr>
+        </tbody>
+      </table></div>
+      <p>Management accounting does three jobs, which are worth memorising as a trio:</p>
+      <div class="grid cols-3">
+        <div class="card"><h4 style="margin-top:0">Planning</h4><p>Estimate costs, revenues, profit and resources ahead of time — i.e. build <b>budgets</b>.</p></div>
+        <div class="card"><h4 style="margin-top:0">Control</h4><p>Compare actual with budget and study the <b>variance</b>. Budget ₹50L, actual ₹54L → a ₹4L <em>adverse</em> variance to investigate.</p></div>
+        <div class="card"><h4 style="margin-top:0">Decisions</h4><p>Make-or-buy, outsource-or-produce, product choice, and pricing (cost-plus, penetration, skimming, marginal-cost).</p></div>
+      </div>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip <span class="tag src">Sessions 5–8</span></div><p>If a question says "which figures would a <em>manager</em> use to choose between two options next year?", it is a management-accounting question — think future, relevant and decision-focused, not GAAP.</p></div>
+
+      <h2 id="classify">2. Cost concepts &amp; classification</h2>
+      <p>Before we can analyse costs we need the vocabulary. Two words students mix up constantly:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Cost</b></td><td>Sacrifice of resources to achieve an objective</td><td>₹10L paid for a machine</td></tr>
+          <tr><td><b>Expense</b></td><td>A cost charged against revenue <em>in a period</em></td><td>₹1.8L yearly depreciation of that machine</td></tr>
+          <tr><td>Cost object</td><td>Anything we measure cost <em>for</em></td><td>A product, project, customer or department</td></tr>
+          <tr><td>Cost unit</td><td>The unit in which cost is expressed</td><td>Per car, per room-night, per kWh, per patient-day</td></tr>
+        </tbody>
+      </table></div>
+      <p>So the ₹10L machine is a <b>cost</b> the day you buy it; each year, ₹1.8L of it becomes an <b>expense</b> through depreciation. And <b>unit cost</b> = total production cost ÷ units: ₹50,00,000 ÷ 10,000 units = <b>₹500 a unit</b>. Airlines express it as cost per passenger-kilometre; transport firms as cost per tonne-kilometre.</p>
+
+      <h3>The four lenses of cost classification</h3>
+      <p>The same rupee of cost can be sliced four different ways, depending on the question you are asking. Picture a car factory:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Classify by</th><th>Categories</th><th>Car factory example</th></tr></thead>
+        <tbody>
+          <tr><td><b>Nature</b></td><td>Material, labour, other expenses</td><td>Steel, assembly wages, rent</td></tr>
+          <tr><td><b>Behaviour</b></td><td>Fixed, variable, semi-variable</td><td>Factory rent vs steel vs the power bill</td></tr>
+          <tr><td><b>Traceability</b></td><td>Direct, indirect (overhead)</td><td>Steel body vs factory lubricant</td></tr>
+          <tr><td><b>Function</b></td><td>Production, admin, selling, distribution</td><td>Plant cost vs showroom cost</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>By behaviour — the most important lens for CVP</h3>
+      <p>How does a cost react when you make <em>more</em> units? This split is the engine of everything later in the lesson.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Type</th><th>Example</th><th>As volume rises…</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fixed</b></td><td>Factory rent ₹10L a month</td><td>Total stays flat; <em>per unit</em> falls — ₹1,000/car at 1,000 cars, ₹100/car at 10,000</td></tr>
+          <tr><td><b>Variable</b></td><td>Raw material ₹20 per bottle</td><td>Total rises with output; <em>per unit</em> stays ₹20 (₹20,000 at 1,000 bottles → ₹2,00,000 at 10,000)</td></tr>
+          <tr><td><b>Semi-variable</b></td><td>Power: ₹50,000 fixed + ₹8/machine-hour</td><td>Has both parts — ₹58/hour at 1,000 hours, ₹13/hour at 10,000</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout key"><div class="ct-head">The key insight</div><p><b>Fixed cost per unit falls as you spread it over more units; variable cost per unit stays constant.</b> That is exactly why volume changes profit, and why break-even exists.</p></div>
+
+      <h3>By traceability &amp; by function</h3>
+      <p><b>Direct costs</b> can be traced to one cost unit (the steel body and the welder's wages on <em>one</em> car). <b>Indirect costs</b> — a.k.a. <b>overheads</b> — cannot: factory rent, electricity, insurance, the security guard, the supervisor. By <b>function</b>, costs split into <b>production</b> (making it), <b>administration</b> (running the firm), <b>selling</b> (winning sales) and <b>distribution</b> (getting goods to customers). This matters because <em>only production costs become product (inventory) cost</em> under absorption costing; admin, selling and distribution are <b>period costs</b>, written off as incurred.</p>
+
+      <h3>By relevance — the lens for decisions</h3>
+      <p>When choosing between options, most costs are noise. Only <b>relevant costs</b> matter.</p>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Relevant cost</div><p>A <em>future</em> cost that <em>differs</em> between the options. Only these belong in a decision.</p></div>
+        <div class="callout key"><div class="ct-head">Irrelevant cost</div><p>A cost that is the same whichever option you pick — so it cannot swing the decision.</p></div>
+        <div class="callout mistake"><div class="ct-head">Sunk cost</div><p>Already spent and unrecoverable. ₹2 crore spent building software is <em>ignored</em> when deciding to launch or abandon it. It is history.</p></div>
+        <div class="callout key"><div class="ct-head">Opportunity cost</div><p>The benefit of the best alternative you give up. Choosing an MBA over a ₹16 lakh job costs ₹16 lakh of forgone salary.</p></div>
+      </div>
+      <div class="callout mistake"><div class="ct-head">⚠️ Classic trap</div><p>A sunk cost <em>feels</em> relevant ("we've already put ₹2 crore in, we can't stop now!"). It is not. The money is gone either way — compare only the <em>future</em> cost and revenue of launching versus abandoning.</p></div>
+
+      <h2 id="overhead">3. Overhead absorption &amp; full product cost</h2>
+      <p>Direct costs are easy: you can trace them straight to a unit. Overheads are the hard part — how much of the factory rent, power, depreciation, supervisor pay and security belongs to <em>one</em> motor? We solve this by spreading overheads over output using an <b>Overhead Absorption Rate (OAR)</b>:</p>
+      <div class="formula-block"><div class="lbl">Overhead absorption rate</div><div class="formula">$$\text{OAR} = \dfrac{\text{Total overhead}}{\text{Activity base}}$$</div></div>
+      <p>The <em>activity base</em> can be units, direct labour hours or machine hours — whatever best drives the overhead. Once we have the rate per unit, we build the <b>full product cost</b>:</p>
+      <div class="formula-block"><div class="formula">$$\text{Full product cost} = \text{Direct material} + \text{Direct labour} + \text{Absorbed overhead}$$</div></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> A motor: direct ₹6,000, overhead ₹10,00,000 over 10,000 motors <span class="chev">›</span></summary>
+        <div class="body">
+          <p>A motor uses <b>₹4,000 direct material + ₹2,000 direct labour = ₹6,000 direct</b>. The factory also incurs ₹10,00,000 of production overhead and plans to make 10,000 motors. It sells each motor for ₹7,500.</p>
+          <div class="step"><span class="sh">Formula</span> OAR = Total overhead ÷ activity base.</div>
+          <div class="step"><span class="sh">Working — OAR</span> = ₹10,00,000 ÷ 10,000 motors = <b>₹100 per motor</b>.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Step</th><th>Working</th><th class="num">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Overhead absorption rate</td><td>₹10,00,000 ÷ 10,000 motors</td><td class="num">₹100 / motor</td></tr>
+              <tr><td>Full product cost</td><td>₹4,000 + ₹2,000 + ₹100</td><td class="num">₹6,100</td></tr>
+              <tr><td>Profit at ₹7,500 price</td><td>₹7,500 − ₹6,100</td><td class="num">₹1,400 / motor</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Full cost ₹6,100 → profit ₹1,400 a motor.</div>
+          <p><b>Interpretation:</b> every motor now carries ₹100 of factory overhead, so we can value stock, set prices and compare products on a fair footing.</p>
+        </div>
+      </details>
+
+      <h3>Under- and over-absorption</h3>
+      <p>We set the OAR using a <em>forecast</em>. At year-end the actual overhead rarely matches what was absorbed, so we must adjust:</p>
+      <ul>
+        <li><b>Under-absorbed</b> — actual overhead &gt; absorbed. We didn't charge enough to products → it <em>reduces</em> profit.</li>
+        <li><b>Over-absorbed</b> — actual overhead &lt; absorbed. We charged too much → it <em>increases</em> profit.</li>
+      </ul>
+      <div class="formula-block raw"><div class="lbl">The rule</div>Under/over-absorption = Actual overhead − Overhead absorbed &nbsp;→&nbsp; positive = under-absorbed (profit falls)</div>
+      <p>In the motor example, suppose actual overhead turns out to be ₹10,50,000 while only ₹10,00,000 was absorbed (₹100 × 10,000). The difference of <b>₹50,000 is under-absorbed</b> and is written off in the income statement, cutting profit by ₹50,000.</p>
+      <div class="callout info"><div class="ct-head">ℹ️ Smaller illustration</div><p>Same idea, different numbers: overhead ₹1,00,000 ÷ 20,000 units = ₹5 absorbed into every unit. If 20,000 units are made, ₹1,00,000 is absorbed — exactly matching. The gap only appears when actual activity or actual overhead differs from plan.</p></div>
+
+      <h2 id="marginal">4. Marginal vs absorption costing</h2>
+      <p><b>Marginal cost</b> is the extra cost of producing <em>one more</em> unit — in practice, the variable cost per unit, because fixed costs don't move when you make one extra.</p>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Finding marginal cost from a step up in output <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Illustration</th><th>Working</th><th class="num">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Output rises 10,000 → 10,100</td><td>+100 units</td><td class="num">+100 units</td></tr>
+              <tr><td>Total cost rises ₹50,00,000 → ₹50,60,000</td><td>+₹60,000</td><td class="num">+₹60,000</td></tr>
+              <tr><td>Marginal cost per component</td><td>₹60,000 ÷ 100</td><td class="num">₹600</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Marginal cost = ₹600 per component.</div>
+          <p>Fixed costs stayed put, so the entire ₹60,000 increase is variable. A ₹900 component therefore earns ₹900 − ₹600 = ₹300 of contribution.</p>
+        </div>
+      </details>
+      <p>This gives the two rival costing systems:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th><b>Absorption costing</b></th><th><b>Marginal costing</b></th></tr></thead>
+        <tbody>
+          <tr><td>Fixed production overhead is…</td><td>Put <em>into</em> product cost (and into closing stock)</td><td>Treated as a <em>period cost</em>, written off in full</td></tr>
+          <tr><td>Product cost =</td><td>Direct + variable + <em>fixed</em> production OH</td><td>Direct + variable only</td></tr>
+          <tr><td>Headline margin</td><td>Gross profit</td><td>Contribution</td></tr>
+        </tbody>
+      </table></div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Why the two profits differ when stock builds up <span class="chev">›</span></summary>
+        <div class="body">
+          <p>Production 10,000 units, <b>sales 8,000</b> at ₹500. Variable cost ₹300/unit; fixed production overhead ₹10,00,000 (= ₹100/unit at 10,000 units); selling &amp; admin ₹2,00,000.</p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Line</th><th class="num">Absorption</th><th class="num">Marginal</th></tr></thead>
+            <tbody>
+              <tr><td>Sales (8,000 × ₹500)</td><td class="num">40,00,000</td><td class="num">40,00,000</td></tr>
+              <tr><td>Cost of goods sold / variable cost</td><td class="num">(32,00,000)</td><td class="num">(24,00,000)</td></tr>
+              <tr><td><b>Gross profit / contribution</b></td><td class="num tot">8,00,000</td><td class="num tot">16,00,000</td></tr>
+              <tr><td>Fixed production overhead (in full)</td><td class="num">–</td><td class="num">(10,00,000)</td></tr>
+              <tr><td>Selling &amp; admin overhead</td><td class="num">(2,00,000)</td><td class="num">(2,00,000)</td></tr>
+              <tr><td><b>Profit</b></td><td class="num tot">6,00,000</td><td class="num tot">4,00,000</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Absorption profit ₹6,00,000 vs marginal profit ₹4,00,000 — a ₹2,00,000 gap.</div>
+          <p><b>Interpretation:</b> the ₹2,00,000 gap is ₹100 of fixed overhead sitting on each of the 2,000 <em>unsold</em> units, carried forward in closing stock under absorption costing instead of being expensed now. When production &gt; sales (stock rises), absorption profit &gt; marginal profit.</p>
+        </div>
+      </details>
+
+      <h3>Contribution — the star of marginal costing</h3>
+      <div class="formula-block"><div class="lbl">Contribution</div><div class="formula">$$\text{Contribution} = \text{Selling price} - \text{Variable (marginal) cost}$$</div></div>
+      <p>Contribution is what each unit "contributes" first to covering fixed costs, and then to profit. It drives short-run decisions.</p>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> The empty airline seat <span class="chev">›</span></summary>
+        <div class="body">
+          <p>A seat normally sells for ₹8,000. The aircraft lease, crew and airport charges are <em>already committed</em> (fixed). The only extra cost of carrying one more passenger:</p>
+          <div class="tbl-wrap"><table class="data">
+            <tbody>
+              <tr><td>Meal</td><td class="num">₹500</td></tr>
+              <tr><td>Passenger service</td><td class="num">₹200</td></tr>
+              <tr><td>Processing</td><td class="num">₹100</td></tr>
+              <tr><td>Other variable cost</td><td class="num">₹200</td></tr>
+              <tr><td class="tot">Marginal cost</td><td class="num tot">₹1,000</td></tr>
+            </tbody>
+          </table></div>
+          <p>A last-minute buyer offers ₹3,000. Contribution = ₹3,000 − ₹1,000 = <b>₹2,000</b>.</p>
+          <div class="ans">With empty seats and no capacity constraint — <b>sell it.</b> ₹2,000 that would otherwise be ₹0.</div>
+        </div>
+      </details>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> The same seat <em>with</em> a capacity constraint <span class="chev">›</span></summary>
+        <div class="body">
+          <p>A 180-seat flight has sold 175 seats at ₹8,000, so 5 remain. A travel firm wants <b>10 seats at ₹3,000</b>, but walk-up individuals would pay ₹7,000. Now seats are scarce.</p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Question</th><th>Working</th><th class="num">Answer</th></tr></thead>
+            <tbody>
+              <tr><td>Contribution, travel firm</td><td>₹3,000 − ₹1,000</td><td class="num">₹2,000 / seat</td></tr>
+              <tr><td>Contribution, individual</td><td>₹7,000 − ₹1,000</td><td class="num">₹6,000 / seat</td></tr>
+              <tr><td>Opportunity cost of a seat</td><td>Contribution forgone</td><td class="num">₹6,000</td></tr>
+              <tr><td>Minimum acceptable price</td><td>₹1,000 + ₹6,000</td><td class="num">₹7,000</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Reject the ₹3,000 offer. Each seat sold to the travel firm loses ₹6,000 − ₹2,000 = ₹4,000 of contribution; for 5 seats that is ₹20,000 thrown away.</div>
+          <p><b>Interpretation:</b> with spare capacity, any price above marginal cost adds value. With a <em>constraint</em>, the opportunity cost of the next-best use must be added — so the floor price jumps from ₹1,000 to ₹7,000.</p>
+        </div>
+      </details>
+
+      <h2 id="cvp">5. Cost–Volume–Profit (CVP) analysis</h2>
+      <p>CVP uses contribution to answer the questions managers care about most: <em>How many units to break even? To hit a target profit? How far can sales fall before we lose money?</em> It assumes costs split cleanly into fixed and variable, and that price and unit variable cost stay constant within the relevant range.</p>
+      <p>The core logic: <b>contribution covers fixed costs first, then every further rupee of contribution is profit.</b></p>
+      <div class="formula-block"><div class="formula">$$\text{Profit} = (\text{Units} \times \text{Contribution per unit}) - \text{Fixed cost}$$</div></div>
+
+      <h3>The five CVP formulas</h3>
+      <div class="formula-block"><div class="lbl">Contribution &amp; P/V ratio</div><div class="formula">$$\text{Contribution} = SP - VC \qquad \text{P/V ratio} = \dfrac{\text{Contribution}}{\text{Sales}}$$</div></div>
+      <div class="formula-block"><div class="lbl">Break-even</div><div class="formula">$$\text{BEP (units)} = \dfrac{\text{Fixed cost}}{\text{Contribution per unit}} \qquad \text{BEP (value)} = \dfrac{\text{Fixed cost}}{\text{P/V ratio}}$$</div></div>
+      <div class="formula-block"><div class="lbl">Target profit &amp; margin of safety</div><div class="formula">$$\text{Units for target} = \dfrac{\text{Fixed cost} + \text{Target profit}}{\text{Contribution per unit}} \qquad \text{MoS}\% = \dfrac{\text{Actual sales} - \text{BEP sales}}{\text{Actual sales}}$$</div></div>
+      <div class="callout tip"><div class="ct-head">💡 The P/V ratio shortcut</div><p>The <b>P/V (Profit–Volume) ratio</b> is contribution as a fraction of sales. It is handy because <b>Margin of safety in value = Profit ÷ P/V ratio</b>, and break-even in <em>value</em> is just Fixed cost ÷ P/V ratio — no need to know the unit price.</p></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> ClassicShoes Pvt Ltd — the full CVP picture <span class="chev">›</span></summary>
+        <div class="body">
+          <p>Price <b>₹2,000</b> a pair; variable cost <b>₹1,200</b> (material ₹700, labour ₹300, overhead ₹200); fixed cost <b>₹24,00,000</b> a year. The firm expects to sell 4,500 pairs.</p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Measure</th><th>Formula → working</th><th class="num">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Contribution per pair</td><td>SP − VC = ₹2,000 − ₹1,200</td><td class="num">₹800</td></tr>
+              <tr><td>P/V ratio</td><td>₹800 ÷ ₹2,000</td><td class="num">40%</td></tr>
+              <tr><td>Break-even (units)</td><td>₹24,00,000 ÷ ₹800</td><td class="num">3,000 pairs</td></tr>
+              <tr><td>Break-even (value)</td><td>₹24,00,000 ÷ 40%</td><td class="num">₹60,00,000</td></tr>
+              <tr><td>Profit at 4,500 pairs</td><td>4,500 × ₹800 − ₹24,00,000</td><td class="num">₹12,00,000</td></tr>
+              <tr><td>Margin of safety</td><td>4,500 − 3,000 = 1,500 pairs; 1,500 ÷ 4,500</td><td class="num">₹30,00,000; 33.3%</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Break-even 3,000 pairs; profit ₹12,00,000 at 4,500 pairs; margin of safety 33.3%.</div>
+          <p><b>Interpretation:</b> every pair beyond the 3,000th adds ₹800 straight to profit. Sales can fall 33.3% (from 4,500 to 3,000 pairs) before the firm dips into a loss — a comfortable cushion.</p>
+        </div>
+      </details>
+
+      <div class="callout info"><div class="ct-head">ℹ️ "What-if" sensitivity — ClassicShoes</div>
+        <div class="tbl-wrap"><table class="data">
+          <thead><tr><th>Scenario</th><th class="num">New contribution</th><th class="num">Break-even pairs</th></tr></thead>
+          <tbody>
+            <tr><td>Base case</td><td class="num">₹800</td><td class="num">3,000</td></tr>
+            <tr><td>Price cut to ₹1,800</td><td class="num">₹600</td><td class="num">4,000</td></tr>
+            <tr><td>Variable cost up 10% (₹1,320)</td><td class="num">₹680</td><td class="num">3,529</td></tr>
+            <tr><td>Fixed cost up ₹3,00,000</td><td class="num">₹800</td><td class="num">3,375</td></tr>
+          </tbody>
+        </table></div>
+        <p>A <b>price cut hurts most</b>: break-even jumps by a third. Always ask whether the extra volume would really offset it.</p>
+      </div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> A cloud kitchen — break-even and target profit <span class="chev">›</span></summary>
+        <div class="body">
+          <p>Price <b>₹250</b> a meal; variable cost <b>₹160</b> (ingredients, packaging, delivery commission); fixed cost <b>₹6,00,000</b> a month. It serves 9,000 meals a month.</p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Measure</th><th>Formula → working</th><th class="num">Result</th></tr></thead>
+            <tbody>
+              <tr><td>Contribution</td><td>₹250 − ₹160</td><td class="num">₹90 / meal</td></tr>
+              <tr><td>P/V ratio</td><td>₹90 ÷ ₹250</td><td class="num">36%</td></tr>
+              <tr><td>Break-even (meals)</td><td>₹6,00,000 ÷ ₹90</td><td class="num">6,667 meals</td></tr>
+              <tr><td>Break-even (value)</td><td>₹6,00,000 ÷ 36%</td><td class="num">₹16.67 lakh</td></tr>
+              <tr><td>Profit at 9,000 meals</td><td>9,000 × ₹90 − ₹6,00,000</td><td class="num">₹2,10,000</td></tr>
+              <tr><td>Margin of safety</td><td>9,000 − 6,667 = 2,333 meals; 2,333 ÷ 9,000</td><td class="num">₹5.83 lakh; 25.9%</td></tr>
+              <tr><td>Meals for ₹4,50,000 profit</td><td>(₹6,00,000 + ₹4,50,000) ÷ ₹90</td><td class="num">11,667 meals</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Break-even 6,667 meals; to earn ₹4,50,000 it must serve 11,667 meals a month.</div>
+          <p><b>Interpretation:</b> the kitchen's margin of safety is thinner than ClassicShoes' (25.9% vs 33.3%), so it is more exposed to a dip in orders. To more than double profit it needs to lift volume from 9,000 to 11,667 meals — a concrete, testable target.</p>
+        </div>
+      </details>
+
+      <h2 id="calc">6. Try the break-even calculator</h2>
+      <p>Theory sticks when you move the numbers yourself. The calculator below solves the full CVP picture — break-even units and value, contribution and P/V ratio. <b>Change the inputs</b> (try ClassicShoes: price ₹2,000, variable cost ₹1,200, fixed cost ₹24,00,000) and watch the break-even point move as you cut the price or push up fixed cost.</p>
+      <div data-calc="breakeven"></div>
+
+      <div class="try" data-answer="3000" data-tol="2%" data-ok="Correct — you found the break-even quantity.">
+        <div class="q">✎ <b>Try it — break-even units.</b> A snackbox brand sells each box at ₹300 with variable cost ₹180, and has fixed costs of ₹3,60,000 a month. How many boxes must it sell each month to <b>break even</b>?</div>
+        <div class="row"><input type="text" placeholder="e.g. 3000"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Contribution = ₹300 − ₹180 = <b>₹120</b> per box. Break-even = Fixed cost ÷ contribution = ₹3,60,000 ÷ ₹120 = <b>3,000 boxes</b>. Each box beyond the 3,000th adds ₹120 to profit.</p>
+        </div>
+      </div>
+
+      <div class="try" data-answer="30" data-tol="2%" data-ok="Correct — that is the P/V ratio.">
+        <div class="q">✎ <b>Try it — P/V ratio.</b> A product sells for ₹500 with a variable cost of ₹350 per unit. What is its <b>P/V ratio</b>, as a percentage? (Enter just the number, e.g. 30 for 30%.)</div>
+        <div class="row"><input type="text" placeholder="e.g. 30"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Contribution = ₹500 − ₹350 = <b>₹150</b>. P/V ratio = contribution ÷ sales = ₹150 ÷ ₹500 = <b>30%</b>. For every ₹100 of sales, ₹30 is available to cover fixed costs and then add to profit.</p>
+        </div>
+      </div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>Management accounting is internal, future-focused and rule-free; it does planning, control and decisions.</li>
+          <li>Classify costs by nature, behaviour, traceability, function and relevance. For decisions, use only <em>relevant</em> (future, differing) costs — ignore sunk costs.</li>
+          <li>OAR = total overhead ÷ activity base; full cost = direct material + direct labour + absorbed overhead. Actual &gt; absorbed = under-absorbed (profit falls).</li>
+          <li>Contribution = SP − variable cost. Absorption costing parks fixed overhead in stock; marginal costing writes it off — so profits differ when stock changes.</li>
+          <li>CVP: Break-even = Fixed ÷ contribution; P/V = contribution ÷ sales; MoS% = (actual − BEP) ÷ actual; target units = (fixed + target) ÷ contribution.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">7. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-02.html"><span>Previous lesson</span><b>‹ Financial Ratios</b></a>
+        <a class="next" href="lesson-04.html"><span>Next lesson</span><b>Time Value of Money ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-03">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-03",
+    title: "Lesson 3 Quiz — Costing & CVP",
+    questions: [
+      { q:"A key difference between management accounting and financial accounting is that management accounting:", options:["Must follow GAAP and is audited for outsiders","Is future-oriented and built to help managers plan, control and decide","Only ever reports the company as a whole, never by product","Reports solely past results to shareholders and lenders"], correct:1,
+        explain:"Management accounting serves internal managers, has no fixed external rules, is future-oriented, and drills down to products, departments and projects. Financial accounting is the one bound by GAAP and aimed at outsiders." },
+      { q:"A company has already spent ₹2 crore building a software platform and is deciding whether to launch it or abandon it. The ₹2 crore is:", options:["A relevant cost that must be recovered before deciding","An opportunity cost of launching","A sunk cost that is irrelevant to the decision","A variable cost of the launch"], correct:2,
+        explain:"The ₹2 crore is already spent and unrecoverable — a sunk cost. It is the same whichever option is chosen, so it is irrelevant. Compare only the future costs and revenues of launching versus abandoning." },
+      { q:"A factory expects ₹12,00,000 of production overhead and plans to make 8,000 units. The overhead absorption rate (OAR) per unit is:", options:["₹100","₹150","₹200","₹240"], correct:1,
+        explain:"OAR = total overhead ÷ activity base.", calc:"₹12,00,000 ÷ 8,000 units = ₹150 per unit." },
+      { q:"Overhead absorbed into products was ₹10,00,000, but actual overhead turned out to be ₹10,50,000. This is:", options:["₹50,000 over-absorbed, which raises profit","₹50,000 under-absorbed, which reduces profit","₹50,000 over-absorbed, which reduces profit","Fully absorbed — no adjustment is needed"], correct:1,
+        explain:"Actual overhead exceeds the amount charged to products, so overhead is under-absorbed and the shortfall is written off in the income statement, reducing profit.", calc:"Actual ₹10,50,000 − absorbed ₹10,00,000 = ₹50,000 under-absorbed." },
+      { q:"A pair of shoes sells for ₹2,000 with a variable cost of ₹1,200. The contribution per pair is:", options:["₹600","₹700","₹800","₹1,200"], correct:2,
+        explain:"Contribution is the surplus each unit leaves after its own variable cost, available to cover fixed cost and then profit.", calc:"Contribution = SP − VC = ₹2,000 − ₹1,200 = ₹800." },
+      { q:"With a contribution of ₹800 per pair and a selling price of ₹2,000, the P/V ratio is:", options:["30%","36%","40%","60%"], correct:2,
+        explain:"The P/V (profit-volume) ratio expresses contribution as a fraction of sales.", calc:"P/V = contribution ÷ sales = ₹800 ÷ ₹2,000 = 40%." },
+      { q:"Fixed cost is ₹24,00,000 and contribution is ₹800 per pair. The break-even quantity is:", options:["2,000 pairs","3,000 pairs","4,000 pairs","6,000 pairs"], correct:1,
+        explain:"At break-even, total contribution exactly covers fixed cost and profit is zero.", calc:"BEP = fixed cost ÷ contribution = ₹24,00,000 ÷ ₹800 = 3,000 pairs." },
+      { q:"The firm sells 4,500 pairs; break-even is 3,000 pairs. The margin of safety as a percentage of actual sales is:", options:["25%","33.3%","40%","66.7%"], correct:1,
+        explain:"Margin of safety is how far sales can fall before hitting break-even, expressed as a share of actual sales.", calc:"(4,500 − 3,000) ÷ 4,500 = 1,500 ÷ 4,500 = 33.3%." },
+      { q:"A cloud kitchen has fixed cost ₹6,00,000 a month and contribution ₹90 per meal. How many meals must it serve to earn a ₹4,50,000 monthly profit?", options:["6,667 meals","9,000 meals","11,667 meals","15,000 meals"], correct:2,
+        explain:"Units for a target profit = (fixed cost + target profit) ÷ contribution per unit.", calc:"(₹6,00,000 + ₹4,50,000) ÷ ₹90 = ₹10,50,000 ÷ ₹90 ≈ 11,667 meals." },
+      { q:"Production is 10,000 units, sales 8,000 units, and fixed production overhead is ₹100 per unit. By how much does absorption-costing profit exceed marginal-costing profit?", options:["₹2,00,000","₹8,00,000","₹10,00,000","₹0 — they are equal"], correct:0,
+        explain:"When production exceeds sales, absorption costing carries fixed overhead on the unsold units forward in closing stock instead of expensing it, so its profit is higher by exactly that amount.", calc:"Unsold units = 10,000 − 8,000 = 2,000; × ₹100 fixed OH = ₹2,00,000." }
+    ]
+  });
+});
+});
+</script>
+</body>
+</html>

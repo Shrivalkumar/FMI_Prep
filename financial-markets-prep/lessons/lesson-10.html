@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 10 — Derivatives: Foundations</title>
+<meta name="description" content="Learn derivatives from scratch: what they are, futures, forwards, options and swaps, call vs put payoffs, hedging examples and a Black-Scholes primer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 10</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 10</span>
+        <span class="tag src">Sessions 14–15</span>
+      </div>
+      <h1>Derivatives — Foundations</h1>
+      <p class="lead">A derivative is a contract whose value comes from something else — a stock, an index, a barrel of crude, a currency, an interest rate. This lesson builds the idea from zero: what a derivative is, why airlines and banks use them, the four main types, how call and put payoffs work, and a gentle look at the Black-Scholes pricing model.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="intro">1. What is a derivative?</h2>
+      <p><b>A derivative is a financial instrument whose value is <em>derived</em> from an underlying asset.</b> You are not trading the asset itself — you are trading a contract that <em>refers</em> to it. <span class="tag src">Sessions 14–15</span></p>
+      <p>The clearest way to feel this is with two everyday analogies:</p>
+      <div class="grid cols-2">
+        <div class="callout info"><div class="ct-head">🥛 Milk → Butter</div><p>Butter, cheese and ghee are <em>derived</em> from milk. Their price moves with the price of milk. In the same way, a derivative contract is "made from" an underlying asset and its value tracks that asset.</p></div>
+        <div class="callout info"><div class="ct-head">🛢️ Crude → Petrol</div><p>Petrol and diesel are derived from crude oil — when crude gets costlier, so do they. A financial derivative behaves the same way: its value rises and falls with the underlying it is built on.</p></div>
+      </div>
+      <p>The <b>underlying asset</b> is simply the thing the contract is based on. It can be many things:</p>
+      <ul>
+        <li><b>Stocks</b> — e.g. Tata Motors, Reliance.</li>
+        <li><b>Indices</b> — e.g. the <b>Nifty 50</b> or the <b>Sensex</b>.</li>
+        <li><b>Commodities</b> — crude oil, gold, wheat.</li>
+        <li><b>Currencies</b> — USD/INR and other exchange rates.</li>
+        <li><b>Interest rates</b> — e.g. a benchmark lending rate.</li>
+      </ul>
+      <div class="callout key"><div class="ct-head">The one-line definition</div><p>A derivative has <b>no value of its own</b>. Its price is entirely a function of the underlying. If the underlying vanished, so would the contract's meaning.</p></div>
+
+      <h2 id="why">2. Why use derivatives?</h2>
+      <p>Derivatives exist for two big reasons. The exam loves asking you to tell them apart. <span class="tag src">Sessions 14–15</span></p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">① Speculation</h4>
+          <p>Trying to <b>profit from expected price movements</b> without needing to own the underlying asset. A trader who believes Nifty will rise can take a position that gains if it does — using far less money than buying the whole basket of shares.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">② Risk management (hedging)</h4>
+          <p>Using a derivative to <b>reduce or offset</b> a risk you already face. You lock in a future price today so a bad move later cannot hurt you.</p>
+        </div>
+      </div>
+      <p>Two real-world hedging cases from the sessions:</p>
+      <ul>
+        <li><b>Airlines hedge fuel.</b> Jet fuel is a huge cost. An airline can lock in a fuel price now so that if crude spikes next quarter, its costs are already fixed.</li>
+        <li><b>Banks hedge interest rates.</b> A bank with floating-rate exposure can use derivatives to protect itself if rates move against it.</li>
+      </ul>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip</div><p><b>Same tool, opposite intent.</b> A speculator <em>takes on</em> risk hoping to profit; a hedger <em>gives up</em> some upside to <em>remove</em> a risk. Whether a trade is "hedging" or "speculation" depends on whether the person already has the underlying exposure.</p></div>
+
+      <h2 id="characteristics">3. Key characteristics of a derivative</h2>
+      <p>Every derivative contract is described by a standard set of features. Learn the vocabulary — questions quote these terms directly. <span class="tag src">Sessions 14–15</span></p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Feature</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><b>Underlying asset</b></td><td>The asset whose value the derivative is derived from (stock, index, commodity, currency, rate).</td></tr>
+          <tr><td><b>Strike / exercise price</b></td><td>The pre-agreed price at which the contract can be exercised — i.e. the price you buy or sell the underlying at.</td></tr>
+          <tr><td><b>Expiry date</b></td><td>Derivatives expire on a set date. Unlike a share, which you can hold forever, a derivative has a limited life.</td></tr>
+          <tr><td><b>Lot / contract size</b></td><td>Derivatives trade in fixed lots, not single units — e.g. one lot of a stock future is a set number of shares.</td></tr>
+          <tr><td><b>Margin requirement</b></td><td>Traders must keep a minimum balance (margin) in their account to cover potential losses; you do not pay the full value upfront.</td></tr>
+          <tr><td><b>Exchange vs OTC</b></td><td>Where the contract trades — on a regulated exchange, or privately over-the-counter. See below.</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Exchange-traded vs OTC</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Dimension</th><th>Exchange-traded</th><th>OTC (over-the-counter)</th></tr></thead>
+        <tbody>
+          <tr><td>Terms</td><td>Standardized (fixed lot, expiry, strike)</td><td>Customized to the two parties</td></tr>
+          <tr><td>Transparency</td><td>High — public prices</td><td>Lower — private deal</td></tr>
+          <tr><td>Counterparty risk</td><td>Low — the exchange/clearing house stands in the middle</td><td>Higher — you rely on the other party</td></tr>
+          <tr><td>Typical products</td><td>Futures, exchange options</td><td>Forwards, swaps, custom options</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip</div><p>Remember the pairing: <b>Futures = exchange, standardized</b>; <b>Forwards = OTC, customized</b>. That single contrast is worth easy marks.</p></div>
+
+      <h2 id="types">4. The four types of derivative</h2>
+      <p>There are four families. The sessions focus on how they differ in obligation, standardization and what gets exchanged. <span class="tag src">Sessions 14–15</span></p>
+
+      <h3>Futures</h3>
+      <p>A <b>standardized, exchange-traded</b> contract to buy or sell an asset at an agreed price on a specified future date. Both sides are <b>obligated</b> to go through with it. Because the exchange sets the terms and guarantees settlement, futures are liquid and transparent.</p>
+
+      <h3>Forwards</h3>
+      <p>A <b>customized, OTC</b> contract between two parties to buy or sell an asset at an agreed price on a future date. Economically it is "a private future" — the two parties set the quantity, quality and date to suit themselves. Both sides are obligated. The trade-off is higher counterparty risk and lower transparency.</p>
+
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th>Futures</th><th>Forwards</th></tr></thead>
+        <tbody>
+          <tr><td>Where it trades</td><td>Exchange</td><td>Over-the-counter (private)</td></tr>
+          <tr><td>Terms</td><td>Standardized</td><td>Customized</td></tr>
+          <tr><td>Counterparty risk</td><td>Low (clearing house)</td><td>Higher</td></tr>
+          <tr><td>Settlement</td><td>Daily (marked to market)</td><td>Usually at expiry</td></tr>
+          <tr><td>Obligation</td><td>Yes — both sides</td><td>Yes — both sides</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Options</h3>
+      <p>A contract that gives the buyer the <b>right, but not the obligation</b>, to buy or sell an underlying at the strike price on or before expiry. For this right the buyer pays a <b>premium</b>. This "right not obligation" is the defining feature of options — and it is what separates them from futures and forwards. We explore payoffs in detail in the next section.</p>
+
+      <h3>Swaps</h3>
+      <p>A contract in which two parties agree to <b>exchange cash flows</b> (or liabilities) over time. The most common is the <b>interest-rate swap</b>.</p>
+      <div class="callout info"><div class="ct-head">🔁 Interest-rate swap — fixed ↔ floating</div><p>Company A has a <b>floating-rate</b> loan but wants certainty, so it prefers to pay a <b>fixed</b> rate. Company B has a <b>fixed-rate</b> loan but believes rates will fall, so it prefers <b>floating</b>. They swap: A pays B a fixed rate; B pays A a floating rate. Each ends up with the exposure it wanted, without re-doing its original loan. That exchange of fixed for floating cash flows <em>is</em> the swap. <span class="tag added">Added for depth</span></p></div>
+
+      <div class="callout key"><div class="ct-head">The four at a glance</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Futures</b> — standardized exchange contract; both sides obligated.</li>
+          <li><b>Forwards</b> — customized OTC contract; both sides obligated.</li>
+          <li><b>Options</b> — a <em>right</em>, not an obligation, for the buyer (who pays a premium).</li>
+          <li><b>Swaps</b> — an exchange of cash flows, e.g. fixed ↔ floating interest.</li>
+        </ul>
+      </div>
+
+      <h2 id="payoff">5. Option payoffs — calls and puts</h2>
+      <p>Options come in two flavours. Getting these right is the heart of the lesson. <span class="tag src">Sessions 14–15</span></p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">📈 Call option — the right to BUY</h4>
+          <p>A call gives you the right to <b>buy</b> the underlying at the strike price. You want it when you expect the price to <b>rise</b> — you can buy cheap (at strike) and the asset is worth more.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">📉 Put option — the right to SELL</h4>
+          <p>A put gives you the right to <b>sell</b> the underlying at the strike price. You want it when you expect the price to <b>fall</b> — you can sell high (at strike) even though the market has dropped.</p>
+        </div>
+      </div>
+
+      <h3>The payoff formulas</h3>
+      <p>At expiry, with spot price $S$ and strike $X$, the option's intrinsic value is:</p>
+      <div class="formula-block"><div class="lbl">Call payoff (right to buy)</div><div class="formula">$$\text{Call payoff} = \max(0,\; S - X)$$</div></div>
+      <div class="formula-block"><div class="lbl">Put payoff (right to sell)</div><div class="formula">$$\text{Put payoff} = \max(0,\; X - S)$$</div></div>
+      <p>The $\max(0, \cdot)$ captures "right not obligation": if exercising would lose money, the buyer simply walks away and the payoff is zero. The buyer's <b>net profit</b> also subtracts the premium paid:</p>
+      <div class="formula-block"><div class="formula">$$\text{Net profit (call buyer)} = \max(0,\; S - X) - \text{premium}$$</div></div>
+
+      <h3>In-the-Money vs Out-of-the-Money</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>State</th><th>Call (right to buy)</th><th>Put (right to sell)</th></tr></thead>
+        <tbody>
+          <tr><td><b>In-the-Money (ITM)</b><br><span class="muted">worth exercising</span></td><td>Spot &gt; Strike</td><td>Spot &lt; Strike</td></tr>
+          <tr><td><b>Out-of-the-Money (OTM)</b><br><span class="muted">not worth exercising</span></td><td>Spot &lt; Strike</td><td>Spot &gt; Strike</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout info"><div class="ct-head">🛡️ The ₹1000 stock + ₹800 put example</div><p>You own a stock trading at <b>₹1000</b> and you are worried it might crash. You buy a <b>put with a ₹800 strike</b>. Now, no matter how far the price falls, you can still <em>sell</em> at ₹800. The put acts like a floor — it caps your loss. If the price instead rises, you let the put expire and keep all the upside (losing only the premium). That is hedging in one picture.</p></div>
+
+      <h3>A text payoff diagram — long call</h3>
+      <p>Picture profit on the vertical axis and the spot price on the horizontal axis. Below the strike the line is flat (you lose only the premium); past the strike it slopes up at 45°; it crosses zero at the <b>break-even</b> = strike + premium.</p>
+      <div class="formula-block raw"><div class="lbl">Long call — profit vs spot (strike ₹1000, premium ₹50)</div>profit
+  +  ┊                               /
+     ┊                             /
+   0 ┊----------------------●----/-------------  spot →
+     ┊                   (BE 1050)/
+  −50┊____________________●___/
+     ┊ 900     1000(strike)   1100
+flat loss (−premium)   kink    rising 45° line</div>
+      <p class="muted">The buyer's loss is capped at the ₹50 premium (the flat part); the upside rises without limit beyond break-even.</p>
+
+      <h3>Buyer vs seller — risk and reward</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th></th><th>Option buyer (holder)</th><th>Option seller (writer)</th></tr></thead>
+        <tbody>
+          <tr><td>Pays / receives</td><td>Pays the premium</td><td>Receives the premium</td></tr>
+          <tr><td><b>Maximum loss</b></td><td>Limited — the premium paid</td><td><b>Potentially unlimited</b></td></tr>
+          <tr><td><b>Maximum profit</b></td><td>~ Unlimited (for a call, as spot rises)</td><td>Limited — the premium received</td></tr>
+          <tr><td>Rights/obligation</td><td>Has the right, no obligation</td><td>Obligated if the buyer exercises</td></tr>
+        </tbody>
+      </table></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Buy a call — strike ₹1,000, premium ₹50 <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Setup</span> You buy one call with strike ₹1,000, paying a premium of ₹50. Break-even = 1,000 + 50 = <b>₹1,050</b>.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th class="num">Spot at expiry</th><th class="num">Payoff max(0, S−X)</th><th class="num">− Premium</th><th class="num">Net profit</th></tr></thead>
+            <tbody>
+              <tr><td class="num">₹900</td><td class="num">0</td><td class="num">50</td><td class="num">−50</td></tr>
+              <tr><td class="num">₹1,000</td><td class="num">0</td><td class="num">50</td><td class="num">−50</td></tr>
+              <tr><td class="num">₹1,050</td><td class="num">50</td><td class="num">50</td><td class="num">0 (break-even)</td></tr>
+              <tr><td class="num">₹1,100</td><td class="num">100</td><td class="num">50</td><td class="num">+50</td></tr>
+              <tr><td class="num">₹1,200</td><td class="num">200</td><td class="num">50</td><td class="num">+150</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Loss is capped at the ₹50 premium no matter how far the stock falls; profit keeps rising as the stock climbs above ₹1,050. ✓</div>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Buy a put — strike ₹1,000, premium ₹40 <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Setup</span> You buy one put with strike ₹1,000, paying a premium of ₹40. The put gains when the price <em>falls</em>. Break-even = 1,000 − 40 = <b>₹960</b>.</div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th class="num">Spot at expiry</th><th class="num">Payoff max(0, X−S)</th><th class="num">− Premium</th><th class="num">Net profit</th></tr></thead>
+            <tbody>
+              <tr><td class="num">₹1,100</td><td class="num">0</td><td class="num">40</td><td class="num">−40</td></tr>
+              <tr><td class="num">₹1,000</td><td class="num">0</td><td class="num">40</td><td class="num">−40</td></tr>
+              <tr><td class="num">₹960</td><td class="num">40</td><td class="num">40</td><td class="num">0 (break-even)</td></tr>
+              <tr><td class="num">₹900</td><td class="num">100</td><td class="num">40</td><td class="num">+60</td></tr>
+              <tr><td class="num">₹800</td><td class="num">200</td><td class="num">40</td><td class="num">+160</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">The put profits as the price drops below ₹960; the loss is capped at the ₹40 premium if the price stays high. ✓</div>
+        </div>
+      </details>
+
+      <div class="try" data-answer="50" data-tol="2%" data-ok="Correct — you netted the premium off the intrinsic value.">
+        <div class="q">✎ <b>Try it — call net payoff.</b> You buy a call with strike <b>₹1,000</b> for a premium of <b>₹50</b>. At expiry the spot is <b>₹1,100</b>. What is your <b>net payoff</b> (₹) = max(0, Spot − Strike) − premium?</div>
+        <div class="row"><input type="text" placeholder="e.g. 50"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>Intrinsic value = max(0, 1,100 − 1,000) = ₹100. Subtract the ₹50 premium → <b>net payoff = ₹50</b>. (Break-even was ₹1,050, and ₹1,100 is ₹50 above it.)</p></div>
+      </div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake</div><p>Three traps students fall into:</p>
+        <ul style="margin:6px 0 0">
+          <li>An <b>option buyer's loss is limited to the premium</b> — it can never be more, however badly the trade goes.</li>
+          <li>An <b>option seller's loss can be very large</b> (potentially unlimited), while the seller's gain is only the premium.</li>
+          <li><b>Futures obligate both sides; options do not.</b> The option <em>buyer</em> can walk away. Saying "a call forces you to buy" is wrong — it only gives the <em>right</em>.</li>
+        </ul>
+      </div>
+
+      <h2 id="hedging">6. Hedging in real life</h2>
+      <p>Derivatives feel abstract until you see them protecting ordinary people and companies. Three examples from the sessions (and two familiar extensions). <span class="tag src">Sessions 14–15</span></p>
+
+      <h3>Farmer &amp; mill — a forward at ₹25,000/ton</h3>
+      <p>A <b>farmer</b> growing wheat fears the price will <em>fall</em> by harvest. A <b>flour mill</b> that buys wheat fears the price will <em>rise</em>. They sign a <b>forward contract</b> to trade at a fixed <b>₹25,000 per ton</b> on a future date. Now:</p>
+      <ul>
+        <li>If the market price falls, the farmer is protected — he still gets ₹25,000.</li>
+        <li>If the market price rises, the mill is protected — it still pays only ₹25,000.</li>
+      </ul>
+      <p>Both have given up a possible windfall in exchange for <b>certainty</b>. That is hedging — and a perfect example of a customized OTC forward.</p>
+
+      <div class="grid cols-2">
+        <div class="callout info"><div class="ct-head">👔 ESOPs behave like call options</div><p>Employee stock option plans give staff the <b>right to buy</b> company shares at a fixed price in the future. If the share price rises above that price, employees exercise and profit; if not, they simply don't. Right, not obligation — exactly a <b>call option</b>. <span class="tag added">Added for depth</span></p></div>
+        <div class="callout info"><div class="ct-head">🚗 Car insurance behaves like a put</div><p>You pay a premium; if your car is damaged (its "value falls"), you can claim and recover a fixed amount. If nothing happens, you simply lose the premium. A protective floor against a fall in value — exactly a <b>put option</b>. <span class="tag added">Added for depth</span></p></div>
+      </div>
+
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — the "right not obligation" analogy</div><p>The sessions compare exercising an option to <b>deciding whether to attend a class</b>: you have the right to go but no obligation. If it is useful, you attend (exercise); if not, you skip (let it lapse). That captures the buyer's freedom perfectly.</p></div>
+
+      <h2 id="bs">7. Black-Scholes — a pricing primer</h2>
+      <p>So far we have found an option's value <em>at expiry</em>. But how much should the premium be <em>today</em>, before expiry? The <b>Black-Scholes model</b> gives a theoretical fair price. You do not need to compute it by hand — just understand its inputs and intuition. <span class="tag src">Sessions 14–15</span> <span class="tag added">Added for depth</span></p>
+
+      <h3>The five inputs</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Input</th><th>Symbol</th><th>Effect on a call's price</th></tr></thead>
+        <tbody>
+          <tr><td>Underlying (spot) price</td><td>$S_0$</td><td>Higher spot → higher call value</td></tr>
+          <tr><td>Exercise (strike) price</td><td>$X$</td><td>Higher strike → lower call value</td></tr>
+          <tr><td>Time to expiry</td><td>$t$</td><td>More time → higher value (more can happen)</td></tr>
+          <tr><td>Risk-free rate</td><td>$r$</td><td>Higher rate → higher call value</td></tr>
+          <tr><td><b>Volatility</b></td><td>$\sigma$</td><td><b>Higher volatility → higher option price</b></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout key"><div class="ct-head">The key intuition — volatility</div><p>The single most important idea: <b>higher volatility raises an option's price</b>. A more volatile underlying is more likely to make a big favourable move — and because the buyer's downside is capped at the premium, that extra "upside chance" is worth paying for.</p></div>
+
+      <h3>The formula (for reference only)</h3>
+      <p>Shown so you recognise it — no hand calculation is expected:</p>
+      <div class="formula-block"><div class="lbl">Call price</div><div class="formula">$$C = S_0\,N(d_1) - X\,e^{-rt}\,N(d_2)$$</div></div>
+      <div class="formula-block"><div class="lbl">Put price</div><div class="formula">$$P = X\,e^{-rt}\,N(-d_2) - S_0\,N(-d_1)$$</div></div>
+      <p>Here $N(\cdot)$ is the cumulative normal distribution and $d_1, d_2$ bundle together the five inputs above. The term $X\,e^{-rt}$ is simply the strike <em>discounted</em> back to today using the risk-free rate.</p>
+      <div class="callout info"><div class="ct-head">ℹ️ What to take away</div><p>Black-Scholes gives a <b>theoretical price</b>, not a guaranteed one. It <b>assumes returns are normally distributed</b> (among other assumptions). Treat it as conceptual: know the inputs, know that <em>volatility drives price up</em>, and know that the formula discounts the strike at the risk-free rate.</p></div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>A derivative's value is <em>derived</em> from an underlying (stock, index, commodity, currency, rate).</li>
+          <li>Two uses: <b>speculation</b> (profit from moves) and <b>hedging</b> (remove a risk).</li>
+          <li><b>Futures</b> = standardized/exchange; <b>Forwards</b> = customized/OTC; both obligate. <b>Options</b> = right not obligation; <b>Swaps</b> = exchange of cash flows (fixed ↔ floating).</li>
+          <li><b>Call</b> = right to buy (profits when price rises); <b>Put</b> = right to sell (profits when price falls). Payoff = max(0, S−X) / max(0, X−S).</li>
+          <li>Buyer: loss capped at premium, profit ~ unlimited. Seller: profit capped at premium, loss potentially unlimited.</li>
+          <li>Black-Scholes: five inputs; <b>higher volatility → higher price</b>; theoretical, assumes normal returns.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">8. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-09.html"><span>Previous lesson</span><b>‹ Portfolio &amp; Markets</b></a>
+        <a class="next" href="lesson-11.html"><span>Next lesson</span><b>Derivatives &amp; 2008 ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-10">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-10",
+    title: "Lesson 10 Quiz — Derivatives Foundations",
+    questions: [
+      { q:"A derivative is best described as a financial instrument whose value:", options:["Is fixed by the government","Is derived from an underlying asset","Never changes before expiry","Depends only on the trader's mood"], correct:1,
+        explain:"A derivative has no independent value — its price is derived from an underlying asset such as a stock, index, commodity, currency or interest rate (like butter from milk, or petrol from crude)." },
+      { q:"Which pairing is correct?", options:["Futures = customized OTC; Forwards = standardized exchange","Futures = standardized exchange; Forwards = customized OTC","Both futures and forwards trade only on exchanges","Both futures and forwards are rights, not obligations"], correct:1,
+        explain:"Futures are standardized and exchange-traded; forwards are customized private (OTC) contracts. Both obligate the two parties." },
+      { q:"The defining feature of an OPTION (versus a future or forward) is that the buyer has:", options:["An obligation to transact","The right but not the obligation to transact","No expiry date","Zero cost to enter"], correct:1,
+        explain:"An option gives the buyer the right, not the obligation, to buy (call) or sell (put) at the strike. For this right the buyer pays a premium. Futures and forwards obligate both sides." },
+      { q:"A CALL option gives the holder the right to:", options:["Sell the underlying; it benefits when price falls","Buy the underlying; it benefits when price rises","Buy the underlying; it benefits when price falls","Sell the underlying; it benefits when price rises"], correct:1,
+        explain:"A call = right to BUY at the strike, so it profits when the market price rises above the strike. A put = right to sell, profiting when the price falls." },
+      { q:"A call option has a strike of ₹1,000 and the spot is ₹1,100. This option is:", options:["Out-of-the-Money","At expiry worthless","In-the-Money","A put"], correct:2,
+        explain:"For a call, ITM means Spot > Strike. Here 1,100 > 1,000, so it is In-the-Money with intrinsic value ₹100." },
+      { q:"For the BUYER of an option, maximum loss and maximum profit are:", options:["Loss unlimited; profit = premium","Loss = premium; profit ~ unlimited","Both limited to the premium","Both unlimited"], correct:1,
+        explain:"The buyer can lose at most the premium paid, while profit (for a call) can grow without limit as the price rises. The seller faces the opposite: profit capped at the premium, loss potentially unlimited." },
+      { q:"An airline locks in its future jet-fuel price to protect against a spike. This is an example of:", options:["Speculation","Hedging (risk management)","Arbitrage with no risk change","Issuing equity"], correct:1,
+        explain:"Using a derivative to offset a risk you already face (rising fuel cost) is hedging. Speculation would be taking on risk purely to profit from price moves." },
+      { q:"You buy a call with strike ₹1,000 for a premium of ₹50. At expiry the spot is ₹1,200. Your NET profit is:", options:["₹200","₹150","₹100","₹50"], correct:1,
+        explain:"Intrinsic value = max(0, 1,200 − 1,000) = ₹200. Subtract the ₹50 premium.", calc:"max(0, 1,200 − 1,000) − 50 = 200 − 50 = ₹150." },
+      { q:"You buy a PUT with strike ₹1,000 for a premium of ₹40. At expiry the spot is ₹900. Your net profit is:", options:["₹100","₹60","₹40","−₹40"], correct:1,
+        explain:"A put payoff is max(0, Strike − Spot). Here max(0, 1,000 − 900) = ₹100; subtract the ₹40 premium.", calc:"max(0, 1,000 − 900) − 40 = 100 − 40 = ₹60." },
+      { q:"Which change RAISES the price of an option, all else equal?", options:["Lower volatility of the underlying","Higher volatility of the underlying","Less time to expiry","A call strike set far above spot"], correct:1,
+        explain:"Higher volatility makes a large favourable move more likely while the buyer's downside stays capped at the premium — so the option is worth more. Black-Scholes captures this directly." },
+      { q:"In an interest-rate swap, the two parties:", options:["Buy and sell the same bond","Exchange cash flows, e.g. fixed for floating interest","Both pay a premium to an exchange","Agree never to settle"], correct:1,
+        explain:"A swap exchanges cash flows. In a classic interest-rate swap one party pays fixed and receives floating while the other does the reverse, so each gets the exposure it prefers." },
+      { q:"Which statement about Black-Scholes is correct?", options:["It guarantees the exact traded price","It gives a theoretical price and assumes returns are normally distributed","It ignores volatility entirely","It only works for futures"], correct:1,
+        explain:"Black-Scholes produces a theoretical fair value from five inputs (spot, strike, time, risk-free rate, volatility) and assumes a normal distribution of returns. It is a model, not a guarantee." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

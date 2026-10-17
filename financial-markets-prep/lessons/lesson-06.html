@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6 — Cost of Capital: Cost of Equity</title>
+<meta name="description" content="Learn the cost of equity from scratch: features of equity shares, systematic vs unsystematic risk, CAPM, beta and alpha, and the Dividend Growth (Gordon) Model with real Indian company examples.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 6</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 6</span>
+        <span class="tag src">Session 9</span>
+      </div>
+      <h1>Cost of Capital — Cost of Equity</h1>
+      <p class="lead">When a company raises money from its owners (shareholders), that money is not free. Shareholders expect a return in exchange for the risk they take. The minimum return they demand is the <b>cost of equity</b>. This lesson builds the idea from zero and then shows the two classic ways to measure it — the <b>CAPM</b> and the <b>Dividend Growth Model</b> — using real Indian companies.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="what">1. What is the cost of capital? <span class="tag src">Session 9</span></h2>
+      <p>A business is funded by two broad sources of money: <b>equity</b> (the owners / shareholders) and <b>debt</b> (lenders such as banks and bondholders). Each source wants to be paid for providing that money. The <b>cost of capital</b> is simply the overall return a company must earn to keep <em>all</em> of its fund-providers happy.</p>
+      <p>It has three building blocks, which we meet across this lesson and the next:</p>
+      <ul>
+        <li><b>Cost of equity (K<sub>e</sub>)</b> — the return shareholders require. <em>This lesson.</em></li>
+        <li><b>Cost of debt (K<sub>d</sub>)</b> — the after-tax interest lenders require. <em>Next lesson.</em></li>
+        <li><b>WACC</b> — the two blended together by how much of each the company uses. <em>Next lesson.</em></li>
+      </ul>
+      <div class="callout key"><div class="ct-head">What is "cost of equity"?</div><p>The <b>cost of equity</b> is the minimum return equity investors require for putting (and keeping) their money in the company, given its risk. It is the firm's <em>cost</em> because it must earn at least this much for shareholders — and it is the investor's <em>required return</em>. Same number, two viewpoints.</p></div>
+
+      <h3>Features of equity shares</h3>
+      <p>Before measuring the cost of equity, understand what an equity share actually is. Six features define it:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Feature</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td><b>Residual claim</b></td><td>Equity holders are paid <em>last</em> — after debt and preference holders. In return they own the <em>residual</em> profits and assets (whatever is left over).</td></tr>
+          <tr><td><b>Voting rights</b></td><td>Typically one share = one vote on major corporate decisions.</td></tr>
+          <tr><td><b>Discretionary dividends</b></td><td>Dividends are <em>not</em> fixed or guaranteed. They are paid only at the board's discretion.</td></tr>
+          <tr><td><b>Perpetual capital</b></td><td>Equity has no maturity date; it stays on the balance sheet indefinitely.</td></tr>
+          <tr><td><b>Limited liability</b></td><td>A shareholder's loss is capped at the amount invested — personal assets are safe.</td></tr>
+          <tr><td><b>Capital appreciation</b></td><td>Returns come mainly through a rising share price, not fixed interest.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout tip"><div class="ct-head">💡 Why this makes equity costly</div><p>Because equity is paid last (residual), dividends are uncertain, and returns ride on the share price, equity is <b>riskier than debt</b> for the investor. More risk → higher required return. This is exactly why the cost of equity is almost always <em>higher</em> than the cost of debt.</p></div>
+
+      <h3>Dual-class and multi-class shares</h3>
+      <p>Normally, <b>one share = one vote</b>, so voting power matches your economic investment. But some companies issue <b>dual-class</b> or <b>multi-class</b> shares: all classes have the same <em>economic</em> (dividend) rights, but different <em>voting</em> rights. Founders keep the high-vote shares and sell low-vote (or no-vote) shares to the public. This lets them raise capital <em>without losing control</em>.</p>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">Alphabet (Google) — three classes <span class="tag src">Session 9</span></h4>
+          <ul style="margin:6px 0 0">
+            <li><b>Class A (GOOGL):</b> 1 vote/share, publicly traded</li>
+            <li><b>Class B:</b> 10 votes/share, held only by founders, never publicly traded</li>
+            <li><b>Class C (GOOG):</b> no votes, publicly traded</li>
+          </ul>
+          <p style="margin-bottom:0">Founders Page &amp; Brin hold ~52.7% of the <em>voting</em> power with under 12% of the <em>economic</em> stake.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Meta (Facebook) — two classes <span class="tag src">Session 9</span></h4>
+          <ul style="margin:6px 0 0">
+            <li><b>Class A (META):</b> 1 vote/share, publicly traded</li>
+            <li><b>Class B:</b> 10 votes/share, held almost entirely by Mark Zuckerberg</li>
+          </ul>
+          <p style="margin-bottom:0">Zuckerberg holds ~61% of total voting power with only ~13–14% of the economic interest.</p>
+        </div>
+      </div>
+      <div class="callout info"><div class="ct-head">ℹ️ The big idea</div><p>A <b>small economic stake can translate into majority control</b> — the classic separation of <em>ownership</em> from <em>control</em>. The founders own a little but decide a lot.</p></div>
+
+      <h2 id="risk">2. Two kinds of risk <span class="tag src">Session 9</span></h2>
+      <p>To price the cost of equity we must understand what shareholders are being compensated for: <b>risk</b>. Total risk splits into two very different types.</p>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Systematic risk</div><p><em>Also:</em> market risk, non-diversifiable risk.</p><p>Affects the <b>entire market/economy</b>. It arises from macroeconomic, political or social forces that no single company controls — and it <b>cannot be diversified away.</b></p><p><b>Examples:</b> interest-rate hikes, inflation, recession (the 2008 crisis), a pandemic (COVID-19).</p></div>
+        <div class="callout key"><div class="ct-head">Unsystematic risk</div><p><em>Also:</em> specific risk, diversifiable risk.</p><p>Affects <b>one company or one industry only</b>. It can be reduced or eliminated by holding a <b>diversified portfolio</b> — one firm's bad news is offset by another's good news.</p><p><b>Examples:</b> a failed acquisition, a labour strike at one plant, a single product recall, an accounting fraud/scandal.</p></div>
+      </div>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Basis</th><th>Systematic risk</th><th>Unsystematic risk</th></tr></thead>
+        <tbody>
+          <tr><td>Scope</td><td>Entire market / economy</td><td>Specific company / industry</td></tr>
+          <tr><td>Source</td><td>Macroeconomic, political, social</td><td>Firm-specific (management, labour)</td></tr>
+          <tr><td>Diversifiable?</td><td><b>No</b></td><td><b>Yes</b></td></tr>
+          <tr><td>Also called</td><td>Market risk</td><td>Specific / residual risk</td></tr>
+          <tr><td>Measured by</td><td>Beta (β)</td><td>Std. deviation of firm-specific returns</td></tr>
+          <tr><td>Priced by CAPM?</td><td><b>Yes</b> — investors are compensated</td><td><b>No</b> — diversified away at no cost</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — only systematic risk is priced</div><p>A frequent exam trap: assuming investors are paid for <em>all</em> the risk they carry. They are not. Because unsystematic risk can be <b>diversified away for free</b>, the market refuses to reward you for bearing it. Only <b>systematic (non-diversifiable) risk is priced</b> — and that is exactly the risk beta measures and CAPM charges for.</p></div>
+
+      <h2 id="capm">3. The Capital Asset Pricing Model (CAPM) <span class="tag src">Session 9</span></h2>
+      <p>CAPM turns the idea above into a formula. It says the return an investor requires equals the risk-free return <em>plus</em> a reward for the systematic risk taken (measured by beta):</p>
+      <div class="formula-block"><div class="lbl">Cost of equity — CAPM</div><div class="formula">$$K_e = R_f + \beta \times (R_m - R_f)$$</div>
+        <dl class="vars">
+          <dt>$K_e$</dt><dd>Cost of equity — the minimum return equity investors require</dd>
+          <dt>$R_f$</dt><dd>Risk-free rate — return on a riskless asset (e.g., the 10-year G-Sec)</dd>
+          <dt>$\beta$</dt><dd>Beta — sensitivity of the stock to overall market movements</dd>
+          <dt>$R_m$</dt><dd>Expected market return — expected return on the broad market index</dd>
+          <dt>$(R_m - R_f)$</dt><dd>Market risk premium — the extra return demanded for bearing market risk</dd>
+        </dl>
+      </div>
+      <p>Read it in words: start with what you could earn risklessly ($R_f$), then add β "doses" of the market's risk premium. A high-β stock takes a bigger dose and must therefore offer a bigger return.</p>
+
+      <p>Two real BSE Sensex stocks, using the India 10-year G-Sec yield ≈ <b>7.0%</b> as $R_f$ and an assumed market return $R_m = 13\%$ (so the market risk premium is $13\% - 7\% = 6\%$):</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Reliance (β = 0.83) and TCS (β = 1.13) <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> $K_e = R_f + \beta (R_m - R_f)$</div>
+          <div class="step"><span class="sh">Given</span> $R_f = 7\%$, $R_m = 13\%$, so $(R_m - R_f) = 6\%$.</div>
+          <div class="step"><span class="sh">Reliance — working</span> $K_e = 7\% + 0.83 \times 6\% = 7\% + 4.98\% = 11.98\%$</div>
+          <div class="step"><span class="sh">TCS — working</span> $K_e = 7\% + 1.13 \times 6\% = 7\% + 6.78\% = 13.78\%$</div>
+          <div class="ans">Reliance K<sub>e</sub> ≈ <b>11.98%</b> &nbsp;·&nbsp; TCS K<sub>e</sub> ≈ <b>13.78%</b></div>
+          <p><b>Interpretation:</b> Reliance (β = 0.83) is <em>less</em> volatile than the Sensex, so it needs only a modest risk premium. TCS (β = 1.13) is <em>more</em> volatile than the Sensex, so its shareholders demand a higher return. Higher beta → higher cost of equity.</p>
+        </div>
+      </details>
+
+      <div class="callout info"><div class="ct-head">ℹ️ Try the calculator</div><p>Enter the numbers yourself below (R<sub>f</sub> = 7, R<sub>m</sub> = 13, β = 0.83 for Reliance, then 1.13 for TCS) and watch K<sub>e</sub> update live. Then try your own betas.</p></div>
+      <div data-calc="capm"></div>
+
+      <div class="try" data-answer="16" data-tol="2%" data-ok="Correct — HDFC Bank's cost of equity under CAPM is about 16%.">
+        <div class="q">✎ <b>Try it — CAPM.</b> A stock has β = 1.50, with R<sub>f</sub> = 7% and R<sub>m</sub> = 13%. What is its cost of equity K<sub>e</sub> (in %)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 16"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>$K_e = 7\% + 1.50 \times (13\% - 7\%) = 7\% + 1.50 \times 6\% = 7\% + 9\% = \mathbf{16\%}$. A β of 1.5 means 1.5 doses of the 6% premium = 9% on top of the risk-free 7%.</p></div>
+      </div>
+
+      <h3 id="beta">Understanding beta (β)</h3>
+      <p>Beta is the heart of CAPM. It measures how much a stock moves <em>relative to the market</em>:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Beta</th><th>Meaning</th><th>Typical examples</th></tr></thead>
+        <tbody>
+          <tr><td>β = 1</td><td>Moves in line with the market</td><td>Broad index-like stocks</td></tr>
+          <tr><td>β &gt; 1</td><td>More volatile than the market (aggressive)</td><td>Tech, cyclicals</td></tr>
+          <tr><td>β &lt; 1</td><td>Less volatile than the market (defensive)</td><td>FMCG, utilities</td></tr>
+          <tr><td>β = 0</td><td>No correlation with the market (theoretical, risk-free-like)</td><td>—</td></tr>
+          <tr><td>β &lt; 0</td><td>Moves opposite the market (rare)</td><td>e.g., some gold miners</td></tr>
+        </tbody>
+      </table></div>
+
+      <h4>Estimating historical beta</h4>
+      <p>Beta is estimated from past returns in two equivalent ways:</p>
+      <div class="formula-block"><div class="lbl">Method 1 — Covariance / Variance</div><div class="formula">$$\beta = \dfrac{\text{Cov}(R_i, R_m)}{\text{Var}(R_m)}$$</div>
+        <dl class="vars">
+          <dt>$\text{Cov}(R_i, R_m)$</dt><dd>how the stock's returns move together with the market's returns</dd>
+          <dt>$\text{Var}(R_m)$</dt><dd>the market's own volatility (variance)</dd>
+        </dl>
+      </div>
+      <div class="formula-block"><div class="lbl">Method 2 — Regression (slope)</div><div class="formula">$$R_i = \alpha + \beta \times R_m + \varepsilon$$</div>
+        <dl class="vars">
+          <dt>$\alpha$</dt><dd>alpha — the part of the stock's return unrelated to the market</dd>
+          <dt>$\beta$</dt><dd>beta — the <em>slope</em> of the line = systematic risk</dd>
+          <dt>$\varepsilon$</dt><dd>epsilon — the error term = firm-specific (unsystematic) risk</dd>
+        </dl>
+      </div>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Reliance vs Sensex, 5 monthly returns <span class="chev">›</span></summary>
+        <div class="body">
+          <p>Monthly returns: compute the mean of each column, take deviations, then cross-products and squared market deviations.</p>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Month</th><th class="num">R<sub>i</sub></th><th class="num">R<sub>m</sub></th><th class="num">Stock dev.</th><th class="num">Mkt dev.</th><th class="num">Cross-prod.</th><th class="num">Mkt dev.²</th></tr></thead>
+            <tbody>
+              <tr><td>Jan</td><td class="num">4%</td><td class="num">2%</td><td class="num">2.8%</td><td class="num">1.4%</td><td class="num">0.000392</td><td class="num">0.000196</td></tr>
+              <tr><td>Feb</td><td class="num">2%</td><td class="num">1%</td><td class="num">0.8%</td><td class="num">0.4%</td><td class="num">0.000032</td><td class="num">0.000016</td></tr>
+              <tr><td>Mar</td><td class="num">−3%</td><td class="num">−1%</td><td class="num">−4.2%</td><td class="num">−1.6%</td><td class="num">0.000672</td><td class="num">0.000256</td></tr>
+              <tr><td>Apr</td><td class="num">5%</td><td class="num">3%</td><td class="num">3.8%</td><td class="num">2.4%</td><td class="num">0.000912</td><td class="num">0.000576</td></tr>
+              <tr><td>May</td><td class="num">−2%</td><td class="num">−2%</td><td class="num">−3.2%</td><td class="num">−2.6%</td><td class="num">0.000832</td><td class="num">0.000676</td></tr>
+              <tr><td class="tot">Total</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num tot">0.002840</td><td class="num tot">0.001720</td></tr>
+            </tbody>
+          </table></div>
+          <div class="step"><span class="sh">Means</span> stock mean = (4+2−3+5−2)/5 = 1.2% ; market mean = (2+1−1+3−2)/5 = 0.6%.</div>
+          <div class="step"><span class="sh">Beta</span> $\beta = \dfrac{\sum \text{cross-products}}{\sum \text{market dev.}^2} = \dfrac{0.002840}{0.001720} \approx 1.65$ for this illustrative dataset.</div>
+          <div class="ans">β = Cov ÷ Var = Σ(cross-products) ÷ Σ(market deviations²) = 0.002840 ÷ 0.001720 ≈ <b>1.65</b></div>
+          <p><b>Note:</b> beta varies with the time period, return frequency and benchmark index chosen — which is why different data providers report different betas for the same stock.</p>
+        </div>
+      </details>
+
+      <h3 id="alpha">Stock alpha (α)</h3>
+      <p>Where beta measures risk, <b>alpha</b> measures <em>skill</em>. Alpha is the excess return an investment earns <em>above</em> what CAPM predicts for its level of risk — it isolates genuine skill from simply taking more risk:</p>
+      <div class="formula-block"><div class="lbl">Stock alpha</div><div class="formula">$$\alpha = R_{\text{actual}} - \big[R_f + \beta (R_m - R_f)\big]$$</div>
+        <dl class="vars">
+          <dt>$R_{\text{actual}}$</dt><dd>the return the stock/fund actually delivered</dd>
+          <dt>$R_f + \beta(R_m - R_f)$</dt><dd>the return CAPM <em>expected</em> given its risk</dd>
+        </dl>
+      </div>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Alpha</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>α = 0</td><td>Performed exactly as expected for its risk</td></tr>
+          <tr><td>α &gt; 0</td><td>Outperformed its risk-adjusted expectation (added value)</td></tr>
+          <tr><td>α &lt; 0</td><td>Underperformed its risk-adjusted expectation</td></tr>
+        </tbody>
+      </table></div>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Active fund vs its CAPM expectation <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> Fund B: β = 0.8, actual return = 12%, R<sub>f</sub> = 4%, benchmark R<sub>m</sub> = 10%.</div>
+          <div class="step"><span class="sh">CAPM expected</span> $= 4\% + 0.8 \times (10\% - 4\%) = 4\% + 4.8\% = 8.8\%$.</div>
+          <div class="step"><span class="sh">Alpha</span> $\alpha = 12\% - 8.8\% = +3.2\%$.</div>
+          <div class="ans">α = +3.2% — the fund beat its risk-adjusted expectation by 3.2 percentage points.</div>
+          <p><b>Interpretation:</b> a fund with a <em>lower</em> headline return can still have a higher alpha if it took less risk. Alpha, not raw return, reveals manager skill.</p>
+        </div>
+      </details>
+
+      <h2 id="dgm">4. The Dividend Growth (Gordon) Model <span class="tag src">Session 9</span></h2>
+      <p>CAPM is not the only route to the cost of equity. The <b>Dividend Growth Model (DGM)</b> — also called the <b>Gordon Growth Model</b> — values a share as the present value of all its future dividends, assumed to grow at a constant rate forever:</p>
+      <div class="formula-block"><div class="lbl">Share price (Gordon model)</div><div class="formula">$$P_0 = \dfrac{D_1}{K_e - g}$$</div>
+        <dl class="vars">
+          <dt>$P_0$</dt><dd>current market price of the share</dd>
+          <dt>$D_1$</dt><dd>expected dividend next year $= D_0 \times (1+g)$</dd>
+          <dt>$D_0$</dt><dd>the most recent (current) dividend per share</dd>
+          <dt>$K_e$</dt><dd>cost of equity (the required return we want)</dd>
+          <dt>$g$</dt><dd>constant expected growth rate of dividends</dd>
+        </dl>
+      </div>
+      <p>Rearranging to solve for the cost of equity gives the formula we actually use:</p>
+      <div class="formula-block"><div class="lbl">Cost of equity — DGM</div><div class="formula">$$K_e = \dfrac{D_1}{P_0} + g$$</div></div>
+      <p>In words: the required return = the <b>dividend yield next year</b> ($D_1/P_0$) <b>plus</b> the <b>growth rate</b> ($g$). You are rewarded both by the cash dividend and by the growing stream behind it.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> HUL: D₀ = ₹53, P₀ = ₹2,209, g = 14.35% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> $K_e = \dfrac{D_1}{P_0} + g$, with $D_1 = D_0(1+g)$.</div>
+          <div class="step"><span class="sh">Given</span> $D_0 = ₹53$, $P_0 = ₹2{,}209$, $g = 14.35\%$.</div>
+          <div class="step"><span class="sh">Step 1 — D₁</span> $D_1 = 53 \times (1 + 0.1435) = ₹60.6$.</div>
+          <div class="step"><span class="sh">Step 2 — apply</span> $K_e = \dfrac{60.6}{2209} + 0.1435 = 2.74\% + 14.35\%$.</div>
+          <div class="ans">HUL K<sub>e</sub> ≈ <b>17.1%</b></div>
+          <p><b>Interpretation:</b> HUL's dividend grew from ₹31 (FY2021) to ₹53 (FY2025). The required return breaks into a small 2.74% dividend yield plus a large 14.35% growth component.</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Infosys: D₀ = ₹45, P₀ = ₹1,500, g = 10.7% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> $D_0 = ₹45$, $P_0 = ₹1{,}500$, $g = 10.7\%$.</div>
+          <div class="step"><span class="sh">Step 1 — D₁</span> $D_1 = 45 \times (1 + 0.107) = ₹49.8$.</div>
+          <div class="step"><span class="sh">Step 2 — apply</span> $K_e = \dfrac{49.8}{1500} + 0.107 = 3.32\% + 10.7\%$.</div>
+          <div class="ans">Infosys K<sub>e</sub> ≈ <b>14.0%</b></div>
+          <p><b>Interpretation:</b> Infosys' dividend grew from ~₹30 (FY2021) to ~₹45 (FY2025), including a special dividend in FY2024. Its required return is 3.32% yield + 10.7% growth ≈ 14.0%.</p>
+        </div>
+      </details>
+
+      <div class="callout info"><div class="ct-head">ℹ️ Try the calculator</div><p>Use the DGM calculator below to reproduce HUL (D₀ = 53, P₀ = 2209, g = 14.35) and Infosys (D₀ = 45, P₀ = 1500, g = 10.7). Then change the growth rate and watch how sensitive K<sub>e</sub> is to g.</p></div>
+      <div data-calc="dgm"></div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake — the g ≥ K<sub>e</sub> trap</div><p>The Gordon model <b>breaks down whenever g ≥ K<sub>e</sub></b>. Look at $P_0 = D_1/(K_e - g)$: if the growth rate equals or exceeds the required return, the denominator becomes <b>zero or negative</b>, giving an infinite or nonsensical (negative) price. No company can grow its dividends faster than its cost of equity <em>forever</em>. Always sanity-check g against K<sub>e</sub> before applying the model mechanically.</p></div>
+
+      <h2 id="growth">5. Estimating the growth rate (g) <span class="tag src">Session 9</span></h2>
+      <p>The whole DGM swings on <b>g</b>, so estimating it well matters. Analysts use two standard approaches.</p>
+
+      <h3>Method 1 — Geometric mean of historical dividends</h3>
+      <div class="formula-block"><div class="lbl">Historical growth</div><div class="formula">$$g = \left(\dfrac{D_n}{D_0}\right)^{1/n} - 1$$</div>
+        <dl class="vars">
+          <dt>$D_0$</dt><dd>the earliest dividend on record</dd>
+          <dt>$D_n$</dt><dd>the most recent dividend</dd>
+          <dt>$n$</dt><dd>the number of years between them</dd>
+        </dl>
+      </div>
+      <p>This reflects the company's actual dividend track record — but it can be <em>distorted by one-off special dividends.</em></p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Geometric growth, FY2021 → FY2025 (n = 4) <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">HUL</span> $g = (53/31)^{1/4} - 1 = (1.71)^{0.25} - 1 \approx 14.35\%$.</div>
+          <div class="step"><span class="sh">Infosys</span> $g = (45/30)^{1/4} - 1 = (1.5)^{0.25} - 1 \approx 10.67\%$.</div>
+          <div class="ans">HUL g ≈ <b>14.35%</b> &nbsp;·&nbsp; Infosys g ≈ <b>10.67%</b></div>
+        </div>
+      </details>
+
+      <h3>Method 2 — Sustainable growth rate (b × r)</h3>
+      <p>The <b>sustainable growth rate</b> asks: how fast can the company grow using only the profits it <em>reinvests</em>? It multiplies how much it keeps by how well it reinvests:</p>
+      <div class="formula-block"><div class="lbl">Sustainable growth</div><div class="formula">$$g = b \times r$$</div>
+        <dl class="vars">
+          <dt>$b$</dt><dd>retention ratio $= 1 - \text{payout ratio} = 1 - \dfrac{\text{DPS}}{\text{EPS}}$ — the share of earnings kept, not paid out</dd>
+          <dt>$r$</dt><dd>return on equity (ROE) $= \dfrac{\text{Net income}}{\text{Equity}}$ — the return earned on reinvested capital</dd>
+        </dl>
+      </div>
+      <p>A low <b>b</b> means a mature firm paying most profits out (e.g. FMCG). A high <b>b</b> means a growth firm reinvesting heavily. A higher, more stable <b>r</b> lets reinvested earnings compound faster, supporting higher g.</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Sustainable g — HUL vs Infosys <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">HUL</span> payout 92.55% → b = 7.45% = 0.0745 ; ROE = 21.55% = 0.2155. $g = 0.0745 \times 0.2155 \approx 1.6\%$.</div>
+          <div class="step"><span class="sh">Infosys</span> payout 68.5% → b = 31.5% = 0.315 ; ROE = 30.8% = 0.308. $g = 0.315 \times 0.308 \approx 9.7\%$.</div>
+          <div class="ans">HUL sustainable g ≈ <b>1.6%</b> (vs historical 14.35%) &nbsp;·&nbsp; Infosys sustainable g ≈ <b>9.7%</b> (vs historical 10.67%)</div>
+          <p><b>Interpretation:</b> for HUL the two methods <em>diverge sharply</em> — its history includes unusually large payouts, so 14.35% overstates what it can sustainably repeat. For Infosys the two <em>converge</em> (9.7% vs 10.67%): its payout is stable and consistent with its profitability, so the DGM estimate is far more reliable.</p>
+        </div>
+      </details>
+
+      <div class="try" data-answer="9.7" data-tol="2%" data-ok="Correct — Infosys' sustainable growth is about 9.7%.">
+        <div class="q">✎ <b>Try it — sustainable growth.</b> A company has a payout ratio of 68.5% and ROE of 30.8%. What is its sustainable growth rate g = b × r (in %)? <span class="tag src">Session 9</span></div>
+        <div class="row"><input type="text" placeholder="e.g. 9.7"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>Retention b = 1 − payout = 1 − 0.685 = 0.315. Then $g = b \times r = 0.315 \times 0.308 = 0.097 = \mathbf{9.7\%}$. First convert the payout to a retention ratio, then multiply by ROE.</p></div>
+      </div>
+
+      <div class="callout tip"><div class="ct-head">💡 Which g to trust?</div><p>When payout is <b>stable</b> (Infosys), both methods converge and the DGM is trustworthy. When payout is <b>volatile or unusually high</b> (HUL), the methods diverge — use judgment, or apply a multi-stage growth model instead of one constant g.</p></div>
+
+      <h2 id="compare">6. CAPM vs the Dividend Growth Model <span class="tag src">Session 9</span></h2>
+      <p>These are <b>complementary, not competing</b> tools. Each suits a different situation.</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Basis</th><th>CAPM</th><th>Dividend Growth Model</th></tr></thead>
+        <tbody>
+          <tr><td>Applicability</td><td>All listed companies (dividend or not)</td><td>Only dividend-paying companies</td></tr>
+          <tr><td>Risk measurement</td><td>Explicit — via beta</td><td>Implicit / ignored</td></tr>
+          <tr><td>Data required</td><td>R<sub>f</sub>, β, R<sub>m</sub></td><td>Price, expected dividend, growth rate</td></tr>
+          <tr><td>Key assumption</td><td>Efficient markets</td><td>Constant, perpetual dividend growth</td></tr>
+          <tr><td>Sensitivity</td><td>Beta &amp; market-premium estimates</td><td>Highly sensitive to the growth rate (g)</td></tr>
+          <tr><td>Best suited for</td><td>Growth/tech &amp; all-sector firms</td><td>Stable, mature, dividend-paying firms</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>Cost of equity = the minimum return shareholders require; equity is risky (residual, discretionary dividends) so K<sub>e</sub> &gt; K<sub>d</sub>.</li>
+          <li>Only <b>systematic risk</b> is priced; unsystematic risk is diversified away for free.</li>
+          <li><b>CAPM:</b> $K_e = R_f + \beta(R_m - R_f)$. Reliance (β 0.83) → 11.98%; TCS (β 1.13) → 13.78%.</li>
+          <li>Beta: =1 with market, &gt;1 aggressive, &lt;1 defensive, 0 none, &lt;0 opposite. Alpha = actual − CAPM expected.</li>
+          <li><b>DGM:</b> $K_e = D_1/P_0 + g$. HUL → 17.1%; Infosys → 14.0%. Breaks down if g ≥ K<sub>e</sub>.</li>
+          <li>Growth: geometric $g=(D_n/D_0)^{1/n}-1$ vs sustainable $g = b \times r$ (b = 1 − payout, r = ROE).</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">7. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-05.html"><span>Previous lesson</span><b>‹ Capital Budgeting</b></a>
+        <a class="next" href="lesson-07.html"><span>Next lesson</span><b>Bonds &amp; WACC ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-06">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-06",
+    title: "Lesson 6 Quiz — Cost of Equity",
+    questions: [
+      { q:"The cost of equity is best described as:", options:["The interest a company pays on its bank loans","The minimum return shareholders require for the risk they bear","The dividend a company is legally required to pay","The tax a company pays on its profits"], correct:1,
+        explain:"The cost of equity is the minimum return equity investors demand for keeping their money in the firm given its risk — it is the firm's cost and the investor's required return." },
+      { q:"Which of the following is an example of SYSTEMATIC (market) risk?", options:["A product recall at one pharma company","A labour strike at a single factory","A nationwide recession such as the 2008 crisis","An accounting scandal at one firm"], correct:2,
+        explain:"Systematic risk affects the whole market/economy (recession, inflation, pandemics). The other three hit one company or industry only — that is unsystematic (diversifiable) risk." },
+      { q:"Why does CAPM price ONLY systematic risk?", options:["Unsystematic risk does not exist in practice","Unsystematic risk can be diversified away for free, so the market pays nothing for it","Systematic risk is easier to calculate","Beta measures unsystematic risk"], correct:1,
+        explain:"Investors can eliminate unsystematic risk at no cost through diversification, so the market refuses to reward it. Only non-diversifiable (systematic) risk, measured by beta, is priced." },
+      { q:"Using CAPM with Rf = 7% and Rm = 13%, a stock with β = 0.83 has a cost of equity of:", options:["7.00%","11.98%","13.78%","6.00%"], correct:1,
+        explain:"Apply Ke = Rf + β(Rm − Rf). This is the Reliance example.", calc:"Ke = 7% + 0.83 × (13% − 7%) = 7% + 0.83 × 6% = 7% + 4.98% = 11.98%." },
+      { q:"A stock with β = 1.13 (Rf = 7%, Rm = 13%) requires a return of:", options:["13.78%","11.98%","6.78%","20.00%"], correct:0,
+        explain:"Higher beta than the market means a higher required return. This is the TCS example.", calc:"Ke = 7% + 1.13 × (13% − 7%) = 7% + 1.13 × 6% = 7% + 6.78% = 13.78%." },
+      { q:"A stock with a beta of 0.6 is best described as:", options:["More volatile than the market (aggressive)","Less volatile than the market (defensive)","Moving exactly with the market","Moving opposite to the market"], correct:1,
+        explain:"β < 1 means the stock is less volatile than the market — a defensive stock (e.g. FMCG, utilities). β > 1 would be aggressive; β < 0 would move opposite the market." },
+      { q:"A fund returned 12% with β = 0.8, where Rf = 4% and Rm = 10%. Its alpha is:", options:["+3.2%","0%","−3.2%","+12%"], correct:0,
+        explain:"Alpha = actual return − CAPM expected return. A positive alpha means the fund beat its risk-adjusted expectation.", calc:"CAPM expected = 4% + 0.8 × (10% − 4%) = 4% + 4.8% = 8.8%. Alpha = 12% − 8.8% = +3.2%." },
+      { q:"Using the DGM with D0 = ₹53, P0 = ₹2,209 and g = 14.35%, the cost of equity is about:", options:["14.35%","2.74%","17.1%","60.6%"], correct:2,
+        explain:"Compute D1 = D0(1+g), then Ke = D1/P0 + g. This is the HUL example.", calc:"D1 = 53 × 1.1435 = ₹60.6. Ke = 60.6/2209 + 0.1435 = 2.74% + 14.35% = 17.1%." },
+      { q:"A company has a payout ratio of 60% and an ROE of 20%. Its sustainable growth rate (g = b × r) is:", options:["12%","8%","20%","60%"], correct:1,
+        explain:"First convert payout to retention: b = 1 − payout. Then g = b × r.", calc:"b = 1 − 0.60 = 0.40. g = 0.40 × 0.20 = 0.08 = 8%." },
+      { q:"The Dividend Growth Model breaks down when:", options:["Beta is greater than 1","The payout ratio is below 50%","The growth rate g is greater than or equal to Ke","The company pays dividends every year"], correct:2,
+        explain:"In P0 = D1/(Ke − g), if g ≥ Ke the denominator becomes zero or negative, giving an infinite or nonsensical price. No firm can grow dividends faster than its cost of equity forever." },
+      { q:"For a profitable TECH company that pays NO dividends, which model should you use for the cost of equity?", options:["The Dividend Growth Model only","CAPM, because it applies to all listed firms whether or not they pay dividends","Neither model can be used","Both give identical answers"], correct:1,
+        explain:"The DGM needs dividends and a growth rate, so it cannot handle a non-payer. CAPM works for all listed companies via Rf, β and Rm — it is the right tool here." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

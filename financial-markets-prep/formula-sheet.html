@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formula Sheet — FMI Exam Prep</title>
+<meta name="description" content="Every formula from the Financial Markets & Instruments syllabus, chapter-wise, searchable and printer-friendly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .f-card { break-inside: avoid; }
+  .f-card .fx { background: var(--bg-sunken); border:1px solid var(--line); border-radius: 9px; padding: 10px 14px; margin: 8px 0; overflow-x:auto; text-align:center; }
+  .f-card .meta { font-size: 13.5px; color: var(--ink-soft); }
+  .f-card .meta b { color: var(--ink); }
+  .f-card.important { border-color: var(--accent); }
+  .f-card .star { color: var(--accent); }
+  .chap { margin-top: 30px; }
+  .chap h2 { border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lessons/lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lessons/lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lessons/lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lessons/lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lessons/lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lessons/lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lessons/lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lessons/lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lessons/lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lessons/lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lessons/lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="index.html"><span class="logo">FMI</span><b>Formula Sheet</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <span class="eyebrow">Reference</span>
+      <h1>Master Formula Sheet</h1>
+      <p class="lead">Every formula in the syllabus, grouped by topic. Each has its variables, when to use it, a quick example and (where it matters) the trap to avoid. <span class="star" style="color:var(--accent)">★</span> marks the high-frequency numerical formulas.</p>
+
+      <div class="card no-print" style="margin:16px 0">
+        <div class="search-box"><span class="si">🔎</span><input id="fsearch" type="search" placeholder="Filter formulas… (e.g. “annuity”, “WACC”, “break-even”)" autocomplete="off"></div>
+        <div class="btn-row" style="margin-bottom:0">
+          <button class="btn primary sm" onclick="window.print()">🖨️ Print / Save as PDF</button>
+          <span class="chips" id="chapChips" style="margin:0"></span>
+        </div>
+      </div>
+
+      <div id="formulaRoot"></div>
+      <p class="muted" id="noMatch" style="display:none">No formulas match that filter.</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="js/progress.js" defer></script>
+<script src="js/app.js" defer></script>
+<script defer>
+var FORMULAS = [
+ { ch:"Accounting", items:[
+   { n:"Accounting equation", f:"\\text{Assets} = \\text{Liabilities} + \\text{Equity}", v:"—", use:"Checking every transaction balances; building a balance sheet.", ex:"Cash 7L + Stock 3L = Loan 2L + Equity 8L." },
+   { n:"Change in equity", f:"\\Delta E = \\text{Income} - \\text{Expenses} + \\text{Gains} - \\text{Losses} - \\text{Drawings}", v:"—", use:"Linking the income statement to equity.", ex:"Profit raises equity; drawings/dividends lower it." },
+   { n:"Straight-line depreciation", f:"\\text{Dep} = \\dfrac{\\text{Cost} - \\text{Residual}}{\\text{Useful life}}", v:"Equal charge each year.", use:"Assets that wear evenly.", ex:"(10,00,000−1,00,000)/5 = ₹1,80,000/yr.", imp:true },
+   { n:"Reducing-balance depreciation", f:"\\text{Dep}_t = \\text{Opening book value} \\times \\text{rate}", v:"Rate on shrinking base.", use:"Assets losing value fast (vehicles).", ex:"20,00,000 × 25% = ₹5,00,000 in year 1." },
+   { n:"Operating cash flow (indirect)", f:"\\text{OCF} = \\text{PAT} + \\text{Dep} - \\Delta\\text{Receivables} - \\Delta\\text{Inventory} + \\Delta\\text{Payables}", v:"Δ = increase.", use:"Reconciling profit to cash.", ex:"67.5 + 20 − 30 − 15 + 10 = ₹52.5L.", imp:true },
+ ]},
+ { ch:"Financial Ratios", items:[
+   { n:"Current ratio", f:"\\dfrac{\\text{Current assets}}{\\text{Current liabilities}}", v:"Rule of thumb 1.5–2.", use:"Short-term liquidity.", ex:"60L/40L = 1.5×.", imp:true },
+   { n:"Quick (acid-test) ratio", f:"\\dfrac{\\text{Current assets} - \\text{Inventory}}{\\text{Current liabilities}}", v:"Excludes slow-moving stock.", use:"Liquidity without relying on inventory.", ex:"(60−20)/40 = 1.0×.", imp:true },
+   { n:"Cash ratio", f:"\\dfrac{\\text{Cash \\& equivalents}}{\\text{Current liabilities}}", v:"Strictest liquidity test.", use:"Immediate cover.", ex:"8L/40L = 0.2×." },
+   { n:"Inventory turnover / days", f:"\\dfrac{\\text{COGS}}{\\text{Avg inventory}} \\;;\\; \\text{Days} = \\dfrac{365}{\\text{turnover}}", v:"—", use:"How fast stock sells.", ex:"140/20 = 7× → 52 days." },
+   { n:"Receivables days (DSO)", f:"\\dfrac{365}{\\text{Sales} / \\text{Avg debtors}}", v:"—", use:"How fast customers pay.", ex:"365/(200/25)=46 days." },
+   { n:"Operating / working-capital cycle", f:"\\text{Inv days} + \\text{Receivable days} - \\text{Payable days}", v:"Days cash is tied up.", use:"Working-capital management.", ex:"116+43−71 = 87 days.", imp:true },
+   { n:"Debt-to-equity", f:"\\dfrac{\\text{Total debt}}{\\text{Equity}}", v:"Higher = more risk.", use:"Leverage / solvency.", ex:"50L/100L = 0.5×." },
+   { n:"Interest coverage", f:"\\dfrac{\\text{EBIT}}{\\text{Interest}}", v:"Below 2 is a warning.", use:"Ability to service debt.", ex:"24L/6L = 4×." },
+   { n:"Gross / operating / net margin", f:"\\tfrac{\\text{GP}}{\\text{Sales}},\\; \\tfrac{\\text{EBIT}}{\\text{Sales}},\\; \\tfrac{\\text{PAT}}{\\text{Sales}}", v:"—", use:"Profitability at each level.", ex:"GP margin 30%, net 7%." },
+   { n:"ROCE / ROA / ROE", f:"\\tfrac{\\text{EBIT}}{\\text{Cap. employed}},\\; \\tfrac{\\text{PAT}}{\\text{Total assets}},\\; \\tfrac{\\text{PAT}}{\\text{Equity}}", v:"Capital employed = equity + debt.", use:"Returns on capital.", ex:"ROE 14/100 = 14%.", imp:true },
+   { n:"DuPont (ROE)", f:"\\text{ROE} = \\text{Net margin} \\times \\text{Asset turnover} \\times \\text{Equity multiplier}", v:"—", use:"Finding what drives ROE.", ex:"12.1% × 1.44 × 1.08 ≈ 18.9%." },
+   { n:"EPS / P/E", f:"\\text{EPS}=\\tfrac{\\text{PAT}}{\\text{Shares}};\\; \\text{P/E}=\\tfrac{\\text{Price}}{\\text{EPS}}", v:"—", use:"Market valuation.", ex:"Price 210 / EPS 14 = 15×.", imp:true },
+   { n:"Dividend yield / payout", f:"\\tfrac{\\text{DPS}}{\\text{Price}};\\; \\tfrac{\\text{DPS}}{\\text{EPS}}", v:"—", use:"Income & distribution policy.", ex:"DPS 4 / price 210 = 1.9%." },
+   { n:"Enterprise value", f:"\\text{Market cap} + \\text{Debt} - \\text{Cash}", v:"Whole-business value.", use:"M&A, EV multiples.", ex:"2,30,208 + 1,199 − 205 cr." },
+ ]},
+ { ch:"Costing & CVP", items:[
+   { n:"Overhead absorption rate (OAR)", f:"\\dfrac{\\text{Total overhead}}{\\text{Activity base}}", v:"Base = units / labour hrs / machine hrs.", use:"Absorbing overhead into product cost.", ex:"10,00,000/10,000 = ₹100/unit." },
+   { n:"Contribution", f:"\\text{Contribution} = \\text{Selling price} - \\text{Variable cost}", v:"Per unit or total.", use:"Marginal costing, CVP, pricing.", ex:"500 − 300 = ₹200/unit.", imp:true },
+   { n:"P/V ratio", f:"\\dfrac{\\text{Contribution}}{\\text{Sales}}", v:"As a %.", use:"Break-even in value, what-ifs.", ex:"200/500 = 40%." },
+   { n:"Break-even point", f:"\\text{Units} = \\dfrac{\\text{Fixed cost}}{\\text{Contribution/unit}};\\; \\text{Value} = \\dfrac{\\text{Fixed cost}}{\\text{P/V}}", v:"Profit = 0 here.", use:"Minimum sales to avoid a loss.", ex:"10L/200 = 5,000 units.", imp:true },
+   { n:"Target-profit units", f:"\\dfrac{\\text{Fixed cost} + \\text{Target profit}}{\\text{Contribution/unit}}", v:"—", use:"Volume for a desired profit.", ex:"(10L+4L)/200 = 7,000 units.", imp:true },
+   { n:"Margin of safety", f:"\\text{Actual sales} - \\text{Break-even sales} \\;=\\; \\dfrac{\\text{Profit}}{\\text{P/V}}", v:"Also as a % of sales.", use:"How far sales can fall.", ex:"10L−6L = ₹4L (40%)." },
+ ]},
+ { ch:"Time Value of Money", items:[
+   { n:"Future value (compounding)", f:"FV = PV \\times (1+r)^n", v:"r per period, n periods.", use:"Growing a lump sum forward.", ex:"10,00,000×1.08⁵ = ₹14,69,328.", imp:true },
+   { n:"Present value (discounting)", f:"PV = \\dfrac{FV}{(1+r)^n}", v:"—", use:"Value today of a future sum.", ex:"50,00,000/1.08⁵ = ₹34,02,916.", imp:true },
+   { n:"PV of uneven cash flows", f:"PV = \\sum_{t} \\dfrac{CF_t}{(1+r)^t}", v:"—", use:"Projects with different yearly flows.", ex:"Σ each year discounted separately." },
+   { n:"PV of an annuity", f:"PV = A \\times \\dfrac{1-(1+r)^{-n}}{r}", v:"A = equal payment.", use:"Loans, EMIs, leases.", ex:"10,000 × 3.7908 = ₹37,908.", imp:true },
+   { n:"FV of an annuity", f:"FV = A \\times \\dfrac{(1+r)^n - 1}{r}", v:"—", use:"SIPs, sinking funds.", ex:"10,000 × 6.1051 = ₹61,051." },
+   { n:"Annuity due", f:"\\text{Ordinary annuity} \\times (1+r)", v:"Payments at period start.", use:"Rent, insurance paid in advance.", ex:"Worth (1+r) times more." },
+   { n:"Perpetuity", f:"PV = \\dfrac{C}{r}", v:"Level cash flow forever.", use:"Preference shares, endowments.", ex:"500/0.10 = ₹5,000." },
+   { n:"Growing perpetuity", f:"PV = \\dfrac{C_1}{r-g}", v:"Needs r > g.", use:"Terminal value, Gordon growth.", ex:"500/(0.10−0.04)=₹8,333.", imp:true },
+   { n:"Terminal value", f:"TV_n = \\dfrac{CF_n(1+g)}{r-g},\\; PV = \\dfrac{TV_n}{(1+r)^n}", v:"Value beyond the forecast.", use:"DCF valuation.", ex:"Always discount TV back to today." },
+   { n:"Rule of 72", f:"\\text{Years to double} \\approx \\dfrac{72}{r\\%}", v:"Quick estimate.", use:"Mental maths.", ex:"72/8 ≈ 9 years." },
+ ]},
+ { ch:"Capital Budgeting", items:[
+   { n:"Net present value (NPV)", f:"NPV = \\sum_t \\dfrac{CF_t}{(1+r)^t} - \\text{Investment}", v:"Accept if NPV > 0.", use:"The primary appraisal rule.", ex:"90.12L − 80L = +₹10.12L.", imp:true },
+   { n:"Internal rate of return (IRR)", f:"\\text{Rate where } NPV = 0", v:"Accept if IRR > cost of capital.", use:"Return of the project itself.", ex:"IRR 17% > 12% → accept.", imp:true },
+   { n:"IRR interpolation", f:"L + \\dfrac{NPV_L}{NPV_L - NPV_H}\\times(H-L)", v:"L,H = low/high rates.", use:"Estimating IRR by hand.", ex:"17% + 2,000/(2,000+1,82,070) ≈ 17.01%." },
+   { n:"Payback period", f:"\\text{Years to recover the investment}", v:"Ignores time value.", use:"Quick liquidity screen.", ex:"80/25 = 3.2 years." },
+   { n:"Profitability index (PI)", f:"\\dfrac{\\text{PV of inflows}}{\\text{Investment}}", v:"Accept if > 1.", use:"Ranking under capital rationing.", ex:"90.1/80 = 1.13." },
+ ]},
+ { ch:"Cost of Capital", items:[
+   { n:"CAPM — cost of equity", f:"K_e = R_f + \\beta (R_m - R_f)", v:"β = systematic risk.", use:"Required return on equity (any firm).", ex:"7% + 0.83×6% = 11.98%.", imp:true },
+   { n:"Market risk premium", f:"R_m - R_f", v:"Extra return for market risk.", use:"Input to CAPM.", ex:"13% − 7% = 6%." },
+   { n:"Alpha", f:"\\alpha = R_{actual} - [R_f + \\beta(R_m - R_f)]", v:"Excess over CAPM.", use:"Measuring manager skill.", ex:"14% − 13% = +1%." },
+   { n:"Beta (Cov/Var)", f:"\\beta = \\dfrac{\\text{Cov}(R_i, R_m)}{\\text{Var}(R_m)}", v:"Slope vs market.", use:"Estimating systematic risk.", ex:"0.00284/0.00172 ≈ 1.65." },
+   { n:"Dividend Growth (Gordon) — Ke", f:"K_e = \\dfrac{D_1}{P_0} + g,\\quad D_1 = D_0(1+g)", v:"Needs Ke > g.", use:"Cost of equity for dividend payers.", ex:"60.6/2209 + 14.35% ≈ 17.1%.", imp:true },
+   { n:"Sustainable growth", f:"g = b \\times r", v:"b = 1 − payout, r = ROE.", use:"A grounded estimate of g.", ex:"0.315 × 0.308 = 9.7%." },
+   { n:"Geometric-mean growth", f:"g = \\left(\\dfrac{D_n}{D_0}\\right)^{1/n} - 1", v:"—", use:"g from dividend history.", ex:"(53/31)^{1/4} − 1 = 14.35%." },
+ ]},
+ { ch:"Bonds & Stock Valuation", items:[
+   { n:"Coupon bond price", f:"P = \\sum_{t=1}^{T}\\dfrac{C}{(1+r)^t} + \\dfrac{F}{(1+r)^T}", v:"C = coupon, F = face value, r = YTM.", use:"Valuing a plain-vanilla bond.", ex:"80/1.09+80/1.09²+1080/1.09³ = ₹974.56.", imp:true },
+   { n:"Zero-coupon bond", f:"P = \\dfrac{F}{(1+r)^T}", v:"No coupons.", use:"Deep-discount bonds.", ex:"1,00,000/1.07⁵ = ₹71,299." },
+   { n:"Perpetual bond", f:"P = \\dfrac{C}{r}", v:"No maturity.", use:"AT1 / perpetual bonds.", ex:"8/0.085 = ₹94.12." },
+   { n:"Yield to maturity (approx.)", f:"YTM \\approx \\dfrac{C + (F-P)/n}{(F+P)/2}", v:"n = years to maturity.", use:"Quick yield estimate.", ex:"[90+(1000−980)/2]/990 ≈ 10.10%.", imp:true },
+   { n:"Zero-growth stock (DDM)", f:"P_0 = \\dfrac{D_1}{r}", v:"Constant dividend.", use:"Mature, no-growth firms.", ex:"18/0.12 = ₹150." },
+   { n:"Constant-growth stock (Gordon)", f:"P_0 = \\dfrac{D_1}{r-g}", v:"D₁ = D₀(1+g), r > g.", use:"Steady dividend growers.", ex:"20.90/(0.14−0.10) = ₹522.50.", imp:true },
+   { n:"Two-stage stock", f:"P_0 = \\sum \\dfrac{D_t}{(1+r)^t} + \\dfrac{P_n}{(1+r)^n},\\; P_n=\\dfrac{D_{n+1}}{r-g_2}", v:"High then stable growth.", use:"Firms out-growing the economy then maturing.", ex:"62.15 + 319.22 = ₹381.37." },
+ ]},
+ { ch:"WACC & Valuation", items:[
+   { n:"WACC (debt + equity)", f:"WACC = r_E\\tfrac{E}{E+D} + r_D(1-T_c)\\tfrac{D}{E+D}", v:"Use market-value weights.", use:"Overall cost of capital / DCF discount rate.", ex:"13.3%×85.3% + 5.6%×14.7% = 12.2%.", imp:true },
+   { n:"WACC (with preferred)", f:"r_E\\tfrac{E}{V} + r_P\\tfrac{P}{V} + r_D(1-T_c)\\tfrac{D}{V}", v:"V = E + P + D.", use:"Firms with preferred equity.", ex:"Add the preferred term." },
+   { n:"After-tax cost of debt", f:"r_D (1 - T_c)", v:"Tax shield on interest.", use:"Debt component of WACC.", ex:"7.5% × (1−0.25) = 5.6%." },
+   { n:"Free cash flow (FCF)", f:"FCF = \\text{Operating cash flow} - \\text{CapEx}", v:"—", use:"Cash available after reinvestment.", ex:"1,090 − 300 = ₹790 cr.", imp:true },
+   { n:"FCFE", f:"FCFE \\approx CFO - CapEx - \\text{Interest} + \\text{Net borrowing}", v:"Cash to equity holders.", use:"Equity valuation.", ex:"After debt cash flows." },
+   { n:"Equity value from EV", f:"\\text{Equity value} = \\text{Enterprise value} - \\text{Net debt}", v:"÷ shares → per-share.", use:"Final DCF step.", ex:"EV − net debt, then per share." },
+ ]},
+ { ch:"Derivatives & Special Products", items:[
+   { n:"Call payoff (buyer)", f:"\\max(0,\\; S_T - X) - \\text{premium}", v:"S = spot, X = strike.", use:"Right to buy; gains when price rises.", ex:"Spot 1,100, strike 1,000, premium 50 → ₹50." },
+   { n:"Put payoff (buyer)", f:"\\max(0,\\; X - S_T) - \\text{premium}", v:"—", use:"Right to sell; gains when price falls.", ex:"Loss capped at the premium." },
+   { n:"Black-Scholes call", f:"C = S_0 N(d_1) - X e^{-rt} N(d_2)", v:"Inputs: S, X, t, r, volatility.", use:"Theoretical option price.", ex:"Higher volatility → higher price." },
+   { n:"Credit spread", f:"\\text{Company yield} - \\text{Government yield}", v:"In basis points (1bp = 0.01%).", use:"Market's fear of default.", ex:"9% − 7% = 200 bp." },
+   { n:"Implied default rate", f:"\\approx \\dfrac{\\text{Spread}}{\\text{Loss given default}}", v:"LGD = 1 − recovery.", use:"Reading a spread as a probability.", ex:"6%/0.6 = 10%." },
+   { n:"CDS annual premium", f:"\\text{Notional} \\times \\text{spread}", v:"Paid by protection buyer.", use:"Cost of credit insurance.", ex:"₹100cr × 200bp = ₹2cr/yr." },
+   { n:"Market-linked note payoff", f:"\\text{Principal} \\times (1 + p \\times \\max(0, \\text{index return}))", v:"p = participation rate.", use:"Principal-protected structured notes.", ex:"₹10L × (1 + 0.70×0.50) = ₹13.5L." },
+ ]},
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.getElementById("formulaRoot");
+  var chips = document.getElementById("chapChips");
+  var noMatch = document.getElementById("noMatch");
+
+  var html = "";
+  FORMULAS.forEach(function (c, ci) {
+    html += '<section class="chap" data-chap="' + ci + '"><h2 id="ch' + ci + '">' + c.ch + "</h2>";
+    c.items.forEach(function (it) {
+      html += '<div class="card f-card ' + (it.imp ? "important" : "") + '" data-text="' + (it.n + " " + c.ch + " " + (it.use||"")).toLowerCase().replace(/"/g,"") + '">' +
+        "<h3 style='margin-top:0'>" + (it.imp ? '<span class="star">★</span> ' : "") + it.n + "</h3>" +
+        '<div class="fx">$$' + it.f + "$$</div>" +
+        '<div class="meta"><b>Variables:</b> ' + it.v + "<br><b>When to use:</b> " + it.use + "<br><b>Example:</b> " + it.ex + "</div></div>";
+    });
+    html += "</section>";
+  });
+  root.innerHTML = html;
+
+  chips.innerHTML = '<a class="chip active" data-f="all">All</a>' + FORMULAS.map(function (c, ci) {
+    return '<a class="chip" href="#ch' + ci + '">' + c.ch + "</a>";
+  }).join("");
+
+  if (window.renderMathIn) window.renderMathIn(root);
+
+  var fs = document.getElementById("fsearch");
+  fs.addEventListener("input", function () {
+    var q = fs.value.trim().toLowerCase();
+    var anyCard = false;
+    document.querySelectorAll(".chap").forEach(function (sec) {
+      var shown = 0;
+      sec.querySelectorAll(".f-card").forEach(function (card) {
+        var match = !q || card.getAttribute("data-text").indexOf(q) > -1;
+        card.style.display = match ? "" : "none";
+        if (match) { shown++; anyCard = true; }
+      });
+      sec.style.display = shown ? "" : "none";
+    });
+    noMatch.style.display = anyCard ? "none" : "block";
+  });
+});
+</script>
+</body>
+</html>

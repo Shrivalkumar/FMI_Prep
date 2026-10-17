@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 — Accounting Foundations & the 3 Statements</title>
+<meta name="description" content="Learn accounting from scratch: the accounting equation, core concepts, depreciation, and how the income statement, balance sheet and cash flow statement connect.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 1</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 1</span>
+        <span class="tag src">Sessions 1–2 · Speed Run</span>
+      </div>
+      <h1>Accounting Foundations &amp; the Three Statements</h1>
+      <p class="lead">Accounting is the language of business. Before you can read a ratio, value a bond or discount a cash flow, you need to understand where the numbers come from. This lesson builds that base from zero.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="why">1. Why accounting exists</h2>
+      <p><b>Accounting records, classifies and summarises business transactions in money terms.</b> Its job is to answer three questions for anyone with a stake in a business: <em>How did we perform? What do we own and owe? Where did the cash go?</em></p>
+      <p>Different people need those answers for different reasons:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>User</th><th>Uses the statements to…</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Management</td><td>Plan, control costs, decide</td><td>A retail chain picks the best store to expand</td></tr>
+          <tr><td>Shareholders / investors</td><td>Measure return and growth</td><td>Reviewing quarterly and annual results</td></tr>
+          <tr><td>Lenders (banks)</td><td>Check repayment ability</td><td>Reading audited statements before a loan</td></tr>
+          <tr><td>Suppliers</td><td>Set credit limits</td><td>Checking the position before extending credit</td></tr>
+          <tr><td>Government</td><td>Verify tax &amp; compliance</td><td>GST and income-tax filings</td></tr>
+        </tbody>
+      </table></div>
+      <p><em>Internal</em> users run the business; <em>external</em> users invest, lend, supply or regulate it. The output comes in several flavours — financial, management, cost, tax, audit and forensic accounting.</p>
+
+      <h2 id="equation">2. The accounting equation</h2>
+      <p>Everything in accounting hangs off one identity that must hold true after <em>every</em> transaction:</p>
+      <div class="formula-block"><div class="lbl">The accounting equation</div><div class="formula">$$\text{Assets} = \text{Liabilities} + \text{Equity}$$</div></div>
+      <p>In plain words: every rupee of stuff the business controls (<b>assets</b>) was paid for either by outsiders (<b>liabilities</b>) or by the owners (<b>equity</b>). Rearranged, equity is simply the owners' <em>residual</em> claim — what's left after settling what you owe:</p>
+      <div class="formula-block"><div class="formula">$$\text{Equity} = \text{Assets} - \text{Liabilities}$$</div></div>
+
+      <p>Watch it stay balanced as Ravi opens a kirana (grocery) store — invests ₹5 lakh, borrows ₹2 lakh:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Transaction</th><th class="num">Cash</th><th class="num">Inventory</th><th class="num">Loan (L)</th><th class="num">Equity</th></tr></thead>
+        <tbody>
+          <tr><td>Invests ₹5L, borrows ₹2L</td><td class="num">7L</td><td class="num">–</td><td class="num">2L</td><td class="num">5L</td></tr>
+          <tr><td>Buys stock for ₹3L cash</td><td class="num">4L</td><td class="num">3L</td><td class="num">2L</td><td class="num">5L</td></tr>
+          <tr><td>Sells ₹1L stock for ₹1.5L cash</td><td class="num">5.5L</td><td class="num">2L</td><td class="num">2L</td><td class="num">5.5L</td></tr>
+        </tbody>
+      </table></div>
+      <p>After every line, Assets (Cash + Inventory) = Liabilities (Loan) + Equity. The ₹0.5L profit on the sale flowed straight into equity.</p>
+
+      <h3>The seven elements</h3>
+      <p>Assets, liabilities, equity, income, expenses, gains and losses. The last four all move equity: <b>income and gains raise it; expenses and losses reduce it.</b> So between two balance dates:</p>
+      <div class="formula-block"><div class="formula">$$\Delta\text{Equity} = \text{Income} - \text{Expenses} + \text{Gains} - \text{Losses} \;(-\text{ drawings/dividends})$$</div></div>
+
+      <h2 id="elements">3. Assets, liabilities &amp; equity</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h4 style="margin-top:0">Assets — what the business owns</h4>
+          <p>An economic resource the business owns or controls, expected to give <em>future</em> benefit.</p>
+          <p><b>Current</b> (used up within ~12 months / one operating cycle): cash, bank, receivables, inventory, short-term investments, prepaid expenses.<br>
+          <b>Non-current</b>: buildings, machinery, vehicles, long-term investments, certain intangibles.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Liabilities &amp; equity — who funds the assets</h4>
+          <p>A <b>liability</b> is an obligation to an outsider.<br>
+          <b>Current</b>: payables, salaries/interest/taxes payable, short-term borrowings.<br>
+          <b>Non-current</b>: long-term loans, bonds, long-term lease liabilities.</p>
+          <p><b>Equity</b> is the owners' residual claim — capital invested + profits retained − losses − drawings/dividends.</p>
+        </div>
+      </div>
+      <p><b>Proprietorship:</b> Equity = Owner's capital + Profit − Drawings.<br>
+      <b>Company:</b> Equity = Share capital + Retained earnings + Other reserves.</p>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip</div><p><b>Drawings</b> (cash the owner takes for personal use) reduce equity directly — they are <em>not</em> a business expense. Mixing the two is a classic trap.</p></div>
+
+      <h2 id="concepts">4. Core assumptions &amp; concepts</h2>
+      <p>These are the "rules of the game" that make statements meaningful and comparable.</p>
+      <h3>Five base assumptions</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Concept</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Business entity</td><td>The business is separate from its owner</td><td>Amazon's books are not Bezos's personal wealth</td></tr>
+          <tr><td>Going concern</td><td>The business will keep operating</td><td>An oven is valued at cost less wear, not scrap value</td></tr>
+          <tr><td>Money measurement</td><td>Record only what is measurable in money</td><td>A skilled team is not an asset line</td></tr>
+          <tr><td>Accounting period</td><td>Results are measured per period</td><td>Indian FY: 1 Apr 2026 → 31 Mar 2027</td></tr>
+          <tr><td>Historical cost</td><td>Assets recorded at acquisition cost</td><td>Land bought at ₹50L stays at ₹50L</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>Four concepts that drive profit measurement</h3>
+      <div class="grid cols-2">
+        <div class="callout key"><div class="ct-head">Accrual</div><p>Record income/expense when the <em>economic activity</em> happens, not when cash moves. A March ad campaign paid in April is a <em>March</em> expense (with a payable at 31 March).</p></div>
+        <div class="callout key"><div class="ct-head">Dual aspect</div><p>Every transaction has two effects, keeping the equation balanced. This is the basis of double-entry bookkeeping.</p></div>
+        <div class="callout key"><div class="ct-head">Matching</div><p>Pair each cost with the revenue it earned. Sell 600 of 1,000 shirts → expense only 600 units' cost; the other 400 sit in closing inventory.</p></div>
+        <div class="callout key"><div class="ct-head">Realisation</div><p>Recognise revenue when it is <em>earned</em>, not when cash arrives. A ₹12,000 annual Netflix plan is ₹1,000 revenue a month; the rest is "unearned revenue" (a liability).</p></div>
+      </div>
+      <h3>Four guiding conventions</h3>
+      <p><b>Consistency</b> (same method period to period), <b>Prudence</b> (don't overstate assets/income under uncertainty), <b>Full disclosure</b> (give users the material facts), and <b>Materiality</b> (information matters if omitting it could change a decision).</p>
+
+      <div class="try" data-answer="4000000" data-tol="1%" data-ok="Matching concept applied correctly.">
+        <div class="q">✎ <b>Try it — matching concept.</b> FashionHub buys 1,000 shirts at ₹1,000 each and sells 600 at ₹1,800. What is the <b>closing inventory</b> value (₹)?</div>
+        <div class="row"><input type="text" placeholder="e.g. 4000000"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Only the 600 sold shirts become cost of goods sold. The unsold <b>400 × ₹1,000 = ₹4,00,000</b> stay on the balance sheet as closing inventory (an asset). Expensing the full ₹10L purchase would wrongly show a loss and hide ₹4L of stock.</p>
+        </div>
+      </div>
+
+      <h2 id="depreciation">5. Depreciation &amp; amortisation</h2>
+      <p><b>Depreciation</b> spreads the cost of a non-current (fixed) asset over the years it helps earn revenue — a direct application of the matching concept. Four terms you must know:</p>
+      <ul>
+        <li><b>Cost</b> — what the asset cost to acquire.</li>
+        <li><b>Residual (salvage) value</b> — expected disposal value at the end of its life.</li>
+        <li><b>Useful life</b> — the number of years of use.</li>
+        <li><b>Depreciable amount</b> = Cost − Residual value.</li>
+      </ul>
+
+      <h3>Method 1 — Straight-Line (SLM)</h3>
+      <div class="formula-block"><div class="lbl">Same charge every year</div><div class="formula">$$\text{Annual depreciation} = \dfrac{\text{Cost} - \text{Residual value}}{\text{Useful life}}$$</div></div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Machine: cost ₹10,00,000, residual ₹1,00,000, life 5 years <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Depreciable amount</span> = 10,00,000 − 1,00,000 = ₹9,00,000.</div>
+          <div class="step"><span class="sh">Annual charge</span> = 9,00,000 ÷ 5 = <b>₹1,80,000 every year.</b></div>
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Year</th><th class="num">Opening</th><th class="num">Depreciation</th><th class="num">Closing</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="num">10,00,000</td><td class="num">1,80,000</td><td class="num">8,20,000</td></tr>
+              <tr><td>2</td><td class="num">8,20,000</td><td class="num">1,80,000</td><td class="num">6,40,000</td></tr>
+              <tr><td>3</td><td class="num">6,40,000</td><td class="num">1,80,000</td><td class="num">4,60,000</td></tr>
+              <tr><td>4</td><td class="num">4,60,000</td><td class="num">1,80,000</td><td class="num">2,80,000</td></tr>
+              <tr><td>5</td><td class="num">2,80,000</td><td class="num">1,80,000</td><td class="num">1,00,000</td></tr>
+            </tbody>
+          </table></div>
+          <div class="ans">Closing book value after 5 years = ₹1,00,000 — exactly the residual value. ✓</div>
+        </div>
+      </details>
+
+      <h3>Method 2 — Reducing (declining) balance</h3>
+      <div class="formula-block"><div class="formula">$$\text{Annual depreciation} = \text{Opening book value} \times \text{rate}$$</div></div>
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Truck: cost ₹20,00,000, rate 25% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Year</th><th class="num">Opening</th><th class="num">Dep. @ 25%</th><th class="num">Closing</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td class="num">20,00,000</td><td class="num">5,00,000</td><td class="num">15,00,000</td></tr>
+              <tr><td>2</td><td class="num">15,00,000</td><td class="num">3,75,000</td><td class="num">11,25,000</td></tr>
+              <tr><td>3</td><td class="num">11,25,000</td><td class="num">2,81,250</td><td class="num">8,43,750</td></tr>
+              <tr><td>4</td><td class="num">8,43,750</td><td class="num">2,10,938</td><td class="num">6,32,812</td></tr>
+              <tr><td>5</td><td class="num">6,32,812</td><td class="num">1,58,203</td><td class="num">4,74,609</td></tr>
+            </tbody>
+          </table></div>
+          <p>The charge is <b>heaviest early</b> (₹5L in year 1 vs ₹4L flat under SLM). It suits assets that lose value fast, such as vehicles and electronics.</p>
+        </div>
+      </details>
+      <div class="callout info"><div class="ct-head">ℹ️ Intangibles &amp; amortisation <span class="tag src">Session 1</span></div><p>Intangible assets (patents, trademarks, software, brands) have no physical form but give future benefit. Their cost is spread out as <b>amortisation</b> (the same idea as depreciation). A ₹10-crore patent over a 10-year life = ₹1 crore/year; carrying value after 3 years = ₹7 crore. <b>Goodwill</b> is treated separately and arises only in mergers &amp; acquisitions.</p></div>
+
+      <h2 id="income">6. The income statement</h2>
+      <p>Measures <b>performance over a period</b>: Revenue − Expenses = Profit. You walk down it in a fixed order, and each subtotal has a name you must recognise:</p>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Illustrative company (₹ lakh) <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <thead><tr><th>Line</th><th class="num">₹ lakh</th><th>What it is</th></tr></thead>
+            <tbody>
+              <tr><td>Revenue</td><td class="num">500.0</td><td>Income from selling goods/services</td></tr>
+              <tr><td>− Cost of goods sold (COGS)</td><td class="num">(300.0)</td><td>Direct cost of what was sold</td></tr>
+              <tr><td><b>Gross profit</b></td><td class="num tot">200.0</td><td>Revenue − COGS (margin 40%)</td></tr>
+              <tr><td>− Selling &amp; general expenses</td><td class="num">(80.0)</td><td>Running the business</td></tr>
+              <tr><td>− Depreciation</td><td class="num">(20.0)</td><td>Non-cash allocation of asset cost</td></tr>
+              <tr><td><b>Operating profit (EBIT)</b></td><td class="num tot">100.0</td><td>Profit from the main business (20%)</td></tr>
+              <tr><td>+ Other income</td><td class="num">10.0</td><td>Interest, dividends, asset-sale gains</td></tr>
+              <tr><td>− Finance cost (interest)</td><td class="num">(20.0)</td><td>Interest on loans</td></tr>
+              <tr><td><b>Profit before tax (PBT)</b></td><td class="num tot">90.0</td><td>100 + 10 − 20</td></tr>
+              <tr><td>− Income tax @ 25%</td><td class="num">(22.5)</td><td>Tax on taxable income</td></tr>
+              <tr><td><b>Net income (PAT)</b></td><td class="num tot">67.5</td><td>Net margin 13.5%</td></tr>
+              <tr><td>EPS (10 lakh shares)</td><td class="num">₹6.75</td><td>PAT ÷ shares outstanding</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </details>
+      <div class="callout tip"><div class="ct-head">💡 Exam tip — know these by name</div><p><b>Gross profit</b> = Revenue − COGS. <b>EBIT / Operating profit</b> = Gross profit − operating expenses. <b>PBT</b> = EBIT + other income − finance cost. <b>PAT</b> = PBT − tax. <b>EPS</b> = PAT ÷ number of shares. Questions love to ask for one subtotal given the others.</p></div>
+
+      <h2 id="balance">7. The balance sheet</h2>
+      <p>A snapshot of <b>position on one date</b>: Assets = Liabilities + Equity. Profit for the period flows into equity (as retained earnings), which is how the income statement and balance sheet connect. Depreciation is interesting: it <em>lowers profit</em> (and therefore equity) but is <em>not</em> a cash outflow.</p>
+
+      <h2 id="cashflow">8. The cash flow statement</h2>
+      <p>The income statement shows profit; the cash flow statement explains the <b>change in cash</b>. It has three sections:</p>
+      <div class="grid cols-3">
+        <div class="card"><h4 style="margin-top:0">Operating</h4><p>Day-to-day business — cash from customers, less cash to suppliers, employees, taxes.</p></div>
+        <div class="card"><h4 style="margin-top:0">Investing</h4><p>Long-term assets — buying machinery/investments (out), selling them (in).</p></div>
+        <div class="card"><h4 style="margin-top:0">Financing</h4><p>Capital — issuing shares/loans (in); buybacks, dividends, loan repayment (out).</p></div>
+      </div>
+
+      <h3>Why profit ≠ cash</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Event</th><th>Effect on profit</th><th>Effect on cash</th></tr></thead>
+        <tbody>
+          <tr><td>Credit sale, not yet collected</td><td>Up</td><td>No cash yet</td></tr>
+          <tr><td>Depreciation</td><td>Down</td><td>No cash out</td></tr>
+          <tr><td>Inventory bought, not yet sold</td><td>No effect yet</td><td>Cash out</td></tr>
+          <tr><td>Machine purchase</td><td>Spread as depreciation</td><td>Full cash out now</td></tr>
+          <tr><td>Loan repayment / dividend</td><td>Not an expense</td><td>Cash out</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>A profitable business can still run out of cash.</b> That's why we need all three statements.</p>
+
+      <h3>Reconciling net income to operating cash flow (indirect method)</h3>
+      <div class="formula-block raw"><div class="lbl">The rules</div>Operating cash flow = Net income + non-cash expenses − ↑receivables − ↑inventory + ↑payables</div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> From PAT ₹67.5L to operating cash flow <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="tbl-wrap"><table class="data">
+            <tbody>
+              <tr><td>Net income</td><td class="num">₹67.5L</td></tr>
+              <tr><td>Add: depreciation (non-cash)</td><td class="num">+ 20.0L</td></tr>
+              <tr><td>Less: increase in receivables</td><td class="num">− 30.0L</td></tr>
+              <tr><td>Less: increase in inventory</td><td class="num">− 15.0L</td></tr>
+              <tr><td>Add: increase in payables</td><td class="num">+ 10.0L</td></tr>
+              <tr><td class="tot">Cash from operating activities</td><td class="num tot">₹52.5L</td></tr>
+            </tbody>
+          </table></div>
+          <p><b>Logic:</b> add back non-cash charges (depreciation, amortisation). A rise in receivables or inventory <em>ties up</em> cash, so subtract it. A rise in payables <em>keeps</em> cash in, so add it. Decreases do the reverse.</p>
+          <p>Putting it together: Operating ₹52.5L − machinery ₹40L (investing) + ₹15L (financing: loan ₹20L − dividend ₹5L) = <b>net change in cash ₹27.5L</b>. Net income was ₹67.5L, yet cash rose only ₹27.5L — receivables, inventory and machinery absorbed the difference.</p>
+        </div>
+      </details>
+
+      <div class="try" data-answer="52.5" data-tol="2%" data-ok="You applied the indirect method correctly.">
+        <div class="q">✎ <b>Try it.</b> Net income ₹40L, depreciation ₹12L, receivables <em>fell</em> ₹5L, inventory <em>rose</em> ₹8L, payables <em>rose</em> ₹3.5L. Operating cash flow (₹L)?</div>
+        <div class="row"><input type="text" placeholder="₹ lakh"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden><p>40 + 12 (add depreciation) + 5 (receivables fell → cash in) − 8 (inventory rose → cash out) + 3.5 (payables rose → cash in) = <b>₹52.5L</b>. Remember a <em>fall</em> in receivables releases cash.</p></div>
+      </div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>Assets = Liabilities + Equity, true after every transaction.</li>
+          <li>Accrual, matching and realisation separate <em>profit</em> from <em>cash</em>.</li>
+          <li>Depreciation: SLM = equal charges; reducing balance = heavier early.</li>
+          <li>Income statement → profit; balance sheet → position; cash flow → movement of cash.</li>
+          <li>Profit flows into equity; depreciation cuts profit but not cash.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">9. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="../index.html"><span>Back to</span><b>‹ Dashboard</b></a>
+        <a class="next" href="lesson-02.html"><span>Next lesson</span><b>Financial Ratio Analysis ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-01">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-01",
+    title: "Lesson 1 Quiz — Accounting Foundations",
+    questions: [
+      { q:"The accounting equation states that:", options:["Assets = Liabilities − Equity","Assets = Liabilities + Equity","Equity = Assets + Liabilities","Assets + Equity = Liabilities"], correct:1,
+        explain:"Assets are funded either by outsiders (liabilities) or owners (equity), so Assets = Liabilities + Equity, and Equity = Assets − Liabilities." },
+      { q:"An owner withdraws ₹50,000 cash from the business for personal use. This is treated as:", options:["A business expense","Drawings, reducing equity directly","Additional revenue","A liability"], correct:1,
+        explain:"Drawings are not an expense of the business; they reduce the owner's equity directly." },
+      { q:"A ₹12,000 annual subscription is received on 1 April. Under the realisation concept, revenue recognised by 30 June is:", options:["₹12,000","₹6,000","₹3,000","₹0"], correct:2,
+        explain:"The service is delivered over 12 months → ₹1,000/month. By 30 June (3 months), ₹3,000 is earned; ₹9,000 remains unearned (a liability).",
+        calc:"₹12,000 ÷ 12 = ₹1,000/month × 3 months = ₹3,000." },
+      { q:"A machine costs ₹11,00,000 with residual value ₹1,00,000 and a 5-year life. Straight-line depreciation per year is:", options:["₹2,20,000","₹1,80,000","₹2,00,000","₹1,00,000"], correct:2,
+        explain:"SLM = (Cost − Residual) ÷ Life.", calc:"(11,00,000 − 1,00,000) ÷ 5 = 10,00,000 ÷ 5 = ₹2,00,000 per year." },
+      { q:"Which method charges the most depreciation in the early years?", options:["Straight-line","Reducing (declining) balance","Both charge equally","Neither — depreciation is always equal"], correct:1,
+        explain:"Reducing balance applies a fixed % to a shrinking book value, so the charge is heaviest in year 1 and falls over time." },
+      { q:"Under the indirect method, an increase in trade receivables during the year is:", options:["Added to net income","Subtracted from net income","Ignored","Added to financing cash flow"], correct:1,
+        explain:"A rise in receivables means sales were made but cash not yet collected — it ties up cash, so it is subtracted when moving from profit to operating cash flow." },
+      { q:"Depreciation's effect on the statements is best described as:", options:["Reduces profit and reduces cash equally","Reduces profit but is not a cash outflow","Increases both profit and cash","No effect on profit, reduces cash"], correct:1,
+        explain:"Depreciation is a non-cash expense: it lowers reported profit (and equity) but no cash leaves the business, so it is added back in the cash flow statement." },
+      { q:"Gross profit is best defined as:", options:["Revenue − all expenses","Revenue − COGS","Operating profit − tax","Revenue − operating expenses"], correct:1,
+        explain:"Gross profit = Revenue − Cost of Goods Sold (direct costs only). Operating expenses and tax come later down the statement." },
+      { q:"Net income is ₹80L, depreciation ₹10L, inventory rose ₹12L, payables rose ₹6L (no other items). Operating cash flow is:", options:["₹108L","₹84L","₹96L","₹72L"], correct:1,
+        explain:"Add back depreciation; subtract the inventory build-up; add the rise in payables.", calc:"80 + 10 − 12 + 6 = ₹84L." },
+      { q:"Which pair correctly matches statement to question answered?", options:["Balance sheet → performance over a period","Income statement → position on a date","Cash flow statement → movement of cash in/out","Income statement → change in cash"], correct:2,
+        explain:"Income statement = performance over a period; balance sheet = position on a date; cash flow statement = the movement of cash (operating/investing/financing)." }
+    ]
+  });
+});
+</script>
+</body>
+</html>

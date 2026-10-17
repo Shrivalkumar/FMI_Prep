@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 — Bonds, Stock Valuation &amp; WACC</title>
+<meta name="description" content="Price coupon, zero-coupon and perpetual bonds, estimate yield to maturity, value shares with the dividend discount models, and blend it all into the Weighted Average Cost of Capital.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="scrim"></div>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../index.html"><span class="logo">FMI</span><span><b>FMI Exam Prep</b><span>Financial Markets &amp; Instruments</span></span></a>
+    <div class="nav-group"><h4>Overview</h4><a class="nav-link" href="../index.html"><span class="ix">⌂</span> Dashboard</a></div>
+    <div class="nav-group"><h4>Lessons</h4>
+      <a class="nav-link" data-lesson="lesson-01" href="lesson-01.html"><span class="ix">1</span> Accounting &amp; Statements <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-02" href="lesson-02.html"><span class="ix">2</span> Financial Ratios <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-03" href="lesson-03.html"><span class="ix">3</span> Costing &amp; CVP <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-04" href="lesson-04.html"><span class="ix">4</span> Time Value of Money <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-05" href="lesson-05.html"><span class="ix">5</span> Capital Budgeting <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-06" href="lesson-06.html"><span class="ix">6</span> Cost of Equity <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-07" href="lesson-07.html"><span class="ix">7</span> Bonds &amp; WACC <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-08" href="lesson-08.html"><span class="ix">8</span> Valuation &amp; FCF <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-09" href="lesson-09.html"><span class="ix">9</span> Portfolio &amp; Markets <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-10" href="lesson-10.html"><span class="ix">10</span> Derivatives Basics <span class="done">✓</span></a>
+      <a class="nav-link" data-lesson="lesson-11" href="lesson-11.html"><span class="ix">11</span> Derivatives &amp; 2008 <span class="done">✓</span></a>
+    </div>
+    <div class="nav-group"><h4>Exam Prep</h4>
+      <a class="nav-link" href="../formula-sheet.html"><span class="ix">ƒ</span> Formula Sheet</a>
+      <a class="nav-link" href="../practice.html"><span class="ix">✎</span> Practice Problems</a>
+      <a class="nav-link" href="../mock-test.html"><span class="ix">★</span> Mock Test</a>
+    </div>
+    <div class="nav-group"><h4>Theme</h4><a class="nav-link" href="javascript:void(0)" data-theme-toggle>🌙 <span style="margin-left:4px">Toggle theme</span></a></div>
+  </aside>
+
+  <div class="content">
+    <div class="topbar">
+      <button class="icon-btn" data-menu aria-label="Menu">☰</button>
+      <a class="brand" href="../index.html"><span class="logo">FMI</span><b>Lesson 7</b></a>
+      <button class="icon-btn" data-theme-toggle aria-label="Theme" style="margin-left:auto">🌙</button>
+    </div>
+
+    <div class="wrap">
+      <div class="lesson-meta">
+        <span class="eyebrow">Lesson 7</span>
+        <span class="tag src">Session 10 · Bonds, Stocks &amp; WACC</span>
+      </div>
+      <h1>Bonds, Stock Valuation &amp; WACC</h1>
+      <p class="lead">A firm raises money from two broad camps: lenders (debt) and owners (equity). This lesson shows how to put a price on each — pricing bonds from their cash flows, valuing shares with dividend models — and then blends the two into the single blended rate every analyst lives by: the <b>Weighted Average Cost of Capital</b>.</p>
+
+      <div class="card" style="margin:18px 0">
+        <b>In this lesson</b>
+        <nav class="toc" data-toc style="margin-top:8px"></nav>
+      </div>
+
+      <h2 id="features">1. Features of debt &amp; bond terminology</h2>
+      <p>Before pricing anything, understand <em>why debt behaves differently from equity</em>. When a company borrows — through a term loan or by issuing <b>bonds</b> — it takes on a legally binding promise. Six features define debt as a source of finance <span class="tag src">Session 10</span>:</p>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Feature</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>Contractual obligation</td><td>The issuer <em>must</em> pay interest and repay principal regardless of profit. Miss it and you default.</td></tr>
+          <tr><td>Fixed periodic payments</td><td>The coupon is pre-set — unlike equity dividends, which are discretionary.</td></tr>
+          <tr><td>Priority over equity</td><td>Debt holders are paid before shareholders, even on liquidation.</td></tr>
+          <tr><td>No ownership / voting</td><td>Bondholders are creditors, not owners — no vote in how the company is run.</td></tr>
+          <tr><td>Finite maturity (usually)</td><td>Most debt has a fixed repayment date. Perpetual bonds are the exception.</td></tr>
+          <tr><td>Tax-deductible interest</td><td>Interest lowers taxable income — the <b>tax shield</b> on debt. (Dividends get no such shield.)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout info"><div class="ct-head">ℹ️ Real-world illustration <span class="tag src">Session 10</span></div><p>When Reliance Industries issued ₹20,000 crore of secured NCDs (face value ₹1,00,000 each) in Nov 2023, it took on a fixed obligation to pay interest and repay the principal by 2033 — with <em>no</em> ownership stake handed to investors. That is debt in one sentence.</p></div>
+
+      <h3>What a bond is</h3>
+      <p>A <b>bond</b> is a debt security issued by a company, bank, PSU or the Government of India to raise long-term funds. The issuer promises a fixed periodic <b>coupon</b> (interest) and repayment of the <b>face value</b> (principal) on a set maturity date. Think of it as an IOU: you lend ₹1,000 today, it pays you fixed interest, and returns your ₹1,000 at maturity. Issuers range from the Government (G-Secs, T-Bills) to PSUs (NHAI, REC, PFC, IRFC), banks (SBI, HDFC Bank AT1/Tier-2) and corporates (Reliance, Tata Steel, M&amp;M NCDs).</p>
+
+      <h3>Key bond terminology</h3>
+      <div class="tbl-wrap"><table class="data">
+        <thead><tr><th>Term</th><th>Symbol</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>Nominal / Face value</td><td>$F$</td><td>Value printed on the bond (₹100 / ₹1,000 / ₹1,00,000) — also the amount repaid at redemption.</td></tr>
+          <tr><td>Coupon rate</td><td>—</td><td>Stated annual interest rate applied to face value, e.g. 8% on ₹1,000.</td></tr>
+          <tr><td>Coupon</td><td>$C$</td><td>Actual rupee interest paid each period. $C = \text{coupon rate} \times F$ (e.g. 8% × ₹1,000 = ₹80).</td></tr>
+          <tr><td>Redemption / Maturity value</td><td>—</td><td>Amount paid at maturity — usually equal to face value (at par).</td></tr>
+          <tr><td>Maturity date</td><td>$T$</td><td>The date redemption occurs and the bond ceases to exist.</td></tr>
+          <tr><td>Market price</td><td>$P$</td><td>Current traded price — may sit at a discount, premium or par to face value.</td></tr>
+          <tr><td>Yield to maturity</td><td>YTM</td><td>Total return earned if bought at market price and held to redemption.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout key"><div class="ct-head">The coupon vs the coupon rate</div><p>The <b>coupon rate</b> is a percentage fixed forever on the face value. The <b>coupon</b> $C$ is the rupee cheque it produces each year. The <b>required yield</b> $r$ (what the market demands today) is a <em>separate</em> number — and the gap between the coupon rate and $r$ is exactly what makes a bond trade above or below face value.</p></div>
+
+      <h2 id="bonds">2. Pricing bonds</h2>
+      <p>A bond is worth the <b>present value of every rupee it will pay you</b>, discounted at the required yield $r$. All three bond types below are just this one idea with different cash-flow shapes.</p>
+
+      <h3>Coupon (plain-vanilla) bond</h3>
+      <p>A plain-vanilla bond pays a fixed coupon $C$ each year and returns the full face value $F$ at maturity $T$. Discount each coupon, then add the discounted face value:</p>
+      <div class="formula-block"><div class="lbl">Coupon bond price</div><div class="formula">$$P = \sum_{t=1}^{T}\frac{C}{(1+r)^{t}} + \frac{F}{(1+r)^{T}}$$</div>
+        <dl class="vars">
+          <dt>$P$</dt><dd>bond price today (what you pay)</dd>
+          <dt>$C$</dt><dd>annual coupon = coupon rate × $F$</dd>
+          <dt>$F$</dt><dd>face / redemption value</dd>
+          <dt>$r$</dt><dd>required yield per year</dd>
+          <dt>$T$</dt><dd>years to maturity</dd>
+        </dl>
+      </div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Tata Steel 8% bond trading at a discount <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> $P = \dfrac{C}{(1+r)} + \dfrac{C}{(1+r)^2} + \dfrac{C+F}{(1+r)^3}$</div>
+          <div class="step"><span class="sh">Given</span> $F=$ ₹1,000 · coupon rate 8% → $C=$ ₹80 · $T=3$ yrs · required yield $r=9\%$.</div>
+          <div class="step"><span class="sh">Working</span>
+            <div class="tbl-wrap"><table class="data">
+              <thead><tr><th>Year</th><th class="num">Cash flow</th><th class="num">÷ (1.09)ᵗ</th><th class="num">PV (₹)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td class="num">80</td><td class="num">1.0900</td><td class="num">73.39</td></tr>
+                <tr><td>2</td><td class="num">80</td><td class="num">1.1881</td><td class="num">67.34</td></tr>
+                <tr><td>3</td><td class="num">1,080</td><td class="num">1.2950</td><td class="num">833.83</td></tr>
+                <tr><td class="tot">Price</td><td class="num"></td><td class="num"></td><td class="num tot">974.56</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="ans">Price = ₹974.56</div>
+          <p><b>Interpretation:</b> coupon rate 8% &lt; required yield 9%, so the bond sells at a <b>discount</b> to ₹1,000. The investor is compensated for the low coupon by paying less than face value — yet still receives the full ₹1,000 at redemption.</p>
+        </div>
+      </details>
+
+      <details class="worked">
+        <summary><span class="pill">Worked example</span> Mahindra &amp; Mahindra 10% bond trading at a premium <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> $F=$ ₹1,000 · coupon rate 10% → $C=$ ₹100 · $T=2$ yrs · $r=8\%$.</div>
+          <div class="step"><span class="sh">Working</span> $P = \dfrac{100}{1.08} + \dfrac{1{,}100}{1.08^2} = 92.59 + 943.07$</div>
+          <div class="ans">Price = ₹1,035.66</div>
+          <p><b>Interpretation:</b> coupon rate 10% &gt; required yield 8%, so the bond sells at a <b>premium</b>. You pay more than ₹1,000 today because the coupon is richer than the market demands — but redemption is still only ₹1,000.</p>
+        </div>
+      </details>
+
+      <h3>Zero-coupon bond</h3>
+      <p>A zero-coupon bond pays <em>no</em> periodic interest. You buy it at a deep discount and your entire return is the gap between purchase price and face value. With $C=0$, the coupon sum vanishes and only the discounted face value remains:</p>
+      <div class="formula-block"><div class="lbl">Zero-coupon bond price</div><div class="formula">$$P = \frac{F}{(1+r)^{T}}$$</div>
+        <dl class="vars">
+          <dt>$F$</dt><dd>redemption (face) value</dd>
+          <dt>$r$</dt><dd>required yield per year</dd>
+          <dt>$T$</dt><dd>years to maturity</dd>
+        </dl>
+      </div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> NHAI zero-coupon bond <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Formula</span> $P = \dfrac{F}{(1+r)^{T}}$</div>
+          <div class="step"><span class="sh">Given</span> $F=$ ₹1,00,000 · $r=7\%$ · $T=5$ yrs.</div>
+          <div class="step"><span class="sh">Working</span> $P = \dfrac{1{,}00{,}000}{(1.07)^5} = \dfrac{1{,}00{,}000}{1.4026}$</div>
+          <div class="ans">Price ≈ ₹71,299</div>
+          <p><b>Interpretation:</b> you pay ₹71,299 today, receive no coupons, and collect the full ₹1,00,000 after 5 years — a gain of ≈ ₹28,701, with nothing to reinvest in between (so no reinvestment risk).</p>
+        </div>
+      </details>
+      <p>A second case: <b>REC Ltd</b> zero-coupon bond, $F=$ ₹10,000, $r=8\%$, $T=10$ yrs → $P = 10{,}000 / (1.08)^{10} = 10{,}000 / 2.1589 \approx$ <b>₹4,632</b>. Perfect for goal-based saving: buy one cheap share of a future ₹10,000.</p>
+
+      <h3>Perpetual bond</h3>
+      <p>A perpetual bond never matures — the issuer pays the coupon forever and the face value is never redeemed. The price is just a perpetuity of the coupon:</p>
+      <div class="formula-block"><div class="lbl">Perpetual bond price</div><div class="formula">$$P = \frac{C}{r}$$</div>
+        <dl class="vars">
+          <dt>$C$</dt><dd>annual coupon paid forever</dd>
+          <dt>$r$</dt><dd>required yield</dd>
+        </dl>
+      </div>
+      <p>In India these are mostly <b>Additional Tier-1 (AT1) bonds</b> issued by banks (SBI, HDFC Bank, ICICI, PNB) under Basel III. Example — <b>Bank of Baroda AT1</b>: $F=$ ₹100 (never redeemed), coupon 8% → $C=$ ₹8/yr, required yield $r=8.5\%$ → $P = 8 / 0.085 \approx$ <b>₹94.12</b>. Note the face value plays no part in the formula at all — only the coupon and the yield matter.</p>
+      <div class="callout info"><div class="ct-head">ℹ️ A bond's safety is about where it sits <span class="tag src">Session 10</span></div><p>AT1 bonds rank just above equity and can even be <em>written down</em> under regulatory stress — as happened with Yes Bank's AT1 bonds in 2020 (~₹8,400 crore written off on RBI's direction). Being called a "bond" does not make it safe; its rank in the capital structure does.</p></div>
+
+      <div class="callout key"><div class="ct-head">🔑 The discount / premium rule</div>
+        <ul style="margin:6px 0 0">
+          <li>Coupon rate &lt; required yield → price <b>below</b> face value → <b>discount</b> bond (Tata Steel).</li>
+          <li>Coupon rate = required yield → price <b>equals</b> face value → bond trades <b>at par</b>.</li>
+          <li>Coupon rate &gt; required yield → price <b>above</b> face value → <b>premium</b> bond (M&amp;M).</li>
+        </ul>
+      </div>
+
+      <p><b>Try the calculator.</b> Mount a coupon bond below — key in Tata Steel (F = 1000, coupon rate 8, r = 9, T = 3) and you should get ₹974.56. Set the coupon rate to <b>0</b> and it becomes a zero-coupon bond (try NHAI: F = 100000, r = 7, T = 5 → ₹71,299).</p>
+      <div data-calc="bond"></div>
+
+      <div class="try" data-answer="4632" data-tol="2%" data-ok="Correct — that's the REC zero-coupon price.">
+        <div class="q">✎ <b>Try it — price a zero-coupon bond.</b> REC Ltd: face value ₹10,000, required yield 8% p.a., 10 years to maturity. What is the price today (₹)? <span class="tag src">Session 10</span></div>
+        <div class="row"><input type="text" placeholder="e.g. 4632"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>$P = \dfrac{F}{(1+r)^T} = \dfrac{10{,}000}{(1.08)^{10}} = \dfrac{10{,}000}{2.1589} \approx$ <b>₹4,632</b>. No coupons — the whole return is the ₹10,000 − ₹4,632 ≈ ₹5,368 capital gain over 10 years.</p>
+        </div>
+      </div>
+
+      <h2 id="ytm">3. Yield to maturity (YTM)</h2>
+      <p><b>YTM is the total return you earn if you buy a bond at today's market price and hold it to redemption.</b> It bundles the coupon income with any capital gain or loss versus face value into a single annual rate. The exact YTM is the $r$ that makes the pricing equation hold (an IRR), but a quick, exam-friendly approximation is:</p>
+      <div class="formula-block"><div class="lbl">Approximate YTM</div><div class="formula">$$\text{YTM} \approx \frac{C + \dfrac{F - P}{n}}{\dfrac{F + P}{2}}$$</div>
+        <dl class="vars">
+          <dt>$C$</dt><dd>annual coupon (₹)</dd>
+          <dt>$F$</dt><dd>face value</dd>
+          <dt>$P$</dt><dd>current market price</dd>
+          <dt>$n$</dt><dd>years to maturity</dd>
+        </dl>
+      </div>
+      <p>The numerator is the coupon plus the per-year capital gain/loss; the denominator is the average of face value and price — your typical invested amount.</p>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Infosys-style corporate bond <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> $F=$ ₹1,000 · coupon 9% → $C=$ ₹90 · $n=2$ · market price $P=$ ₹980.</div>
+          <div class="step"><span class="sh">Working</span> $\text{YTM} \approx \dfrac{90 + (1000-980)/2}{(1000+980)/2} = \dfrac{90+10}{990} = \dfrac{100}{990}$</div>
+          <div class="ans">YTM ≈ 10.10%</div>
+          <p><b>Interpretation:</b> the stated coupon is 9%, but because you bought <em>below</em> face value you also pocket a ₹20 gain at redemption — lifting the true yield to ≈ 10.10%. Price below face → YTM &gt; coupon rate.</p>
+        </div>
+      </details>
+      <p>Second case — <b>L&amp;T-style bond</b>: $F=$ ₹1,000, coupon 7% → $C=$ ₹70, $n=3$, $P=$ ₹950. $\text{YTM} \approx [70 + (1000-950)/3] / [(1000+950)/2] = 86.67 / 975 \approx$ <b>8.89%</b>. Buying at a ₹50 discount lifts the yield well above the 7% coupon.</p>
+      <div class="callout key"><div class="ct-head">🔑 Price vs face tells you YTM vs coupon</div><p>Price <b>below</b> face value → YTM <b>&gt;</b> coupon rate (you gain on redemption). Price <b>above</b> face value → YTM <b>&lt;</b> coupon rate (you lose a little on redemption). Price <b>at</b> face → YTM = coupon rate.</p></div>
+      <p><b>Try the calculator.</b> Enter the Infosys bond (F = 1000, coupon 9, price 980, n = 2) and confirm ≈ 10.10%.</p>
+      <div data-calc="ytm"></div>
+
+      <h2 id="ddm">4. Stock valuation — the Dividend Discount Model</h2>
+      <p>Valuing a share is the <b>equity analogue of pricing a bond</b>. A bond pays coupons then redeems the face value; a share pays <b>dividends</b> forever and has <em>no</em> redemption value. So we discount the dividend stream. Dividends now play the role coupons played — but they can grow.</p>
+
+      <h3>Zero-growth model</h3>
+      <p>If the dividend is expected to stay constant forever, the share is a perpetuity of dividends — exactly like a perpetual bond:</p>
+      <div class="formula-block"><div class="lbl">Zero-growth DDM</div><div class="formula">$$P_0 = \frac{D_1}{r}$$</div>
+        <dl class="vars">
+          <dt>$P_0$</dt><dd>share price today</dd>
+          <dt>$D_1$</dt><dd>next year's (constant) dividend</dd>
+          <dt>$r$</dt><dd>required return on equity (cost of equity)</dd>
+        </dl>
+      </div>
+      <p><b>Coal India:</b> $D_1=$ ₹18 constant, $r=12\%$ → $P_0 = 18/0.12 =$ <b>₹150</b>. <b>NTPC:</b> $D_1=$ ₹9, $r=10\%$ → $P_0 = 9/0.10 =$ <b>₹90</b>. The model suits mature, high-payout firms that distribute almost all profit rather than reinvesting for growth.</p>
+
+      <h3>Constant-growth (Gordon) model</h3>
+      <p>Most companies grow dividends at a modest, sustainable rate $g$ forever. Discount a growing perpetuity, remembering that next year's dividend is this year's grown by $g$:</p>
+      <div class="formula-block"><div class="lbl">Gordon growth model</div><div class="formula">$$P_0 = \frac{D_1}{r - g}, \qquad D_1 = D_0(1+g)$$</div>
+        <dl class="vars">
+          <dt>$D_0$</dt><dd>dividend just paid (most recent)</dd>
+          <dt>$D_1$</dt><dd>next year's dividend = $D_0(1+g)$</dd>
+          <dt>$g$</dt><dd>constant dividend growth rate</dd>
+          <dt>$r$</dt><dd>required return (only valid while $r &gt; g$)</dd>
+        </dl>
+      </div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> HDFC Bank — constant growth <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Given</span> $D_0=$ ₹19 · $g=10\%$ · $r=14\%$.</div>
+          <div class="step"><span class="sh">Working</span> $D_1 = 19 \times 1.10 = $ ₹20.90, so $P_0 = \dfrac{20.90}{0.14-0.10} = \dfrac{20.90}{0.04}$</div>
+          <div class="ans">Price = ₹522.50 per share</div>
+          <p><b>Interpretation:</b> valid only because $r (14\%) &gt; g (10\%)$. If $g \ge r$ the formula blows up — that is why it cannot value a company still in a high-growth phase.</p>
+        </div>
+      </details>
+      <p><b>Asian Paints:</b> $D_0=$ ₹15, $g=8\%$, $r=12\%$ → $D_1 = 15 \times 1.08 =$ ₹16.20, $P_0 = 16.20/(0.12-0.08) =$ <b>₹405</b>.</p>
+
+      <h3>Two-stage growth model</h3>
+      <p>Young Indian IT and consumer firms out-grow the economy for a few years, then settle to a steady rate. The two-stage model values them as <b>the PV of the high-growth dividends plus the PV of the terminal (steady-state) price</b>:</p>
+      <div class="formula-block"><div class="lbl">Two-stage growth</div><div class="formula">$$P_0 = \sum_{t=1}^{n}\frac{D_0(1+g_1)^t}{(1+r)^t} \; + \; \frac{P_n}{(1+r)^n}, \qquad P_n = \frac{D_{n+1}}{r - g_2}$$</div>
+        <dl class="vars">
+          <dt>$g_1$</dt><dd>high growth rate for the first $n$ years</dd>
+          <dt>$g_2$</dt><dd>stable long-run growth rate thereafter</dd>
+          <dt>$P_n$</dt><dd>terminal price at end of year $n$ (Gordon value of stage 2)</dd>
+          <dt>$D_{n+1}$</dt><dd>first stage-2 dividend = $D_n(1+g_2)$</dd>
+        </dl>
+      </div>
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Two-stage: D₀ = ₹20, g₁ = 15% for 3 yrs, g₂ = 6%, r = 13% <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Step 1 — forecast high-growth dividends</span>
+            $D_1 = 20\times1.15 = $ ₹23.00 · $D_2 = 23\times1.15 = $ ₹26.45 · $D_3 = 26.45\times1.15 = $ ₹30.42.</div>
+          <div class="step"><span class="sh">Step 2 — discount them at 13%</span>
+            <div class="tbl-wrap"><table class="data">
+              <thead><tr><th>Year</th><th class="num">Dividend</th><th class="num">÷ (1.13)ᵗ</th><th class="num">PV (₹)</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td class="num">23.00</td><td class="num">1.1300</td><td class="num">20.35</td></tr>
+                <tr><td>2</td><td class="num">26.45</td><td class="num">1.2769</td><td class="num">20.72</td></tr>
+                <tr><td>3</td><td class="num">30.42</td><td class="num">1.4429</td><td class="num">21.08</td></tr>
+                <tr><td class="tot">Sum</td><td class="num"></td><td class="num"></td><td class="num tot">62.15</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="step"><span class="sh">Step 3 — terminal price at end of Yr 3</span>
+            $D_4 = 30.42 \times 1.06 = $ ₹32.24, so $P_3 = \dfrac{32.24}{0.13 - 0.06} = $ ₹460.61.</div>
+          <div class="step"><span class="sh">Step 4 — discount the terminal price &amp; add</span>
+            $\text{PV}(P_3) = \dfrac{460.61}{(1.13)^3} = $ ₹319.22, so $P_0 = 62.15 + 319.22$.</div>
+          <div class="ans">P₀ = ₹381.37 per share</div>
+          <p><b>Interpretation:</b> most of the value (₹319 of ₹381) sits in the terminal price — the steady-state business the company becomes <em>after</em> the growth spurt. The explicit high-growth years add only ₹62.</p>
+        </div>
+      </details>
+      <p><b>Try the dividend-growth calculator.</b> For a single-stage check, enter HDFC Bank (D₀ = 19, g = 10, r = 14) and confirm ₹522.50.</p>
+      <div data-calc="dgm"></div>
+
+      <div class="try" data-answer="405" data-tol="2%" data-ok="Correct — that's the Asian Paints price.">
+        <div class="q">✎ <b>Try it — constant-growth price.</b> Asian Paints: last dividend D₀ = ₹15, growth g = 8%, required return r = 12%. What is $P_0$ (₹ per share)? Remember to grow the dividend first. <span class="tag src">Session 10</span></div>
+        <div class="row"><input type="text" placeholder="e.g. 405"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>First grow the dividend: $D_1 = 15 \times 1.08 = $ ₹16.20. Then $P_0 = \dfrac{D_1}{r-g} = \dfrac{16.20}{0.12-0.08} = \dfrac{16.20}{0.04} = $ <b>₹405</b>. A common slip is to use $D_0$ instead of $D_1$ in the numerator.</p>
+        </div>
+      </div>
+
+      <h2 id="wacc">5. Weighted Average Cost of Capital (WACC)</h2>
+      <p>A firm is funded by both lenders and owners, each demanding a different return. The <b>WACC is the blended rate the firm must earn to satisfy all its capital providers</b> — the minimum return a project must clear, and the opportunity cost of capital. It weights the after-tax cost of debt and the cost of equity by their share of total capital:</p>
+      <div class="formula-block"><div class="lbl">WACC — debt &amp; ordinary equity</div><div class="formula">$$\text{WACC} = r_E\cdot\frac{E}{E+D} + r_D(1-T_c)\cdot\frac{D}{E+D}$$</div>
+        <dl class="vars">
+          <dt>$r_E$</dt><dd>cost of equity (e.g. from CAPM: $R_f + \beta(R_m-R_f)$)</dd>
+          <dt>$r_D$</dt><dd>pre-tax cost of debt — the bond's <b>YTM</b>, not its coupon rate</dd>
+          <dt>$T_c$</dt><dd>corporate tax rate</dd>
+          <dt>$E,\;D$</dt><dd>market value of equity and debt</dd>
+        </dl>
+      </div>
+      <p>The <b>$(1-T_c)$</b> term is the tax shield: because interest is tax-deductible, each rupee of interest costs the firm only $r_D(1-T_c)$ after the tax saving. For a firm that also issues <b>preferred equity</b>, add a third weighted term:</p>
+      <div class="formula-block"><div class="lbl">WACC — with preferred equity</div><div class="formula">$$\text{WACC} = r_D(1-T_c)\cdot\frac{D}{E+P+D} + r_P\cdot\frac{P}{E+P+D} + r_E\cdot\frac{E}{E+P+D}$$</div>
+        <dl class="vars">
+          <dt>$r_P$</dt><dd>cost of preferred equity</dd>
+          <dt>$P$</dt><dd>market value of preferred equity (note: preferred dividends get no tax shield)</dd>
+        </dl>
+      </div>
+
+      <h3>After-tax cost of debt</h3>
+      <p>The cost of debt is the <em>current</em> rate the firm pays: the interest rate on a term loan, or the <b>YTM</b> on its bonds — never the historical coupon. With several sources, take a market-value weighted average. Then apply the shield: <b>after-tax cost of debt</b> $= r_D(1-T_c)$. For example, a 7.5% pre-tax rate at a 25% tax rate costs only $7.5\% \times 0.75 = 5.6\%$ after tax.</p>
+
+      <h3>Book value vs market value weights</h3>
+      <p>The weights $E/(E+D)$ and $D/(E+D)$ can be built from either <b>book values</b> (straight off the balance sheet) or <b>market values</b> (share price × shares outstanding for equity; book value of debt is usually a fair proxy for its market value). Managers often reach for book values because they are simple — but book equity reflects <em>historical accounting</em>, while market equity reflects investors' <em>current expectations</em>.</p>
+      <div class="callout key"><div class="ct-head">🔑 Why market weights are preferred</div><p>The ideal weights are the firm's <b>target capital structure in market-value terms</b>. For growing or asset-light firms, market equity can dwarf book equity, which changes the weights and therefore the WACC itself. Market values are the best available proxy for the future (target) structure.</p></div>
+
+      <details class="worked" open>
+        <summary><span class="pill">Worked example</span> Reliance Industries — market-value WACC <span class="chev">›</span></summary>
+        <div class="body">
+          <div class="step"><span class="sh">Cost of equity (CAPM)</span> $r_E = R_f + \beta(R_m - R_f) = 7.0\% + 1.05 \times 6.0\% = 13.3\%$.</div>
+          <div class="step"><span class="sh">After-tax cost of debt</span> $r_D(1-T_c) = 7.5\% \times (1-0.25) = 5.6\%$.</div>
+          <div class="step"><span class="sh">Market-value weights (₹ Crore)</span> $E=$ 18,00,000, $D=$ 3,10,000, total 21,10,000.
+            $w_E = 18{,}00{,}000/21{,}10{,}000 = 85.3\%$, $w_D = 3{,}10{,}000/21{,}10{,}000 = 14.7\%$.</div>
+          <div class="step"><span class="sh">Blend</span> $\text{WACC} = 13.3\% \times 0.853 + 5.6\% \times 0.147 = 11.35\% + 0.82\%$.</div>
+          <div class="ans">Market-value WACC ≈ 12.2%</div>
+          <p><b>Interpretation:</b> on <em>book</em> weights the same company gives only ≈ 11.1% (book equity ₹8,20,000 Cr, book debt ₹3,30,000 Cr → $w_E=71.3\%$, $w_D=28.7\%$: $13.3\%\times0.713 + 5.6\%\times0.287 = 9.48\% + 1.61\% = 11.1\%$). Because Reliance's market equity (₹18,00,000 Cr) far exceeds book equity (₹8,20,000 Cr), market weights load more onto the higher-cost equity — pushing market-value WACC <em>above</em> book-value WACC.</p>
+        </div>
+      </details>
+      <p>For a near-debt-free firm the gap is small. <b>Infosys</b> (β 0.75): $r_E = 7.0\% + 0.75\times6.0\% = 11.5\%$; after-tax debt $6.5\%\times0.75 = 4.9\%$. Market weights ($E=$ ₹6,20,000 Cr, $D=$ ₹8,000 Cr) give $w_E=98.7\%$ → <b>WACC 11.4%</b>; book weights ($E=$ ₹90,000 Cr, $D=$ ₹8,000 Cr) give $w_E=91.8\%$ → <b>WACC 11.0%</b>. Only a 0.4-point gap, because there is barely any debt to re-weight.</p>
+
+      <p><b>Try the WACC calculator.</b> Enter Reliance's market figures: $r_E$ = 13.3, $r_D$ = 7.5, $T_c$ = 25, E = 1800000, D = 310000 → ≈ 12.2%.</p>
+      <div data-calc="wacc"></div>
+
+      <div class="try" data-answer="11.4" data-tol="2%" data-ok="Correct — that's Infosys' market-value WACC.">
+        <div class="q">✎ <b>Try it — compute a WACC.</b> Infosys (market weights): cost of equity $r_E = 11.5\%$, pre-tax cost of debt $r_D = 6.5\%$, tax rate $T_c = 25\%$, $E=$ ₹6,20,000 Cr, $D=$ ₹8,000 Cr. What is the WACC (%)? <span class="tag src">Session 10</span></div>
+        <div class="row"><input type="text" placeholder="e.g. 11.4"><button class="btn primary sm" data-check>Check</button><button class="btn ghost sm" data-show-sol>Show solution</button></div>
+        <div class="fb"></div>
+        <div class="sol" hidden>
+          <p>Weights: total = 6,28,000. $w_E = 6{,}20{,}000/6{,}28{,}000 = 98.7\%$, $w_D = 1.3\%$. After-tax debt = $6.5\%\times0.75 = 4.9\%$. WACC = $11.5\%\times0.987 + 4.9\%\times0.013 = 11.35\% + 0.06\% \approx$ <b>11.4%</b>.</p>
+        </div>
+      </div>
+
+      <div class="callout mistake"><div class="ct-head">⚠️ Common mistake</div>
+        <ul style="margin:6px 0 0">
+          <li><b>Coupon rate ≠ YTM.</b> The coupon is a fixed rupee cheque; the YTM is today's market return. Only when price = face value do they coincide.</li>
+          <li><b>Use YTM, not the coupon rate, as the cost of debt</b> in WACC. The coupon reflects an old issue; the YTM reflects what debt costs the firm <em>now</em>.</li>
+          <li><b>Apply the tax shield only to debt.</b> Interest is tax-deductible, so debt gets the $(1-T_c)$ term. Equity and preferred dividends are <em>not</em> deductible — never multiply $r_E$ (or $r_P$) by $(1-T_c)$.</li>
+          <li><b>Grow the dividend first.</b> In the Gordon model the numerator is $D_1 = D_0(1+g)$, not $D_0$.</li>
+        </ul>
+      </div>
+
+      <div class="callout recap"><div class="ct-head">🔑 Recap — what to remember</div>
+        <ul style="margin:6px 0 0">
+          <li>A bond's price is the PV of its cash flows: coupon bond $P=\Sigma C/(1+r)^t + F/(1+r)^T$; zero-coupon $P=F/(1+r)^T$; perpetual $P=C/r$.</li>
+          <li>Coupon rate &lt; yield → discount; coupon rate &gt; yield → premium; equal → par.</li>
+          <li>$\text{YTM}\approx[C+(F-P)/n]/[(F+P)/2]$; price below face → YTM &gt; coupon.</li>
+          <li>Shares are valued like bonds without redemption: zero-growth $P_0=D_1/r$; Gordon $P_0=D_1/(r-g)$; two-stage = PV(high-growth divs) + PV(terminal price).</li>
+          <li>$\text{WACC}=r_E\,E/(E+D)+r_D(1-T_c)\,D/(E+D)$; cost of debt = YTM; tax shield on debt only; prefer market-value weights.</li>
+        </ul>
+      </div>
+
+      <h2 id="quiz">6. Lesson quiz</h2>
+      <p class="muted">Answer each question — you'll get the correct answer and an explanation after you choose. Your best score is saved.</p>
+      <div id="quiz"></div>
+
+      <div class="lesson-nav">
+        <a class="prev" href="lesson-06.html"><span>Previous lesson</span><b>‹ Cost of Equity</b></a>
+        <a class="next" href="lesson-08.html"><span>Next lesson</span><b>Valuation &amp; FCF ›</b></a>
+      </div>
+    </div>
+
+    <div class="complete-bar">
+      <span class="cb-txt" data-complete-note>Finished reading and the quiz? Mark it done to track progress.</span>
+      <button class="btn primary" data-complete="lesson-07">Mark lesson complete</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script src="../js/progress.js" defer></script>
+<script src="../js/calculators.js" defer></script>
+<script src="../js/quiz.js" defer></script>
+<script src="../js/app.js" defer></script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  FMIQuiz.render(document.getElementById("quiz"), {
+    id: "lesson-07",
+    title: "Lesson 7 Quiz — Bonds, Stocks & WACC",
+    questions: [
+      { q:"Which feature distinguishes debt from equity as a source of finance?", options:["Discretionary payments","Ownership and voting rights","Contractual obligation to pay interest and repay principal","Dividends are tax-deductible"], correct:2,
+        explain:"Debt carries a contractual, legally binding obligation to pay interest and repay principal regardless of profit. Equity dividends are discretionary, equity carries voting rights, and it is interest (not dividends) that is tax-deductible." },
+      { q:"A plain-vanilla bond has F = ₹1,000, coupon 8% (C = ₹80), 3 years to maturity, and a required yield of 9%. Its price is:", options:["₹1,000.00","₹974.56","₹1,035.66","₹920.00"], correct:1,
+        explain:"Discount each ₹80 coupon plus the ₹1,080 final cash flow at 9%. Coupon rate (8%) is below the yield (9%), so the bond sells at a discount to ₹1,000.",
+        calc:"80/1.09 + 80/1.09² + 1080/1.09³ = 73.39 + 67.34 + 833.83 = ₹974.56." },
+      { q:"A bond's coupon rate (10%) is greater than the market's required yield (8%). The bond will trade at:", options:["A discount to face value","A premium to face value","Exactly face value (par)","Zero"], correct:1,
+        explain:"When the coupon rate exceeds the required yield, the bond pays more than the market demands, so investors bid its price above face value — a premium. (The M&M example priced at ₹1,035.66.)" },
+      { q:"A zero-coupon bond redeems ₹1,00,000 in 5 years at a required yield of 7%. Its price today is about:", options:["₹71,299","₹1,00,000","₹65,000","₹93,458"], correct:0,
+        explain:"A zero-coupon bond pays no interest, so the price is simply the present value of the redemption value.",
+        calc:"P = 1,00,000 / (1.07)⁵ = 1,00,000 / 1.4026 ≈ ₹71,299." },
+      { q:"A bond with F = ₹1,000, C = ₹90, price ₹980 and 2 years to maturity has an approximate YTM of:", options:["9.00%","10.10%","8.89%","11.00%"], correct:1,
+        explain:"Use the approximation [C + (F−P)/n] / [(F+P)/2]. Buying below face value makes the YTM exceed the 9% coupon rate.",
+        calc:"[90 + (1000−980)/2] / [(1000+980)/2] = (90+10)/990 = 100/990 ≈ 10.10%." },
+      { q:"A bond's market price is below its face value. Therefore its YTM is:", options:["Equal to the coupon rate","Greater than the coupon rate","Less than the coupon rate","Equal to zero"], correct:1,
+        explain:"Buying below face value means you earn the coupon plus a capital gain at redemption, so the total return (YTM) is greater than the coupon rate. Price above face → YTM below coupon." },
+      { q:"Coal India is expected to pay a constant dividend of ₹18 forever and its required return is 12%. Its value per share is:", options:["₹216","₹150","₹120","₹90"], correct:1,
+        explain:"With no growth, the share is a perpetuity of dividends: P₀ = D₁ / r.",
+        calc:"P₀ = 18 / 0.12 = ₹150." },
+      { q:"Using the Gordon model with D₀ = ₹19, g = 10% and r = 14%, the share price is:", options:["₹475.00","₹522.50","₹500.00","₹190.00"], correct:1,
+        explain:"First grow the dividend to D₁ = D₀(1+g), then divide by (r − g). Using D₀ instead of D₁ is the classic error.",
+        calc:"D₁ = 19 × 1.10 = ₹20.90; P₀ = 20.90 / (0.14 − 0.10) = 20.90 / 0.04 = ₹522.50." },
+      { q:"A firm's pre-tax cost of debt is 7.5% and the corporate tax rate is 25%. Its after-tax cost of debt is:", options:["7.50%","5.63%","9.38%","1.88%"], correct:1,
+        explain:"Interest is tax-deductible, so the after-tax cost of debt is rD × (1 − Tc). The tax shield applies only to debt.",
+        calc:"7.5% × (1 − 0.25) = 7.5% × 0.75 = 5.6%." },
+      { q:"Reliance: rE = 13.3%, after-tax rD = 5.6%, market weights wE = 85.3%, wD = 14.7%. The market-value WACC is about:", options:["9.5%","11.1%","12.2%","13.3%"], correct:2,
+        explain:"WACC = rE·wE + rD(1−Tc)·wD using market-value weights.",
+        calc:"13.3% × 0.853 + 5.6% × 0.147 = 11.35% + 0.82% ≈ 12.2%." },
+      { q:"Why are market-value weights preferred over book-value weights in WACC?", options:["They are easier to read off the balance sheet","Book values always equal market values","Market values better proxy the firm's target capital structure and investors' current expectations","Market values remove the need for a tax shield"], correct:2,
+        explain:"Book equity reflects historical accounting and can badly understate a growing or asset-light firm's true equity value. Market values better approximate the target capital structure, which is why Reliance's market-value WACC (12.2%) exceeded its book-value WACC (11.1%)." }
+    ]
+  });
+});
+</script>
+</body>
+</html>
